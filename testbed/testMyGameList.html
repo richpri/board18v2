@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for myGameList.php development.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        function listReturn(response) {
+          if (response) {
+            var gameHTML ='';
+            $.each(response.gamelist,function(index,listInfo) {
+              gameHTML += '<tr> <td class="gamename">';
+              gameHTML += '<a href="board18Map?dogame=';
+              gameHTML += listInfo.game_id + ' ">';
+              gameHTML += listInfo.gname + '</a></td> <td>';
+              gameHTML += listInfo.bname + '</td> <td>';
+              gameHTML += listInfo.version + '</td> <td>';
+              gameHTML += listInfo.start_date + '</td> </tr>';
+            }); // end of each
+            $('#gamelist').append(gameHTML)
+          }
+        } // end of listReturn
+        function listError(a, b, c) {
+          var errmsg = 'Error returned from myGameList.php:\n';
+          errmsg += (c ? c : a.status);
+          alert(errmsg);
+        } // end of listError     
+        $.ajax({
+          type: 'GET',
+          url: '../php/myGameList.php',
+          processData: true,
+          data: {},
+          dataType: 'json',
+          success: listReturn,
+          error: listError
+        }); // end of ajax
+      }); // end of ready
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> status </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+    <div>
+      <p>You are currently playing the following games</p>
+      <table id='gamelist' border='1'> 
+        <tr>
+          <th>Game Name</th> <th>Box Name</th> 
+          <th>Version</th> <th>Start Date</th> 
+        </tr>
+      </table>
+    </div>
+            
+  </body>
+</html>
+

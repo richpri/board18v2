@@ -1,0 +1,313 @@
+{
+  "bname":"Fourth Age", 
+  "version":"JCR02", 
+  "author":"Jim Romano", 
+  "board": {
+    "imgLoc":"images/FourthAge-JCR02/Map.png", 
+    "orientation":"F",
+    "xStart":28, 
+    "xStep":87, 
+    "yStart":26, 
+    "yStep":50
+  }, 
+  "market": {
+    "imgLoc":"images/FourthAge-JCR02/Stock.png", 
+    "xStart":10, 
+    "xStep":50, 
+    "yStart":10, 
+    "yStep":71
+  }, 
+  "tray": [ {
+    "type":"tile", 
+    "tName":"Yellow Tiles", 
+    "imgLoc":"images/FourthAge-JCR02/Yellow.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ {
+      "dups":9, 
+      "rots":6
+    }, {
+      "dups":22, 
+      "rots":6
+    }, {
+      "dups":23, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":6, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Green Tiles", 
+    "imgLoc":"images/FourthAge-JCR02/Green.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":3
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":3
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":3
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":2
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Brown Tiles", 
+    "imgLoc":"images/FourthAge-JCR02/Brown.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Gray Tiles", 
+    "imgLoc":"images/FourthAge-JCR02/Gray.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Company Tokens", 
+    "imgLoc":"images/FourthAge-JCR02/CompanyTokensMap.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "dups":4, 
+      "flip":true
+    }, {
+      "dups":2, 
+      "flip":true
+    }, {
+      "dups":2, 
+      "flip":true
+    }, {
+      "dups":1, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":1, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":2, 
+      "flip":true
+    }, {
+      "dups":2, 
+      "flip":true
+    }, {
+      "dups":1, 
+      "flip":true
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Other Tokens", 
+    "imgLoc":"images/FourthAge-JCR02/OtherTokensMap.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }]
+  }, {
+    "type":"mtok", 
+    "tName":"Stock Tokens", 
+    "imgLoc":"images/FourthAge-JCR02/CompanyTokensMarket.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }]
+  }]
+}

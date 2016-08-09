@@ -1,0 +1,197 @@
+{
+"bname":"18Scan", 
+"version":"PAZ02", 
+"author":"Paul Zieske",
+"board": {
+"imgLoc":"images/18Scan-PAZ02/Map2.png", 
+"orientation":"P",
+"xStart":-50, 
+"xStep":50, 
+"yStart":0, 
+"yStep":87
+},
+"market": {
+"imgLoc":"images/18Scan-PAZ02/Market1.png", 
+"xStart":0, 
+"xStep":50, 
+"yStart":0, 
+"yStep":65
+},
+"tray": [ {
+"type":"tile", 
+"tName":"Yellow Tiles", 
+"imgLoc":"images/18Scan-PAZ02/Tiles1.png", 
+"xStart":20, 
+"xSize":100, 
+"xStep":120, 
+"yStart":20, 
+"ySize":116, 
+"yStep":130, 
+"tile":[
+{
+"dups":8, 
+"rots":6
+}, {
+"dups":8, 
+"rots":3
+}, {
+"dups":7, 
+"rots":6
+}, {
+"dups":12,
+"rots":6
+}, {
+"dups":1, 
+"rots":6
+} ] }, {
+"type":"tile", 
+"tName":"Green Tiles", 
+"imgLoc":"images/18Scan-PAZ02/Tiles2.png", 
+"xStart":20, 
+"xSize":100, 
+"xStep":120, 
+"yStart":20, 
+"ySize":116, 
+"yStep":130, 
+"tile":[
+{
+"dups":3, 
+"rots":6
+ }, {
+"dups":3, 
+"rots":6
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":3,
+"rots":2
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":3, 
+"rots":2
+}, {
+"dups":6,
+"rots":6
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":1, 
+"rots":2
+} ] }, {
+"type":"tile", 
+"tName":"Brown Tiles", 
+"imgLoc":"images/18Scan-PAZ02/Tiles3.png", 
+"xStart":20, 
+"xSize":100, 
+"xStep":120, 
+"yStart":20, 
+"ySize":116, 
+"yStep":130, 
+"tile":[
+{
+"dups":3, 
+"rots":3
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":4, 
+"rots":6
+}, {
+"dups":3,
+"rots":3
+}, {
+"dups":3, 
+"rots":6
+}, {
+"dups":4, 
+"rots":6
+}, {
+"dups":2, 
+"rots":6
+}, {
+"dups":1, 
+"rots":1
+}, {
+"dups":1,
+"rots":1
+} ] }, {
+"type":"btok", 
+"tName":"Tokens", 
+"imgLoc":"images/18Scan-PAZ02/btoks.png", 
+"xStart":10, 
+"xSize":30, 
+"xStep":40, 
+"yStart":10, 
+"ySize":30, 
+"yStep":40, 
+"token":[
+{
+"dups":2, 
+"flip":true
+}, {
+"dups":2, 
+"flip":true
+}, {
+"dups":2, 
+"flip":true
+}, {
+"dups":3, 
+"flip":false
+}, {
+"dups":4, 
+"flip":false
+}, {
+"dups":3, 
+"flip":false
+}, {
+"dups":4, 
+"flip":false
+}, {
+"dups":4,
+"flip":false
+}, {
+"dups":1, 
+"flip":false
+}, {
+"dups":2, 
+"flip":false
+} ] }, {
+"type":"mtok", 
+"tName":"Tokens", 
+"imgLoc":"images/18Scan-PAZ02/mtoks.png", 
+"xStart":10, 
+"xSize":30, 
+"xStep":40, 
+"yStart":10, 
+"ySize":30, 
+"yStep":40, 
+"token":[
+{
+"flip":true
+}, {
+"flip":true
+}, {
+"flip":true
+}, {
+"flip":true
+}, {
+"flip":true
+} ] } ],
+"links": [
+ { "link_name":"Rules", 
+   "link_url":"https://drive.google.com/open?id=0B-wwptMMyHTAakY4N0lIUEhHLXc" },
+ { "link_name":"Reference Sheet", 
+   "link_url":"https://drive.google.com/open?id=0B-wwptMMyHTALTZ0YzdTcmtpOGM" }
+]
+}

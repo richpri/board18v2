@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for updateGame.php development.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+      function testReturn(inData) {
+				$('#result').append(inData)  
+      };
+      $(document).ready(function() {
+        var dataString = 
+          'gameid=5&json={"game_id": "5","sessionName": "dummy01"}';
+        $('#call').append(dataString)
+        $.post("../php/updateGame.php", dataString, testReturn)
+        .error(function() { 
+          var msg = "Error accessing game session. \n"
+          msg += "See /var/log/apache2/error.log \nfor more information.";
+          alert(msg); 
+        });
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> status </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+  </body>
+</html>
+

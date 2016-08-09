@@ -1,0 +1,81 @@
+/* CSS Document for index page  
+ * File: style/board18Index.css 
+ *
+ * Copyright (c) 2014 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+#login {
+	width: 300px;
+	position: absolute;
+  left: 8px;
+	top: 8px;
+  padding: 10px 10px 10px 10px;
+  border-style: double;
+	background-color:#ddffdd;
+}
+
+#register {
+	width: 500px;
+	position: absolute;
+	left: 6px;
+	top: 6px;
+	z-index: 10;
+}
+
+#lostid {
+	width: 330px;
+	position: absolute;
+	left: 6px;
+	top: 6px;
+	z-index: 20;
+}
+
+#lostpw {
+	width: 330px;
+	position: absolute;
+	left: 6px;
+	top: 6px;
+	z-index: 30;
+}
+
+.hideform {
+	padding: 10px 10px 10px 10px;
+  border-style: double;
+	display: none;	
+	background-color:#ddffdd;
+}
+.hideform label {
+	display: inline-block;
+	width: 200px;
+	margin: 0 15px 0 0;
+	color: rgb(58,80,123);
+}
+.hideform input {
+	font-size: 14px;	
+}
+.pwbutton {
+	margin-left: 50px;	
+}
+
+#content {
+  background: #ffeedd;
+  position: absolute;
+  left: 350px;
+  top: 0px; 
+  height: 350px;
+  border: none;
+}
+
+.error {
+  color: red !important;
+}
+
+.reg {}

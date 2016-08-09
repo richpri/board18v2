@@ -1,0 +1,8 @@
+# 1 DAY
+<FilesMatch "\.(png|txt)$">
+Header set Cache-Control "max-age=86400, private, must-revalidate"
+</FilesMatch>
+# 1 HOURS
+<FilesMatch "\.(html|htm|js|css)$">
+Header set Cache-Control "max-age=3600, private, must-revalidate"
+</FilesMatch>

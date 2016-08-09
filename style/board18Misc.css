@@ -1,0 +1,177 @@
+/* 
+ *  Document   : board18Misc
+ *  Created on : Nov. 23, 2013
+ *  Author     : rich
+ *  Description: CSS Document for board18Misc page.
+ *
+ * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+.plid {
+	width: 115px;
+  margin-left: 5px;
+  text-indent: 10px;
+}
+
+#players {
+	width: 420px;
+	position: absolute;
+	left: 150px;
+	top: 6px;
+	z-index: 10;
+}
+
+#playerlist {
+  margin: 10px;
+  margin-left: 90px;
+  border: 2px solid black;
+  background-color:#ddffdd; 
+  border-collapse:collapse;
+}
+
+#playerlist td {
+  border: 1px solid black;
+}
+
+#playerlist tr {
+  border: 1px solid black;
+}
+
+#playerlist th {
+  border: 1px solid black;
+}
+
+#playerlist caption {
+  margin: 5px;
+  font-weight: bold;
+}
+
+#status1 {
+  margin: 5px;
+  font-weight: bold;
+  width: 450px;
+}
+
+#playerform {
+  width: 450px;
+  margin-bottom: 10px;
+	padding: 10px 10px 10px 10px;
+  border-style: double;
+	background-color:#ddffdd;
+}
+#playerform label {
+	display: inline-block;
+  font-weight: bold;
+	margin: 0 15px 0 0;
+}
+#playerform input {
+	font-size: 14px;
+}
+#links {
+  border: 2px solid black;
+} 
+
+#links td {
+  border: 1px solid black;
+  background-color:#FFEEDD;
+}
+
+#links tr {
+  border: 1px solid black;
+  background-color:#FFEEDD;
+}
+
+#links th {
+  border: 1px solid black;
+  background-color:#FFEEDD;
+}
+#linkdiv {
+	width: 710px;
+  height: 450px;
+	position: absolute;
+	left: 50px;
+	top: 6px;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 10px;
+  border-style: double;
+	background-color:#ddffdd;
+	z-index: 20;
+  display: none;
+}
+#linkheader {
+  margin: 5px;
+  font-weight: bold;
+}
+#linkform {
+  width: 700px;
+  margin-bottom: 10px;
+	padding: 10px 10px 10px 10px;
+	position: absolute;
+  bottom: 0px;
+}
+#linkform label {
+	display: inline-block;
+  font-weight: bold;
+	margin: 0 15px 0 0;
+}
+#linkform input {
+	font-size: 14px;
+}
+#lnkurl1{
+  width: 470px;
+}
+
+#delgrey {
+	width: 100%;
+  height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: rgba(128, 128, 128, 0.5);
+	z-index: 30;
+  display: none;
+}
+#delpop {
+	width: 200px;
+  height: 180px;
+	position: absolute;
+  left: 50%;	
+  margin-left: -100px;
+	top: 50%;
+  margin-top: -90px;
+  padding: 10px 10px 10px 10px;
+  border-style: double;
+	background-color: #FFEEDD;
+	z-index: 35;
+  display: none;
+}
+.deleteflag{
+  color: blue;
+}
+.pwbutton {
+	margin-left: 13px;	
+}
+
+#content {
+  background: #ffeedd;
+  position: absolute;
+  left:5px;
+  top:0px; 
+  height:350px;
+  border: none;
+}
+
+.error {
+  color: red !important;
+}
+
+.reg { }

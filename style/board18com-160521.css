@@ -1,0 +1,150 @@
+/* 
+ *  Document   : board18com
+ *  Author     : rich
+ *  Description: Common CSS Document for all board18 page.
+ *
+ * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.right{float:right;}
+
+#topofpage {
+  background-color:#ffeedd;
+  position:fixed;
+  left:0px;
+  top:0px;
+  height:90px;
+  width:100%;
+  z-index:5;
+}
+
+#leftofpage {
+  background-color:#ddffdd;
+  position:fixed;
+  overflow-y:scroll;
+  left:0px;
+  top:90px;
+  width: 135px;
+  height:400px;
+  z-index:10;
+}
+
+#rightofpage {
+  background-color:#ffeedd;
+  position:fixed;
+  overflow-y:scroll;
+  overflow-x:scroll;
+  left:135px;
+  height:400px;
+  top:90px;
+  z-index: 1;
+}
+
+#logo {
+  position: absolute;
+  left:5px;
+  top:0px;
+  height:90px;
+  width:75px;
+
+}
+#heading {
+  position: absolute;
+  left:85px;
+  top:0px;
+  color:#008800;
+  height:50px;
+}
+
+#heading > h1 {
+  margin:0;
+  position:relative;
+  left:10px;
+  top:5px;
+  font-size: x-large;
+}
+
+#lognote {
+  margin:0;
+  position:absolute;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  left:220px;
+  top:50px;
+  font-size: large;
+}
+.menu {
+    position: fixed;
+    z-index: 9;
+	display:none;
+    cursor: pointer;
+}
+#newmainmenu {
+  display: inline-block;
+  position: absolute;
+  left:140px;
+  top:50px;
+  width: 60px;
+  text-align: center;
+  margin:0px;
+  padding:5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background-color: #ddffdd;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+#mainmenu {
+  top: 80px;
+  left: 140px;
+}
+.menu a {
+  text-decoration: none;
+  color: #000000;
+}
+.menu ul {
+  border: 2px solid #000 !important;
+  margin: 0;
+  padding: 0;
+  width: 230px;
+  display: inline-list;
+  position: absolute;
+  list-style-type: none;
+  background-color: #ddffdd;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.menu ul ul {
+    position: absolute;
+    left: 200px;
+    top: 1px;
+    display: none;
+	z-index: 10;
+}
+.menu ul ul ul, #onMapMenu ul{
+	width:auto;
+}
+li:hover > ul {display:block !important;}
+.menu li {
+  padding: 2px 2px 2px 24px;
+  background-color: #ddffdd;
+  position: relative;
+  white-space: nowrap;
+}
+.menu li:hover {
+  padding: 2px 2px 2px 24px;
+  background-color: #ffeedd;
+  position: relative;
+}

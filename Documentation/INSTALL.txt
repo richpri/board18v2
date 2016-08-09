@@ -1,0 +1,3 @@
+The most current instructions for installing BOARD18 on a web server are at:
+http://wiki.board18.org/w/How_To_Create_a_BOARD18_WEB_Site
+Please use these instructions to install BOARD18.

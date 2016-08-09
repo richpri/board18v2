@@ -1,0 +1,68 @@
+/* 
+ *  Document   : board18BoxLoad
+ *  Created on : Jun 12, 2016, 9:12:56 AM
+ *  Author     : rich
+ *  Description: CSS Document for BoxLoad page
+ *
+ * Copyright (c) 2016 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:10px;
+  top:10px; 
+  height:250px;
+  width:400px;
+  border: none;
+}
+
+.boxform {
+  border-style: double;
+  background-color:#ddffdd;
+}
+.boxform label {
+	display: inline-block;
+	width: 300px;
+	margin: 10px 15px 0 0;
+}
+.boxform input {
+  margin: 10px 15px 0 0;
+	font-size: 14px;
+}
+.zfbutton {
+	margin-left: 20px;	
+}
+
+.error {
+  color: red !important;
+}
+
+#successmsg {
+	background-color:#77ff77;
+}
+#failmsg {
+  background-color:#ff7777;
+}
+.hidemsg {
+  position: absolute;
+  left:10px;
+  top:10px; 
+  z-index: 5;
+  width: 400px;
+  height:250px;
+  margin-bottom: 10px;
+	padding: 10px 20px 10px 20px;
+  border-style: double;
+  text-align: center;
+	display: none;	
+}

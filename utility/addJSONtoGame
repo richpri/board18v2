@@ -1,0 +1,13 @@
+#!/bin/bash 
+#
+# This script will place the contents of file $2 into the json_text
+# column of the game table record with game_id equal to $1.
+#
+if [ $# -ne 2 ]; then echo "Usage: addJSONtoGame game_id FILE"; exit; fi
+echo "Add contents of file $2 to json_text in game record with game ID $1"
+value=$(<$2);
+mysql -u board18 -pboard18 <<QUERY_INPUT
+use board18
+UPDATE game SET json_text = '$value' WHERE game_id = '$1';
+SELECT json_text FROM game WHERE game_id = '$1';
+QUERY_INPUT

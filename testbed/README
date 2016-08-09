@@ -1,0 +1,9 @@
+This folder contains test pages that can be used to
+test PHP routines that are executed via AJAX calls.
+
+It may also be used as a container for instrumented
+versions of these AJAX called PHP routines
+
+I am adding a PHP command line program to dump 
+database records and format the JSON strings.
+CLgameDump.php

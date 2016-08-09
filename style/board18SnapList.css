@@ -1,0 +1,68 @@
+/* CSS Document for SnapList page  */
+/* File: style/board18SnapList.css */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:5px;
+  top:0px; 
+  height:350px;
+  border: none;
+}
+
+#snaphead {
+  font-size: large;
+  font-weight: bold;
+}
+
+#snaplist {
+  margin: 5px;
+  border: 2px solid black;
+  background-color:#ddffdd; 
+  border-collapse:collapse;
+}
+
+#snaplist td {
+  border: 1px solid black;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#snaplist tr {
+  border: 1px solid black;
+}
+
+#snaplist th {
+  border: 1px solid black;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+a.pagor {
+    background-color: #FFEEDD;
+    border: 2px solid #bbb;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+    text-decoration: none;
+}
+a.pagor:hover {
+    color: red;
+}
+a.selected {
+    background-color: #DDFFDD;
+    border: 2px solid #bbb;
+}

@@ -1,0 +1,216 @@
+BOARD18 2.2.2 Release Notes
+
+Changes from 2.2.1 Release:
+Fixed some typos in loadGameBox.php
+Fixed more typos in board18Boxes.php.
+
+BOARD18 2.2.1 Release Notes
+
+Changes from 2.2.0 Release:
+Fixed some typos [due to Bug 58 fix] in log notes. 
+Fixed misrouting of game box load messages in board18BoxLoad.php
+Fixed two typos in board18Boxes.php.
+Upgraded the doLogNote(note) function to handle NULL BD18.welcomename.
+
+BOARD18 2.2.0 Release Notes
+
+Changes from 2.1.3 Release:
+Fixed Bug 58 - The doLogNote(note) function is not always used. 
+Implemented Issue 27 Part 5 - Provide a tool for loading a 
+game box from a zip file. And also make some minor edits that 
+prepare for the removal of jqueryMigrate package from BOARD18.
+
+BOARD18 2.1.3 Release Notes
+
+Changes from 2.1.2 Release:
+Implemented Issue 57 - Redesigned placement logic for context
+menus and token selection canvases.
+
+BOARD18 2.1.2 Release Notes
+
+Changes from 2.1.1  Release:
+Fixed Issue 56 - context menus can overlap edge of screen
+Also made some documentation changes to comments in code.
+
+BOARD18 2.1.1 Release Notes
+
+Changes from 2.1.0  Release:
+Removed some missed scaling code from enhanced support for browser zoom.
+
+BOARD18 2.1.0 Release Notes
+
+Changes from 2.0.0  Release:
+
+* Removed enhanced support for browser zoom. See 
+  http://wiki.board18.org/w/Release_2.0.0_Issue
+* Made two other minor fixes.
+
+BOARD18 2.0.0 Release Notes
+
+Changes from 1.5.0  Release:
+
+* Implemented Issue 1 - Request for an "undo" capability 
+* Implemented Issue 20 - Associated spreadsheet URL capability
+* Implemented Issue 47 - Rewrite JS to remove contextMenu API
+* Implemented Issue 50 - Long Term Ergonomic Proposal
+* Redesigned main menu for SnapMap and SnapMrk pages.
+* Added "About BOARD18" option to all main menus.
+* Fixed toggle on all main menus.
+* Enhanced support for browser zoom, but issue 48 is still unresolved.
+* Removed some leftover debugging code.
+* Made many other minor tweaks and fixes.
+
+BOARD18 1.5.0 Release Notes
+
+Changes from 1.4.2  Release:
+
+* Implemented issue 27 Phase 4 - board18Boxes.php.
+* Added links between board18Boxes.php, board18Games.php and board18Players.php
+
+BOARD18 1.4.2 Release Notes
+
+Changes from 1.4.1  Release:
+
+Fixed status swap bug in board18Misc.php
+
+BOARD18 1.4.1 Release Notes
+
+Changes from 1.4.0  Release:
+
+Added 3 new PHP functions. 
+They are linkGet, linkAdd and linkDel. 
+Updated board18Misc page to support toggling the current game status.
+Added link processing functions to board18Misc page.
+
+BOARD18 1.4.0 Release Notes
+
+Changes from 1.3.4 Release:
+
+Updated game_link table. 
+See http://wiki.board18.org/w/The_game_link_Table_Fix_for_release_1.4.x
+Added aboutBoard18() function to board18com.js.
+
+BOARD18 1.3.4 Release Notes
+
+Changes from 1.3.3 Release:
+
+Fixed switching between SnapMap and SnapMrk
+
+BOARD18 1.3.3 Release Notes
+
+Changes from 1.3.2 Release:
+
+Put tray back into Market pages.
+
+BOARD18 1.3.2 Release Notes
+
+Changes from 1.3.1 Release:
+
+Fixed Issue 49 - Tokens aren't on Map correctly in Snapshot view
+
+BOARD18 1.3.1 Release Notes
+
+Changes from 1.3.0 Release:
+* More issue 10 fixes:
+  Add an input box for mobile devices so they can use keyboard shortcuts
+  Additional changes to the mobile input box, added versioning to the css files
+  Add if you have a token/hex selected and you click outside of the selected 
+  area the In-Map menu will be displayed. 
+* Fixed Issue 45 - Flipping Token in Stock Market sends it to Top Left corner
+
+BOARD18 1.3.0 Release Notes
+
+Changes from 1.2.2 Release:
+
+* Implemented issue 10 - A number of iPad and Android 
+  compatibility issues were fixed. See discussion at 
+  http://bugs.board18.org/show_bug.cgi?format=multiple&id=10 
+* Implemented issue 27 Phase 3 - board18Games.php.
+* Some other minor bug and documentation fixes.
+
+BOARD18 1.2.2 Release Notes
+
+Changes from 1.2.1 Release:
+
+* A "Flip Token" choice will appear as the top choice in
+  all applicable context menus. See Issue 36.
+* The "select token" menus will show the token choices as
+  flipped if they are flipped on the effected hex or box. 
+* Text in all context menus has been standardized.
+* utility/BOARD18update has been updated to version 3.
+* utility/control.sh has been updated to version 3.
+
+BOARD18 1.2.1 Release Notes
+
+Changes from 1.2.0 Release:
+
+* Fixed security vulnerability in board18Players.
+
+BOARD18 1.2.0 Release Notes
+
+Changes from 1.1.5 Release:
+
+* Implemented issue 43 - Increase the maximum size of some  
+  fields in the BOARD18 database. If upgrading from a 1.1.x 
+  release, please see the notice about database changes at:
+  http://wiki.board18.org/w/Two_Table_Fixes_for_release_1.2.x 
+
+* Fixed BOARD18update utility.
+
+BOARD18 1.1.5 Release Notes
+
+Changes from 1.1.4 Release:
+
+* Fix bug in board18Players1.js.
+
+BOARD18 1.1.4 Release Notes
+
+Changes from 1.1.3 Release:
+
+* Implemented issue 27 Phase 2 - board18Players.php.
+
+BOARD18 1.1.3 Release Notes
+
+Changes from 1.1.2 Release:
+
+* Improved the snapshot functions added in 1.1.2.
+
+* Implemented issue 27 Phase 1 - board18Admin.php.
+
+BOARD18 1.1.2 Release Notes
+
+Changes from 1.1.1 Release:
+
+* Removed invalid error handling code from loadBox function in
+  board18Map2.js and board18Market2.js.
+
+* Removed invalid error handling code from loadSession function in
+  board18Map2.js and board18Market2.js.
+
+* Implemented issue 27 Phase 1 in newUser.php - Make first player level "admin".
+
+BOARD18 1.1.1 Release Notes
+
+Changes from 1.1.0 Release:
+
+* Fixed bug 42 - Invalid backout of token delete.
+
+* Fixed loadAllBoxes utility.
+
+* Added BOARD18update utility.
+
+* Updated BOARD18/website index.html file
+
+BOARD18 1.1.0 Release Notes
+
+Changes from 1.0.1 Release:
+
+* Implemented issue 28 - Create a Checkpoint/Revert Function.
+
+* Made some other minor aesthetic code upgrades.
+
+BOARD18 1.0.1 Release Notes
+
+Changes from 1.0.0 Release:
+
+* Fixed issue 38 - Placement problem with token selection popup. 

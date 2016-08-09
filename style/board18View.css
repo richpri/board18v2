@@ -1,0 +1,43 @@
+/* CSS Document for View page  */
+/* File: style/board18View.css */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:5px;
+  top:0px; 
+  height:350px;
+  border: none;
+}
+
+#gamehead {
+  font-size: large;
+  font-weight: bold;
+}
+
+#gamelist {
+  margin: 5px;
+  border: 2px solid black;
+  background-color:#ddffdd; 
+  border-collapse:collapse;
+}
+
+#gamelist td {
+  border: 1px solid black;
+}
+
+#gamelist tr {
+  border: 1px solid black;
+}
+
+#gamelist th {
+  border: 1px solid black;
+}

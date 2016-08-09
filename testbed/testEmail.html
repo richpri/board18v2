@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for emailPlayerID.php development.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var dataString = 'email=rich@gandalf.ws';
+        function testReturn(resp) {
+          if (resp.indexOf("<!doctype html>") !== -1) { // User has timed out.
+            window.location = "access-denied.html";
+          }
+          var msg;
+          msg = "Response from emailPlayerID.php is ";
+          msg += resp;
+          $('#call').append(dataString);
+          $('#result').append(msg);
+        } // end of testReturn
+        $.post("../php/emailPlayerID.php", dataString, testReturn);
+      }); // end of ready
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> email address </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+  </body>
+</html>

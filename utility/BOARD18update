@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# This script will update a board18 web site.
+# It will first create a backup of this site.
+# 
+# Before running this script, edit control.sh 
+# The three directory paths in control.sh must 
+# be correct or the web site could be damaged.
+# 
+# This is version 5 of this script.
+#
+source $(dirname $0)/control.sh
+
+if ! [ -a ${BD18New:?"Missing source file name"} ]
+then
+  echo "The distribution source, $BD18New, is missing."
+  exit
+fi
+if ! [ -a ${BD18Site:?"Missing site name"} ]
+then
+  echo "$BD18Site cannot be found."
+  exit
+fi
+rm -f -r ${BD18Old:?"Missing backup site name"}
+mkdir $BD18Old
+cp -r $BD18Site/* $BD18Old
+cp $BD18Old/php/config.php $BD18New/php/config.php
+cp $BD18Old/php/configMail.php $BD18New/php/configMail.php
+rm -r $BD18New/images/*
+cp -r $BD18Old/images/* $BD18New/images
+rm -r ${BD18Site:?}/*
+cp -r $BD18New/* $BD18Site
+diff -r -q $BD18Site $BD18Old

@@ -1,0 +1,19 @@
+.context-menu {
+    width: 200px;
+    background-color: #ddffdd;
+    border: 1px solid #999999;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.context-menu a {
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+}
+.context-menu a:hover {
+  	background-color:#b1ccb1;	
+    text-decoration: none;
+}
+ 
+

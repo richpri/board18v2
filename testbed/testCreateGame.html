@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for createGame.php development.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+      function listReturn(response) {
+        if (response) {
+          var gameHTML ='';
+          $.each(response.gamelist,function(index,listInfo) {
+            gameHTML += '<tr> <td class="gamename">';
+            gameHTML += '<a href="board18Map?dogame=';
+            gameHTML += listInfo.game_id + ' ">';
+            gameHTML += listInfo.gname + '</a></td> <td>';
+            gameHTML += listInfo.bname + '</td> <td>';
+            gameHTML += listInfo.version + '</td> <td>';
+            gameHTML += listInfo.start_date + '</td> </tr>';
+          }); // end of each
+          $('#gamelist').append(gameHTML)
+        }
+      } // end of listReturn
+      function listError(a, b, c) {
+        var errmsg = 'Error returned from myGameList.php:\n';
+        errmsg += (c ? c : a.status);
+        alert(errmsg);
+      } // end of listError 
+      function testReturn(response) {
+        if (response === "nobox") {
+          var berrmsg ='Invalid Game Box ID.\n';
+          alert(berrmsg);
+        } else if (response.indexOf("noplayer") != -1) {  
+          // Response contains "noplayer".
+          var plerr = 'Player #' + response.substr(9) + ' does not exist';
+          alert(plerr);
+        } else if (response === "success") {
+          $('#newgame .error').hide();
+          $('#newgame :text').val('');
+          var loginNote ='New game has been created.';
+          alert(loginNote);
+        } else if (response === "failure") {
+          var ferrmsg ='New game was not created due to an error.\n';
+          ferrmsg += 'Please contact the site administrator.';
+          alert(ferrmsg);
+        } else {
+          var nerrmsg ='Invalid return code from createGame.php.\n';
+          nerrmsg += response + '\nThis should not happen.';
+          alert(nerrmsg);
+        }
+        $.ajax({
+          type: 'GET',
+          url: '../php/myGameList.php',
+          processData: true,
+          data: {},
+          dataType: 'json',
+          success: listReturn,
+          error: listError
+        }); // end of ajax
+      } // end of testReturn
+      $(document).ready(function() {
+        var dataString = 
+          'newgame={"gname": "game name","boxid": "7","players": ';
+        dataString += '["rich", "allen", "sharon"]}';
+        $('#call').append(dataString)
+        $.post("./createGame.php", dataString, testReturn)
+        .error(function() { 
+          var msg = "Error accessing createGame.php. \n"
+          msg += "See /var/log/apache2/error.log \nfor more information.";
+          alert(msg); 
+        });
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> status </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+    <div>
+      <p>You are currently playing the following games</p>
+      <table id='gamelist' border='1'> 
+        <tr>
+          <th>Game Name</th> <th>Box Name</th> 
+          <th>Version</th> <th>Start Date</th> 
+        </tr>
+      </table>
+    </div>
+            
+  </body>
+</html>
+

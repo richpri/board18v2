@@ -1,0 +1,85 @@
+/* 
+ *  Document   : board18Admin
+ *  Created on : Oct 17, 2013, 10:52:03 AM
+ *  Author     : rich
+ *  Description: CSS Document for board18Admin page.
+ *
+ * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+#passwd {
+	width: 300px;
+	position: absolute;
+	left: 150px;
+	top: 8px;
+	z-index: 10;
+}
+
+#admin {
+	width: 500px;
+	position: absolute;
+	left: 150px;
+	top: 6px;
+	z-index: 20;
+}
+#lostid {
+	width: 300px;
+	position: absolute;
+	left: 150px;
+	top: 6px;
+	z-index: 30;
+}
+
+.hideform {
+  margin-bottom: 10px;
+	padding: 10px 10px 10px 10px;
+  border-style: double;
+	display: none;	
+	background-color:#ddffdd;
+}
+.hideform label {
+	display: inline-block;
+	width: 200px;
+	margin: 0 15px 0 0;
+	color: rgb(58,80,123);
+}
+.hideform input {
+	font-size: 14px;
+/*  width: 60px; */
+}
+.pwbutton {
+	margin-left: 50px;	
+}
+
+#content {
+  background: #ffeedd;
+  position: absolute;
+  left:5px;
+  top:0px; 
+  height:350px;
+  border: none;
+}
+
+.error {
+  color: red !important;
+}
+
+.reg { }
+
+#adminlevel {
+  display: none;
+  margin-left: 5px;
+}
+#authorlevel {
+  display: none;
+  margin-left: 5px;
+}

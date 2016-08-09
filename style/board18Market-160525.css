@@ -1,0 +1,172 @@
+/* 
+ *  Document   : board18Market
+ *  Author     : rich
+ *  Description: CSS Document for board18Market page.
+ *
+ * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
+
+#topleftofpage {
+  background-color:#ddffdd;
+  position:fixed;
+  left:0px;
+  top:90px;
+  height:50px;
+  width:135px;
+}
+
+#botleftofpage {
+  background-color:#ddffdd;
+  position:fixed;
+  overflow-y:scroll;
+  left:0px;
+  top:140px;
+  height:390px;
+  width:135px;
+}
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:50px; 
+}
+
+.sidebaritem {
+	width: 100px;
+  height:20px;
+  margin-left: 5px;
+  padding-left: 10px;
+  border-bottom-style:solid;
+}
+
+.sidebaritem:hover {
+	background-color:#b1ccb1;	
+}
+
+#traybutton {
+  display: inline-block;
+  z-index: 9;
+  position: absolute;
+  left:15px;
+  top:5px;
+  width: 70px;
+  text-align: center;
+  margin:0px;
+  padding:5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background-color: #ffeedd;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+#traymenu {
+    top: 125px;
+    left: 15px;
+}
+.leftMenu {
+  border: 2px solid #000 !important;
+  font-size: larger !important;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.leftMenu li {
+  background-color: #ffeedd;
+  padding: 2px 2px 2px 24px;
+}
+
+.leftMenu li:hover {
+  background-color: #ddffdd;
+}
+
+#tiles {
+  margin-top:5px;
+  width:120px;
+  float:left;
+  overflow:auto;
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:0px;
+  top:0px; 
+  z-index: 1;
+}
+
+#canvas1 {
+  position: absolute;
+  left:0px;
+  top:0px; 
+  z-index: 2;
+}
+
+#canvas2 {
+  z-index: 4;
+  position: absolute;
+  left:0px;
+  top:0px; 
+}
+
+#canvas3 {
+  z-index: 6;
+  position: absolute;
+  left: 100px;
+  top: -200px; 
+  border:solid 3px #DDFFDD;
+  opacity:0;
+}
+
+.context-menu {
+    background-color: #ddffdd;
+    border: 1px solid #999999;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.context-menu a {
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+}
+.context-menu a:hover {
+  	background-color:#b1ccb1;	
+    text-decoration: none;
+}
+
+/* 
+ *  Added by Rich Price on July 15 2015 for 
+ *  Issue 28 - Create a Checkpoint/Revert Function
+ */
+#snapname {
+	width: 500px;
+	position: absolute;
+	left: 140px;
+	top: 100px;
+	z-index: 10;
+}
+
+#rname {
+  width:300px;
+}
+
+.hideform {
+	padding: 10px 10px 10px 10px;
+  border-style: double;
+	display: none;	
+	background-color:#ddffdd;
+}
+.hideform label {
+	display: inline-block;
+	width: 300px;
+	margin: 0 15px 0 0;
+	color: rgb(58,80,123);
+}
+.hideform input {
+	font-size: 14px;	
+}
+.error {
+  color: red !important;
+}

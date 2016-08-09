@@ -1,0 +1,322 @@
+{
+  "bname":"18EU", 
+  "version":"REP02", 
+  "author":"Rich Price",
+  "board": {
+    "imgLoc":"images/18EU-REP02/Map.png", 
+    "orientation":"F",
+    "xStart":0, 
+    "xStep":87, 
+    "yStart":0, 
+    "yStep":50
+  },
+  "market": {
+    "imgLoc":"images/18EU-REP02/Market.png", 
+    "xStart":10, 
+    "xStep":56, 
+    "yStart":20, 
+    "yStep":64
+  },
+  "tray": [
+  {
+    "type":"tile", 
+    "tName":"Yellow Tiles", 
+    "imgLoc":"images/18EU-REP02/Yellow1.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ 
+    {
+      "dups":7, 
+      "rots":6
+    }, {
+      "dups":9, 
+      "rots":6
+    }, {
+      "dups":8, 
+      "rots":3
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":15, 
+      "rots":6
+    }, {
+      "dups":15, 
+      "rots":3
+    }, {
+      "dups":8, 
+      "rots":6
+    }, {
+      "dups":10, 
+      "rots":3
+    }, {
+      "dups":14, 
+      "rots":6
+    }]
+  },
+  {
+    "type":"tile", 
+    "tName":"Green Big Cities", 
+    "imgLoc":"images/18EU-REP02/Green1.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120,  
+    "tile":[ 
+    {
+      "dups":4, 
+      "rots":3
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":2
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":2, 
+      "rots":2
+    }]
+  },
+  {
+    "type":"tile", 
+    "tName":"Green Other", 
+    "imgLoc":"images/18EU-REP02/Green2.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ 
+    {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":2
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":2
+    }]
+  },
+  {
+    "type":"tile", 
+    "tName":"Brown Tiles", 
+    "imgLoc":"images/18EU-REP02/Brown1.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ 
+    {
+      "dups":9, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":2, 
+      "rots":1
+    }, {
+      "dups":8, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":3
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":3
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":4, 
+      "rots":6
+    }]
+  },
+  {
+    "type":"tile", 
+    "tName":"Grey Tiles", 
+    "imgLoc":"images/18EU-REP02/Grey1.png", 
+    "xStart":20, 
+    "xSize":116, 
+    "xStep":130, 
+    "yStart":20, 
+    "ySize":100, 
+    "yStep":120, 
+    "tile":[ 
+    {
+      "dups":5, 
+      "rots":1
+    }]
+  },
+  {
+    "type":"btok", 
+    "tName":"Majors", 
+    "imgLoc":"images/18EU-REP02/Majors.png", 
+    "xStart":10, 
+    "xSize":32, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":32, 
+    "yStep":40, 
+    "token":[ 
+    {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":5, 
+      "flip":false
+    }, {
+      "dups":8, 
+      "flip":false
+    }]
+  },
+    {
+    "type":"btok", 
+    "tName":"Minors", 
+    "imgLoc":"images/18EU-REP02/Minors.png", 
+    "xStart":10, 
+    "xSize":32, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":32, 
+    "yStep":40, 
+    "token":[ 
+    {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }]
+  },
+  {
+    "type":"mtok", 
+    "tName":"Tokens", 
+    "imgLoc":"images/18EU-REP02/Majors.png", 
+    "xStart":10, 
+    "xSize":32, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":32, 
+    "yStep":40, 
+    "token":[ 
+    {
+      "flip":false
+    }, {
+      "flip":false
+    }, {
+      "flip":false
+    }, {
+      "flip":false
+    }, {
+      "flip":false
+    }, {
+      "flip":false 
+    }, { 
+      "flip":false
+    }, {
+      "flip":false
+    }]
+  }
+]
+}

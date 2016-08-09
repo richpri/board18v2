@@ -1,0 +1,649 @@
+{
+  "bname":"18OE", 
+  "version":"JB02", 
+  "author":"Jeff Bosch", 
+  "board": {
+    "imgLoc":"images/18OE-JB02/map.png", 
+    "imgHght":3032, 
+    "imgWdth":4449,
+    "xStart":70, 
+    "xStep":50, 
+    "yStart":19, 
+    "yStep":87
+  }, 
+  "market": {
+    "imgLoc":"images/18OE-JB02/stockMarket.png", 
+    "imgHght":278, 
+    "imgWdth":1553, 
+    "xStart":70, 
+    "xStep":80, 
+    "yStart":70, 
+    "yStep":80
+  }, 
+  "tray": [ {
+    "type":"tile", 
+    "tName":"Yellow Tiles", 
+    "imgLoc":"images/18OE-JB02/yellow.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":14, 
+      "rots":6
+    }, {
+      "dups":25, 
+      "rots":3
+    }, {
+      "dups":15, 
+      "rots":6
+    }, {
+      "dups":25, 
+      "rots":6
+    }, {
+      "dups":14, 
+      "rots":6
+    }, {
+      "dups":88, 
+      "rots":6
+    }, {
+      "dups":90, 
+      "rots":3
+    }, {
+      "dups":19, 
+      "rots":3
+    }, {
+      "dups":25, 
+      "rots":6
+    }, {
+      "dups":9, 
+      "rots":6
+    }, {
+      "dups":18, 
+      "rots":6
+    }, {
+      "dups":12, 
+      "rots":3
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Y Complex Tiles", 
+    "imgLoc":"images/18OE-JB02/yellowComplex.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":4, 
+      "rots":3
+    }, {
+      "dups":6, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":2
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Green Tiles", 
+    "imgLoc":"images/18OE-JB02/green.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":10, 
+      "rots":6
+    }, {
+      "dups":8, 
+      "rots":2
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":2
+    }, {
+      "dups":20, 
+      "rots":6
+    }, {
+      "dups":20, 
+      "rots":6
+    }, {
+      "dups":15, 
+      "rots":6
+    }, {
+      "dups":15, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":5, 
+      "rots":2
+    }, {
+      "dups":17, 
+      "rots":6
+    }, {
+      "dups":17, 
+      "rots":6
+    }, {
+      "dups":12, 
+      "rots":6
+    }, {
+      "dups":9, 
+      "rots":3
+    }, {
+      "dups":9, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"G Complex Tiles", 
+    "imgLoc":"images/18OE-JB02/greenComplex.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":3, 
+      "rots":3
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":6
+    }, {
+      "dups":1, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Brown Tiles", 
+    "imgLoc":"images/18OE-JB02/brown.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":13, 
+      "rots":3
+    }, {
+      "dups":21, 
+      "rots":6
+    }, {
+      "dups":13, 
+      "rots":6
+    }, {
+      "dups":8, 
+      "rots":3
+    }, {
+      "dups":8, 
+      "rots":6
+    }, {
+      "dups":7, 
+      "rots":6
+    }, {
+      "dups":12, 
+      "rots":3
+    }, {
+      "dups":20, 
+      "rots":6
+    }, {
+      "dups":12, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":11, 
+      "rots":1
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"B Complex Tiles", 
+    "imgLoc":"images/18OE-JB02/brownComplex.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":2, 
+      "rots":6
+    }, {
+      "dups":6, 
+      "rots":1
+    }, {
+      "dups":5, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":2
+    }, {
+      "dups":12, 
+      "rots":6
+    }]
+  }, {
+    "type":"tile", 
+    "tName":"Grey Tiles", 
+    "imgLoc":"images/18OE-JB02/grey.png", 
+    "xStart":20, 
+    "xSize":100, 
+    "xStep":120, 
+    "yStart":20, 
+    "ySize":116, 
+    "yStep":130,
+    "tile":[ {
+      "dups":5, 
+      "rots":6
+    }, {
+      "dups":6, 
+      "rots":6
+    }, {
+      "dups":16, 
+      "rots":1
+    },{
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":3, 
+      "rots":6
+    }, {
+      "dups":11, 
+      "rots":1
+    }, {
+      "dups":5, 
+      "rots":1
+    },{
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }, {
+      "dups":1, 
+      "rots":1
+    }]
+  }, {
+    "type":"tile",
+    "tName":"Scenario Tiles",
+    "imgLoc":"images/18OE-JB02/scenarioRedZones.png",
+    "xStart":20,
+    "xSize":100,
+    "xStep":120,
+    "yStart":20,
+    "ySize":116,
+    "yStep":136,
+    "tile":[ {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }, {
+      "dups":1,
+      "rots":1
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Minor Tokens", 
+    "imgLoc":"images/18OE-JB02/minors.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }, {
+      "dups":3, 
+      "flip":true
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Regional/Major Tokens", 
+    "imgLoc":"images/18OE-JB02/majors.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }, {
+      "dups":8, 
+      "flip":true
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Other Tokens", 
+    "imgLoc":"images/18OE-JB02/markers.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40, 
+    "token":[ {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":4, 
+      "flip":false
+    }]
+  }, {
+    "type":"btok", 
+    "tName":"Patronage", 
+    "imgLoc":"images/18OE-JB02/patronage.png", 
+    "xStart":10, 
+    "xSize":52, 
+    "xStep":62, 
+    "yStart":10, 
+    "ySize":31, 
+    "yStep":41, 
+    "token":[ {
+      "dups":17, 
+      "flip":false
+    }, {
+      "dups":16, 
+      "flip":false
+    }, {
+      "dups":3, 
+      "flip":false
+    }, {
+      "dups":1, 
+      "flip":false
+    }, {
+      "dups":8, 
+      "flip":false
+    }]
+  }, {
+    "type":"mtok", 
+    "tName":"Regional/Major Tokens", 
+    "imgLoc":"images/18OE-JB02/majors.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40,
+    "token":[ {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    },{
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }]
+  }, {
+    "type":"mtok", 
+    "tName":"Minor Tokens", 
+    "imgLoc":"images/18OE-JB02/minors.png", 
+    "xStart":10, 
+    "xSize":30, 
+    "xStep":40, 
+    "yStart":10, 
+    "ySize":30, 
+    "yStep":40,
+    "token":[ {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }, {
+      "flip":true
+    }]
+  }]
+}

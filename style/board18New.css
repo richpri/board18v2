@@ -1,0 +1,79 @@
+/* CSS Document for New page  */
+/* File: style/board18Main.css */
+
+#sidebar {
+  width:120px;
+  position: absolute;
+  background-color:#ddffdd;
+  left:0px;
+  top:0px; 
+}
+
+.plid {
+	width: 115px;
+  margin-left: 5px;
+  text-indent: 10px;
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:5px;
+  top:0px; 
+  height:350px;
+  border: none;
+}
+
+#newgame {
+	width: 500px;
+  margin-top: 10px;
+}
+
+#newgame form {
+	padding: 10px 10px 10px 10px;
+  border-style: double;
+	background-color:#ddffdd;
+}
+#newgame form label {
+	display: inline-block;
+	margin: 0 15px 0 0;
+	color: rgb(58,80,123);
+}
+#newgame .label1 {
+  display: inline-block;
+  text-align:right;
+  width:120px;
+}
+#newgame .label2 {
+  display: inline-block;
+  text-align:right;
+  width:80px;
+}
+#newgame form input {
+	font-size: 14px;
+}
+#sessionname {
+  width:300px;
+}
+.pwbutton {
+	margin-left: 50px;	
+}
+.fn1 {
+  width: 40px;
+}
+.fn2 {
+  width: 100px;
+}
+.error {
+  color: red !important;
+}
+
+footer {
+  padding:10px;
+  width:100%;
+  background-color:#ddffdd;
+  margin-top:10px;
+  clear:both;
+  text-align:center;
+}
+

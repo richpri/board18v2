@@ -1,0 +1,135 @@
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `box`
+--
+
+DROP TABLE IF EXISTS `box`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `box` (
+  `box_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bname` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `version` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `create_date` timestamp NULL DEFAULT NULL,
+  `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `author` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `status` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'Active',
+  `json_text` text CHARACTER SET utf8,
+  PRIMARY KEY (`box_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `game`
+--
+
+DROP TABLE IF EXISTS `game`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `game` (
+  `game_id` int(11) NOT NULL AUTO_INCREMENT,
+  `gname` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `start_date` timestamp NULL DEFAULT NULL,
+  `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_counter` int(11) NOT NULL DEFAULT '0',
+  `last_updater` varchar(45) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `box_id` int(11) NOT NULL,
+  `cp_count` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'Active',
+  `json_text` mediumtext CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`game_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `game_snap`
+--
+
+DROP TABLE IF EXISTS `game_snap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `game_snap` (
+  `cp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_id` int(11) NOT NULL,
+  `cp_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `player` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `last_updater` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `game_round` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `json_text` mediumtext CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`cp_id`),
+  INDEX (`game_id`, `cp_id` DESC)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `game_link`
+--
+
+DROP TABLE IF EXISTS `game_link`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `game_link` (
+  `game_id` int(11) NOT NULL,
+  `link_name` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `link_url` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`game_id`, `link_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `game_player`
+--
+
+DROP TABLE IF EXISTS `game_player`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `game_player` (
+  `game_id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'P',
+  PRIMARY KEY (`game_id`,`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `players`
+--
+
+DROP TABLE IF EXISTS `players`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `players` (
+  `player_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `lastname` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `login` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `passwd` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `create-date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `level` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'player',
+  `changeit` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`player_id`),
+  UNIQUE KEY (`login`),
+  UNIQUE KEY (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
