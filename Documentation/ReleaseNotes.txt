@@ -1,3 +1,11 @@
+BOARD18 2.3.0 Release Notes
+
+Changes from 2.2.2 Release:
+Added gimpPythonScripts directory which contains all such scripts.
+Revised BOARD18make to eliminate inclusion of any game boxes in .zip file.
+Deprecated loadGameBox.php utility. It is no longer needed.
+NOTE: There is no longer a GitHub repository for game boxes.
+
 BOARD18 2.2.2 Release Notes
 
 Changes from 2.2.1 Release:

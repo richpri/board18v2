@@ -31,21 +31,6 @@ install -p -t ~/board18-$versionNo/utility utility/*
 install -p -t ~/board18-$versionNo/utility templates/utilconfig.php
 rm ~/board18-$versionNo/utility/config.php
 mv ~/board18-$versionNo/utility/utilconfig.php ~/board18-$versionNo/utility/config.php
-cd $boxesRoot 
-pushd control > /dev/null
-install -p -t ~/board18-$versionNo/utility/control 1830-REP02.json
-install -p -t ~/board18-$versionNo/utility/control 1870-REP03.json
-popd > /dev/null
-pushd images > /dev/null
-mkdir ~/board18-$versionNo/webroot/images/1830-REP02
-pushd 1830-REP01 > /dev/null
-install -p -t ~/board18-$versionNo/webroot/images/1830-REP02 *.*
-popd > /dev/null
-mkdir ~/board18-$versionNo/webroot/images/1870-REP03
-pushd 1870-REP03 > /dev/null
-install -p -t ~/board18-$versionNo/webroot/images/1870-REP03 *.*
-popd > /dev/null
-popd > /dev/null
 cd ~
 zip -r ~/board18-$versionNo.zip board18-$versionNo
 rm -f -r ~/board18-$versionNo

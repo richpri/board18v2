@@ -4,6 +4,7 @@
 if ($argc != 2 || 
         in_array($argv[1], array('--help', '-help', '-h', '-?'))) {
 ?>
+This script is deprecated. Use Load Game Box function in BOARD18 instead.
 
 This is a command line PHP script with one option.
 
