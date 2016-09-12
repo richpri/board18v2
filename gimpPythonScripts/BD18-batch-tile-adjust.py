@@ -33,7 +33,7 @@ def batch_tile_adjust(img, layer, inputFolder, outputFolder):
                 # Adjust the scale and orientation of the image.
                 if(len(image.layers) > 0):
                     layer = image.layers[0]
-                    pdb.python_fu_tile_adjust(image, layer)
+                    pdb.python_fu_tile_P_adjust(image, layer)
                     
                     # Save the image.
                     pdb.file_png_save(image, image.layers[0], outputPath, outputPath, 0, 9, 0, 0, 0, 0, 0)

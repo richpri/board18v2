@@ -1,3 +1,12 @@
+BOARD18 2.3.1 Release Notes
+
+Changes from 2.3.0 Release:
+Implemented Issue 64 Persistent route to desired page on login
+Fixed gimpPythonScript batch script.
+Added js.cookie.js script to access-denied page.
+Fixed documentation in some javascript scripts.
+Added link to Tile/Token Library on webSite index page.
+
 BOARD18 2.3.0 Release Notes
 
 Changes from 2.2.2 Release:

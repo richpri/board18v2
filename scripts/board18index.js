@@ -22,7 +22,7 @@ function loginOK(response) {
     doLogNote(loginNote);
     $('#login form').slideUp(300);
     if (resp.changeit === '0') {
-      window.location = "board18Main.php";
+      window.location = BD18.redirectURL;
     } else {
       window.location = "board18Admin.php";
     }

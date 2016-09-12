@@ -219,11 +219,11 @@ function loadLinks(newLinks) {
 }
 
 /* The loadBox function is a callback function for
- * the gameBox.php getJSON function. It loads all
- * the game box images. 
+ * the gameBox.php getJSON function.
+ * It loads all the game and game box links. 
+ * It loads all the game box images. 
  * It also initializes the BD18.gm.trayCounts array
  * if it is undefined or empty.
- * Finally it calls the makeMenues function.
  */
 function loadBox(box) {
   BD18.bx = null;

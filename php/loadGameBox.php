@@ -208,6 +208,8 @@ function loadBox($zfile,$authorID) {
     if (!mkdir ($backdir, $mode = 0755)) { 
       $report->rpttext[] = "The attempt to create a directory named ";
       $report->rpttext[] = "   " . $backdir . "  failed.";
+      $report->rpttext[] = "Make sure that www_data has update access";
+      $report->rpttext[] = "to the parent directory. ";
       $report->rpttext[] = "Game box not created.";
       $report->stat = "email";
       $fr = json_encode($report);

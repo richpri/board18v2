@@ -19,12 +19,18 @@ A copy of this license can be found in the LICENSE.text file.
     </script> 
     <script type="text/javascript" src="scripts/sha256-min.js">
     </script> 
+    <script type="text/javascript" src="scripts/js.cookie.js">
+    </script>
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <script type="text/javascript" src="scripts/board18index.js">
     </script>
     <script type="text/javascript" >
       $(function() {
+        BD18.redirectURL = "board18Main.php";
+        if (typeof Cookies.get('RedirectCookie') !== 'undefined') {
+          BD18.redirectURL = Cookies.get('RedirectCookie');
+        }
         $('.error').hide(); 
         $('#pointer').hide(); 
         $("#login").submit(function() {  
