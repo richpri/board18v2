@@ -1,6 +1,1 @@
-<!DOCTYPE html>
-<html>
-    <?php
-    phpinfo();
-    ?>
-
+    <?php phpinfo(); ?>

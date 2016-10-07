@@ -67,8 +67,7 @@ function showPlayers($conn) {
     if (mysqli_num_rows($result) !== 0) {
       echo "<h3 style='text-indent: 15px'>Players<br></h3>";
       while ($row = mysqli_fetch_array($result)) {
-        echo "<p class='plall'><span class='plid'>$row[0]</span>
-        <br><span class='plnm'>$row[1] $row[2]</span></p>";
+        echo "<p><abbr class='plid' title='$row[1] $row[2]'>$row[0]</abbr></p>";
       }
     } else {
       echo "<p style='color: red'>";

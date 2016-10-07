@@ -50,15 +50,8 @@ if ($result) {
           errmsg += 'Please contact the BOARD18 webmaster.';
           alert(errmsg);
         }
-        $('.plnm').hide();
-        $('.plall').mouseover(function() {
-          $(this).children('.plnm').show();
-        });
-        $('.plall').mouseout(function() {
-          $(this).children('.plnm').hide();
-        });
-        $('.plall').mousedown(function() {
-          addPlayer($(this).children('.plid').text());
+        $('.plid').mousedown(function() {
+          addPlayer($(this).text());
         });
         $('.gbrow').mousedown(function() {
           $('#boxid').val($(this).children('.gbid').text());

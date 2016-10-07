@@ -1,3 +1,10 @@
+BOARD18 2.3.2 Release Notes
+
+Changes from 2.3.1 Release:
+Did some preliminary work for Issue 61 - Correctly rout replies 
+to administrative messages. Also enhanced the display of players
+on the left side of board18Misc.php and board18New.php.
+
 BOARD18 2.3.1 Release Notes
 
 Changes from 2.3.0 Release:

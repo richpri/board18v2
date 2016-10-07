@@ -66,8 +66,10 @@ if ($result) {
     } else {
       $firstname = $playerrow['firstname'];
     }
+    $_SESSION['SESS_LOGIN'] = $login;
     $_SESSION['SESS_FIRST_NAME'] = $firstname;
     $_SESSION['SESS_LAST_NAME'] = $playerrow['lastname'];
+    $_SESSION['SESS_EMAIL_ADDR'] = $playerrow['email'];
     $_SESSION['SESS_PLAYER_LEVEL'] = $playerrow['level'];
     $_SESSION['SESS_HEADER_MESSAGE'] = 'Login Successful.';
     session_write_close();

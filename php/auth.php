@@ -4,6 +4,9 @@
  * and all password protected PHP programs called via AJAX.
  * It starts a php session and then checks to see that the player is
  * logged in and has been active sometime in the last day.
+ * 
+ * Copyright (c) 2016 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
  */
   //Start session
   session_start();
@@ -24,7 +27,8 @@
     header("location: access-denied.html");
     exit;
   } else { // present
-    $loggedinplayer = $_SESSION['SESS_PLAYER_ID'];
+    $loggedinplayer = $_SESSION['SESS_PLAYER_ID']; // number
+    $emailaddress = $_SESSION['SESS_EMAIL_ADDR'];
     $welcomename = $_SESSION['SESS_FIRST_NAME'];
     $headermessage = $_SESSION['SESS_HEADER_MESSAGE'];
     $playerlevel = $_SESSION['SESS_PLAYER_LEVEL'];

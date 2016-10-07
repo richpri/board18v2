@@ -79,15 +79,8 @@ if ($result2 && mysqli_num_rows($result2) == 1) {
         BD18.login = '<?php echo $login; ?>';
         BD18.gname = '<?php echo $gname; ?>'; 
         BD18.dogame = '<?php echo $dogame; ?>'; 
-        $('.plnm').hide();
-        $('.plall').mouseover(function() {
-          $(this).children('.plnm').show();
-        });
-        $('.plall').mouseout(function() {
-          $(this).children('.plnm').hide();
-        });
-        $('.plall').mousedown(function() {
-          $('#pname4').val($(this).children('.plid').text());
+        $('.plid').mousedown(function() {
+          $('#pname4').val($(this).text());
         });
         $('.playerrow').mousedown(function() {
           $('#pname3').val($(this).children('.login').text());
