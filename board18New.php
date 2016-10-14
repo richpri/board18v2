@@ -35,7 +35,7 @@ if ($result) {
     <title>BOARD18 - Remote Play Tool For 18xx Style Games</title>
     <link rel="shortcut icon" href="images/favicon.ico" >
     <link rel="stylesheet" href="style/board18com-160521.css" />
-    <link rel="stylesheet" href="style/board18New.css" />
+    <link rel="stylesheet" href="style/board18New-161014.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script>
     <script type="text/javascript" src="scripts/board18com.js">
@@ -51,7 +51,7 @@ if ($result) {
           alert(errmsg);
         }
         $('.plid').mousedown(function() {
-          addPlayer($(this).text());
+          addPlayer($(this).attr('id'));
         });
         $('.gbrow').mousedown(function() {
           $('#boxid').val($(this).children('.gbid').text());
@@ -99,7 +99,7 @@ if ($result) {
 
     <div id="leftofpage">
       <div id='sidebar'>
-<?php showPlayers($theLink); ?>
+        <?php showPlayers($theLink); ?>
       </div>
     </div>
     <div id="rightofpage"> 

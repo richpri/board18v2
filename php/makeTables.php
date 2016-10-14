@@ -61,13 +61,17 @@ function showBoxes($conn) {
 
 function showPlayers($conn) {
   global $open;
-  $qry = "SELECT login, firstname, lastname, player_id FROM players";
+  $qry = "SELECT login, firstname, lastname FROM players ORDER BY login";
   $result = mysqli_query($conn, $qry);
   if ($result) {
     if (mysqli_num_rows($result) !== 0) {
       echo "<h3 style='text-indent: 15px'>Players<br></h3>";
       while ($row = mysqli_fetch_array($result)) {
-        echo "<p><abbr class='plid' title='$row[1] $row[2]'>$row[0]</abbr></p>";
+        $pline  = "<p class=\"plid\" ";
+        $pline .= "onmouseover=\"this.innerHTML='$row[1] $row[2]';\" ";
+        $pline .= "onmouseout=\"this.innerHTML='$row[0]';\" ";
+        $pline .= "id='$row[0]'>$row[0]</p>";
+        echo $pline;
       }
     } else {
       echo "<p style='color: red'>";

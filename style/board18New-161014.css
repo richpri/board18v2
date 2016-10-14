@@ -1,6 +1,11 @@
-/* CSS Document for New page  */
-/* File: style/board18Main.css */
-
+/* 
+ *  Document   : board18New
+ *  Author     : rich
+ *  Description: CSS Document for board18New page.
+ *
+ * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * A copy of this license can be found in the LICENSE.text file.
+ */
 #sidebar {
   width:120px;
   position: absolute;
@@ -10,7 +15,7 @@
 }
 
 .plid {
-	width: 115px;
+  width: 150px;
   margin-left: 5px;
   text-indent: 10px;
 }

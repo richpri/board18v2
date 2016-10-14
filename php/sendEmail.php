@@ -13,7 +13,6 @@
  *   login
  *   subject
  *   body
- *   sender
  * 
  * Output is the echo return status of "success" or "fail".
  *
@@ -24,7 +23,7 @@
 require_once( 'class.phpmailer.php');
 require_once('configMail.php');
 
-function sendEmail($email, $subject, $body, $sender) {
+function sendEmail($email, $subject, $body) {
   $mailObj = new PHPMailer;
 
   $mailObj->isSMTP();             // Set mailer to use SMTP.
@@ -34,12 +33,7 @@ function sendEmail($email, $subject, $body, $sender) {
   $mailObj->Username = MAIL_USER; // SMTP username.
   $mailObj->Password = MAIL_PASS; // SMTP password.
 
-  if ($sender !== undefined) {
-    $mailObj->From = $sender;
-  } else {
-    $mailObj->From = 'noreply@board18.org';
-  }
-  
+  $mailObj->From = MAIL_SENDER;   // All replys will be sent here. 
   $mailObj->FromName = 'BOARD18';
   $mailObj->addAddress($email);   // Add a recipient
 

@@ -1,6 +1,5 @@
 /* 
  *  Document   : board18Misc
- *  Created on : Nov. 23, 2013
  *  Author     : rich
  *  Description: CSS Document for board18Misc page.
  *
@@ -17,7 +16,7 @@
 }
 
 .plid {
-	width: 115px;
+	width: 150px;
   margin-left: 5px;
   text-indent: 10px;
 }

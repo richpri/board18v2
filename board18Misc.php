@@ -61,7 +61,7 @@ if ($result2 && mysqli_num_rows($result2) == 1) {
     <title>BOARD18 - Remote Play Tool For 18xx Style Games</title>
     <link rel="shortcut icon" href="images/favicon.ico" >
     <link rel="stylesheet" href="style/board18com-160521.css" />
-    <link rel="stylesheet" href="style/board18Misc.css" />
+    <link rel="stylesheet" href="style/board18Misc-161014.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script> 
     <script type="text/javascript" src="scripts/board18com.js">
@@ -80,7 +80,7 @@ if ($result2 && mysqli_num_rows($result2) == 1) {
         BD18.gname = '<?php echo $gname; ?>'; 
         BD18.dogame = '<?php echo $dogame; ?>'; 
         $('.plid').mousedown(function() {
-          $('#pname4').val($(this).text());
+          $('#pname4').val($(this).attr('id'));
         });
         $('.playerrow').mousedown(function() {
           $('#pname3').val($(this).children('.login').text());
