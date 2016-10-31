@@ -172,7 +172,7 @@ function loadBox(box) {
     loadLinks(box.links);
   }
   $.getJSON("php/linkGet.php", 'gameid='+BD18.gameID,function(data) {
-    if (data.stat == "success" && typeof(data.links) !== 'undefined' 
+    if (data.stat === "success" && typeof(data.links) !== 'undefined' 
         && data.links.length > 0) { loadLinks(data.links); }
   });
   var market = BD18.bx.market;

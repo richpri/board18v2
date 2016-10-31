@@ -203,7 +203,7 @@ function TokenSheet(image,sheet) {
     var szy = this.ySize;
     var a = 10; // This is the tray's Top and Left Margin.
     var b = szy+5; // This is the tray's Y Step Value.
-    var c = 20 // This is the token padding value.
+    var c = 20; // This is the token padding value.
     BD18.curTrayNumb = this.trayNumb;
     BD18.curTrayStep = b;
     BD18.tileIsSelected = false;

@@ -2,12 +2,9 @@
 /*
  * The sendEmail() function uses SMTP to send plain text emails. 
  * Use configMail.php to specify the server and server access
- * information. You should use the SMTP server provided by your
+ * information. And also the MAIL_SENDER field for the specification
+ * of reply direction. You should use the SMTP server provided by your
  * ISP or your hosting service for these Emails. 
- * 
- * In September of 2016, added the optional sender parameter 
- * which can be used to specify a sender email address to 
- * override the default of 'noreply@board18.org'.
  * 
  * Input consists the following parameters:
  *   login

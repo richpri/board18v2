@@ -237,6 +237,8 @@ function flipToken() {
  * available and true otherwise.
  */
 function reduceCount(sheet,ind) {
+  if (BD18.gm.trayCounts[sheet][ind] === 'U') // Count is unlimited.
+    return true;
   if (BD18.gm.trayCounts[sheet][ind] === 0) 
     return false;
   BD18.gm.trayCounts[sheet][ind] -= 1;
@@ -250,6 +252,8 @@ function reduceCount(sheet,ind) {
  * item index. These are the input parameters.
  */
 function increaseCount(sheet,ind) {
+  if (BD18.gm.trayCounts[sheet][ind] === 'U') // Count is unlimited.
+    return true;   
   BD18.gm.trayCounts[sheet][ind] += 1;  
 }
 
@@ -323,7 +327,7 @@ function updateGmBrdTokens() {
 function updateDatabase() {
   resetCheckForUpdate();
   var jstring = JSON.stringify(BD18.gm);
-  if(BD18.historyPosition != BD18.history.length - 1)
+  if(BD18.historyPosition !== BD18.history.length - 1)
     BD18.history.length = BD18.historyPosition + 1;
   BD18.history.push(jstring);
   BD18.historyPosition = BD18.history.length - 1;

@@ -1,3 +1,11 @@
+BOARD18 2.4.1 Release Notes
+
+Changes from 2.4.0 Release:
+Implemented Issue 51 - Provide unlimited tile counts. 
+Fixed Issue 66 - Positioning problem with token select menu.
+Updated comments in various files to better document functions.
+Corrected some minor typos in board18Map and board18Market pages.
+
 BOARD18 2.4.0 Release Notes
 
 Changes from 2.3.2 Release:

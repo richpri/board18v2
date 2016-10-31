@@ -234,8 +234,6 @@ if ($result1) {
         <canvas id="canvas2">
         </canvas>
       </div>  
-      <canvas id="canvas3">
-      </canvas>
     </div>
     
     <div id="snapname">
@@ -276,5 +274,7 @@ if ($result1) {
       </form>
     </div>     
     <div id="onMapMenu" class="menu"><ul></ul></div>
+    <canvas id="canvas3">
+    </canvas>
   </body>
 </html>

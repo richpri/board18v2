@@ -180,7 +180,7 @@ function ContextMenu(event) {
                            doit(this.getAttribute("data-action"),e);
                           });
 // [BD18.xPx, BD18.yPx] = offsetIn(event, BD18.canvas1);
-  var tArray = docPos(event)
+  var tArray = docPos(event);
   BD18.xPx = tArray[0];
   BD18.yPx = tArray[1];
   BD18.xMax = $(document).width();

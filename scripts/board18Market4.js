@@ -9,9 +9,8 @@
 
 /* The selectToken function uses the  BD18.onBoxList.tokens
  * array to display a graphical list of the tokens on a
- * given box. This list is displayed on canvas3 which is
- * defined within the rightofpage division. canvas3 is 
- * positioned using the jquery.ui.position module. Clicking 
+ * given box. This list is displayed on canvas3 
+ * and the canvas3 click event is turned on. Clicking 
  * on a token should cause canvas3 to be cleared.
  */
 function selectToken(event) {

@@ -5,26 +5,6 @@
  * A copy of this license can be found in the LICENSE.text file.
  */
 
-    Image.prototype.load = function(url){
-        var thisImg = this;
-        var xmlHTTP = new XMLHttpRequest();
-        xmlHTTP.open('GET', url,true);
-        xmlHTTP.responseType = 'arraybuffer';
-        xmlHTTP.onload = function(e) {
-            var blob = new Blob([this.response]);
-            thisImg.src = window.URL.createObjectURL(blob);
-        };
-        xmlHTTP.onprogress = function(e) {
-            thisImg.completedPercentage = parseInt((e.loaded / e.total) * 100);
-        };
-        xmlHTTP.onloadstart = function() {
-            thisImg.completedPercentage = 0;
-        };
-        xmlHTTP.send();
-    };
-
-    Image.prototype.completedPercentage = 0;
-
 /* 
  * Function makeTrays() initializes all of the tray objects.
  * It calls the TileSheet constructor for each tile sheet.  
@@ -265,12 +245,16 @@ function loadBox(box) {
       if(sheets[ii].type === 'tile') {
         BD18.gm.trayCounts[ii] = [];
         for(jj=0; jj<sheets[ii].tile.length; jj++) {
-          BD18.gm.trayCounts[ii][jj] = sheets[ii].tile[jj].dups;
+          if (sheets[ii].tile[jj].dups === 0) // Count is unlimited.
+               BD18.gm.trayCounts[ii][jj] = 'U';
+          else BD18.gm.trayCounts[ii][jj] = sheets[ii].tile[jj].dups;
         }
       } else if(sheets[ii].type === 'btok') { 
         BD18.gm.trayCounts[ii] = [];
         for(jj=0; jj<sheets[ii].token.length; jj++) {
-          BD18.gm.trayCounts[ii][jj] = sheets[ii].token[jj].dups;
+          if (sheets[ii].token[jj].dups === 0) // Count is unlimited.
+               BD18.gm.trayCounts[ii][jj] = 'U';
+          else BD18.gm.trayCounts[ii][jj] = sheets[ii].token[jj].dups;  
         }
       }
     }
@@ -292,11 +276,11 @@ function loadSession(session) {
 	var boxstring = 'box=';
 	boxstring = boxstring + BD18.gm.boxID;
 	$.getJSON("php/gameBox.php", boxstring, loadBox)
-	    .error(function() { 
-		    var msg = "Error loading game box file. \n";
-		    msg = msg + "This is probably due to a game box format error.";
-		    alert(msg); 
-	    });
+	   .error(function() { 
+	     var msg = "Error loading game box file. \n";
+	     msg = msg + "This is probably due to a game box format error.";
+	     alert(msg); 
+	   });
   } else {
 	itemLoaded();
   }
