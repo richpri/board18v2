@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cd /home/priceweb/board18.backups
+/usr/bin/mysqldump -u priceweb -pPassword --host mysql.board18.org --single-transaction board18prod1 > board18.prod1db.txt
+nowdate=$(date +"%Y-%m-%d")
+mv board18.prod1db.txt board18.prod1db.$nowdate.txt
+echo
+echo "prod1 database backup completed."
+echo
+
+tar -zcf "board18.prod1image.tgz" ~/prod1.board18.org/images/ 
+mv board18.prod1image.tgz board18.prod1image.$nowdate.tgz
+echo
+echo "prod1 image directory backup completed."
+echo
+
+ls -l board18.prod1db.$nowdate.txt
+ls -l board18.prod1image.$nowdate.tgz
+ 
+#######
+# END #
+#######

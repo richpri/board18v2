@@ -188,6 +188,7 @@ function itemLoaded(event) {
  */
 function loadLinks(newLinks) {
   var linkMenu = document.getElementById('linkMenu');
+  if (linkMenu === null) return;
   for(var i=0; i<newLinks.length; i++) {
     var link = document.createElement('li');
     link.appendChild(document.createTextNode(newLinks[i].link_name));

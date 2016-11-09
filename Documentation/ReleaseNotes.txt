@@ -1,3 +1,9 @@
+BOARD18 2.4.2 Release Notes
+
+Changes from 2.4.1 Release:
+Created cronCode directory to contain code for weekly backups. 
+Fixed Bug 67 - New "Useful Links" capability incompatible with snap shots.
+
 BOARD18 2.4.1 Release Notes
 
 Changes from 2.4.0 Release:

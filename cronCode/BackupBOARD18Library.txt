@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cd /home/priceweb/board18.backups
+/usr/bin/mysqldump -u libraryboard18or -pPassword --host mysql.library.board18.org --single-transaction library_board18_org > board18.library.txt
+nowdate=$(date +"%Y-%m-%d")
+mv board18.library.txt board18.library.$nowdate.txt
+echo
+echo "library database backup completed."
+echo
+
+tar -zcf "board18.library.tgz" ~/library.board18.org/upload/
+mv board18.library.tgz board18.library.$nowdate.tgz
+echo
+echo "library upload directory backup completed."
+echo
+
+ls -l board18.library.$nowdate.txt
+ls -l board18.library.$nowdate.tgz
+ 
+#######
+# END #
+#######

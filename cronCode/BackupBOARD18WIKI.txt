@@ -1,0 +1,81 @@
+#!/bin/sh
+ 
+####################################################################
+#                                                                  #
+# Basic Backup Script for MediaWiki.                               #
+# Created by Daniel Kinzler, brightbyte.de, 2008                   #
+#                                                                  #
+# This script may be freely used, copied, modified and distributed #
+# under the sole condition that credits to the original author     #
+# remain intact.                                                   #
+#                                                                  #
+# This script comes without any warranty, use it at your own risk. #
+#                                                                  #
+####################################################################
+ 
+wikidb="board18_gandalf_ws" 
+mysqlopt="--host=mysql.board18.org --user=board18gandalfws --password=Password"      
+
+wikidir=~/wiki.board18.org 
+backupdir=~/board18.backups  
+ 
+##################
+# END OF OPTIONS #
+##################
+ 
+timestamp=`date +%Y-%m-%d`
+ 
+####################################
+# Put the wiki into Read-only mode #
+####################################
+ 
+echo
+echo "Putting the wiki in Read-only mode..."
+ 
+echo "\$wgReadOnly = 'Dumping Database, Access will be restored shortly';" >> "$wikidir"/LocalSettings.php
+ 
+####################################
+ 
+dbdump="$backupdir/wiki-$timestamp.sql.gz"
+xmldump="$backupdir/wiki-$timestamp.xml.gz"
+filedump="$backupdir/wiki-$timestamp.files.tgz"
+ 
+echo
+echo "Wiki backup. Database: $wikidb; Directory: $wikidir; Backup to: $backupdir"
+echo
+echo "creating database dump $dbdump..."
+mysqldump --default-character-set=binary $mysqlopt "$wikidb" | gzip > "$dbdump" || exit $?
+ 
+echo
+echo "creating XML dump $xmldump..."
+cd "$wikidir/maintenance"
+/usr/local/php54/bin/php -d error_reporting=E_ERROR dumpBackup.php --full | gzip > "$xmldump" || exit $?
+ 
+echo
+echo "creating file archive $filedump..."
+cd "$wikidir"
+tar --exclude .svn -zcf "$filedump" . || exit $?
+ 
+##########################################
+# Put the wiki back into read/write mode #
+##########################################
+ 
+echo
+echo "Bringing the wiki out of Read-only mode..."
+ 
+head -n-1 "$wikidir"/LocalSettings.php > "$backupdir"/LocalSettings.bak
+cat "$backupdir"/LocalSettings.bak > "$wikidir"/LocalSettings.php
+rm "$backupdir"/LocalSettings.bak
+ 
+##########################################
+ 
+echo
+echo "Done!"
+echo "Files to copy to a safe place:"
+echo "$dbdump,"
+echo "$xmldump,"
+echo "$filedump"
+ 
+#######
+# END #
+#######

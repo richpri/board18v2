@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd /home/priceweb/board18.backups
+/usr/bin/mysqldump -u wikiboard18org -pPassword --host mysql.bugs.board18.org board18bugs > board18.bugzilla.txt
+nowdate=$(date +"%Y-%m-%d")
+mv board18.bugzilla.txt board18.bugzilla.$nowdate.txt
+echo
+echo "Bugzilla backup completed."
+echo
+ls -l board18.bugzilla.$nowdate.txt
+ 
+#######
+# END #
+#######
