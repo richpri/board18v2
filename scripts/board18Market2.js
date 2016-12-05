@@ -145,20 +145,36 @@ function itemLoaded(event) {
   }
 }
 
+/* The loadLinks function is called by the <li> statements
+ * which are created by the loadLinks function below.
+ */
+function doLink(linkURL) {
+  $('#mainmenu').hide();
+  window.open(linkURL);
+}
+
 /* The loadLinks function is called by loadBox and getLinks
- * functions to add game links to the "Useful Links" sub-menu
+ * functions to add box and game links to the "Useful Links" sub-menu
+ * The newLinks parameter is an array formatted as follows:
+ *     [
+ *       {
+ *         "link_name":"aaaaaa",
+ *         "link_url":"bbbbbbb",
+ *         "act_date":"mm/dd/yyyy" [optional]
+ *       },
+ *       . . . . more links . . . . . 
+ *     ]
  */
 function loadLinks(newLinks) {
-  var linkMenu = document.getElementById('linkMenu');
-  if (linkMenu === null) return;
-  for(var i=0; i<newLinks.length; i++) {
-    var link = document.createElement('li');
-    link.appendChild(document.createTextNode(newLinks[i].link_name));
-    link.setAttribute("onclick", 
-      "$('#mainmenu').hide();window.open('"+newLinks[i].link_url+"');");
-    linkMenu.insertBefore(link, linkMenu.firstChild);
-  }
-
+  var linkHTML = '';
+  var tempLnk = '';
+  $.each(newLinks,function(index,linkItem) {
+    tempLnk = "'" + linkItem.link_url + "'";
+    linkHTML+= '<li onclick="doLink(';
+    linkHTML+= tempLnk + ');">';
+    linkHTML+= linkItem.link_name + '</li>';
+  }); // end of each
+  $('#linkMenu').append(linkHTML);
 }
 
 /* The loadBox function is a callback function for

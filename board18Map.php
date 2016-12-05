@@ -192,20 +192,16 @@ if ($result1) {
               $.post('php/statSwap.php', swapstring,  statswapOK);">
               Activate Game</li>
             <li>Help -->
-              <ul>
+              <ul id="linkMenu">
                 <li onclick="window.open(BD18.help, 'HelpGuide');">Player's Guide</li>
-                <li onclick="$('.menu ul ul').hide();$(this).children('ul').toggle();
-                  event.stopPropagation();">Useful Links -->
-                  <ul id="linkMenu">
-                    <li onclick="$('#mainmenu').hide();window.open('http://board18.org/');">
-                      Board18 Project</li>
-                  </ul>
-                </li>
+                <li style="color: green">-- Useful Links --</li>
               </ul>
             </li>
             <li onclick="$('.menu').hide();aboutBoard18();">About BOARD18</li>
+            <li onclick="$('#mainmenu').hide();window.open('http://board18.org/');">
+                    BOARD18 Project</li>
           </ul>
-        </div> 
+        </div>
       </div>
     </div>
 
