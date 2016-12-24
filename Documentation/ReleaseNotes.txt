@@ -1,6 +1,12 @@
-BOARD18 2.4.3 Release Notes
+BOARD18 2.4.4 Release Notes
 
 Changes from 2.4.3 Release:
+Implemented part one of Issue 70 - Mass game box load script.
+The Exit button on the BoxLoad page now returns to the Main page.
+
+BOARD18 2.4.3 Release Notes
+
+Changes from 2.4.2 Release:
 Implemented Issue 68 - Collapse Help menu.
 
 BOARD18 2.4.2 Release Notes

@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) { // If reload via zform submit.
           return false;
         }); // end buttonz2 click
         $('#buttonz3').click(function() {
-          window.location = 'board18Admin.php';
+          window.location = 'board18Main.php';
           return false;
         }); // end buttonz3 click
         $('#buttonf').click(function() {
