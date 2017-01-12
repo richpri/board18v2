@@ -1,3 +1,9 @@
+BOARD18 2.4.5 Release Notes
+
+Changes from 2.4.4 Release:
+Implemented fix for Issue 71 - Stock Market has no Menu>Accept Move.
+Also enhanced comments documenting some under documented functions.
+
 BOARD18 2.4.4 Release Notes
 
 Changes from 2.4.3 Release:

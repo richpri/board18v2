@@ -9,8 +9,12 @@
  * A copy of this license can be found in the LICENSE.text file.
  */
 
-/* The updateMenu function will update the menu 
- * move specific actions
+/* The updateMenu function will update the menu move specific actions.
+ * The input 'menuType' must be either 'active' or 'no'.
+ * If menuType is 'active' then the menu will contain as its first 
+ * two options 'Accept Move' and 'Cancel Move'
+ * If menuType is 'no' then the menu will contain as its first 
+ * two options 'Undo Move' and 'Redo Move'
  */
 function updateMenu(menuType){
   $('.move').hide();
@@ -236,22 +240,7 @@ function doit(mm,e) { // mm is the onclick action to be taken.
       acceptMove();
       break;
     case "reset":
-      if (BD18.deletedMarketToken) {
-        BD18.curTrayNumb = BD18.deletedMarketToken.snumb;
-        BD18.curIndex = BD18.deletedMarketToken.index;
-        BD18.curFlip = BD18.deletedMarketToken.flip;
-        BD18.curStack = BD18.deletedMarketToken.stack;
-        BD18.curMktX = BD18.deletedMarketToken.bx;
-        BD18.curMktY = BD18.deletedMarketToken.by;
-        BD18.curBoxX = BD18.deletedMarketToken.hx;
-        BD18.curBoxY = BD18.deletedMarketToken.hy;
-        addToken();
-      }
-      trayCanvasApp();
-      mainCanvasApp();
-      toknCanvasApp();
-      BD18.boxIsSelected = false;
-      BD18.tokenIsSelected = false;
+      cancelMove();
       break;
     case "tflip":
       var ix = BD18.onBoxList.tokens[0].mtindex;
@@ -317,13 +306,13 @@ function doit(mm,e) { // mm is the onclick action to be taken.
       repositionToken(BD18.curMktX,BD18.curMktY);
       break;
     case "tdelete":
-	  deleteToken(BD18.onBoxList.tokens[0].mtindex);
-	  updateMarketTokens();
-	  toknCanvasApp();
-	  trayCanvasApp();
-	  updateDatabase();
-	  BD18.boxIsSelected = false;
-	  BD18.tokenIsSelected = false;
+      deleteToken(BD18.onBoxList.tokens[0].mtindex);
+      updateMarketTokens();
+      toknCanvasApp();
+      trayCanvasApp();
+      updateDatabase();
+      BD18.boxIsSelected = false;
+      BD18.tokenIsSelected = false;
       break;
     case "stflip":
       BD18.tknMenu.funct = 'flip';

@@ -360,23 +360,25 @@ function loadBox($zfile,$authorID) {
 }
 
 /* 
- * function nextBox($zfile,$authorID,$cliRoot)
+ * function nextBox($zfile,$authorID,$webRoot,$link)
  * 
- * nextBox  . . . .
- * It then calls doLoad to actually create the game box. 
+ * nextBox creates the report object and parses the input file
+ * name. It then calls doLoad to actually create the game box. 
  * It returns the output described below with a status and with 
  * optional report information to be emailed to the author.
  * 
  * Input:
- *   $zfile - the zip file containing the game box to be loaded.
+ *   $fileName - the name of the zip file containing the game box to be loaded.
+ *   $filePath - the path of the zip file containing the game box to be loaded.
  *   $authorID - the player ID of the submitter of the game box.
- *   $cliRoot - only from massLoadBox - root 0f Board18 instance.
- *   $cliLink - only from massLoadBox - mysqli_connect for database.
+ *   $webRoot - the root of the Board18 web site being loaded to.
+ *   $link - the mysqli_connect link for the BOARD18 database.
  * 
- * Output is the following stringified JSON data structure [object]: 
+ * Output is the following stringified JSON data structure 
+ * which is created from an instance of the Response class: 
  *   {
- *     "stat":"success"||"fail"||"nofile"||"toobig"||"email",
- *     "author":authorLogin
+ *     "stat":"success"||"email",
+ *     "author":"authorLogin",
  *     "rpttext":
  *     [
  *       "textline"
@@ -386,4 +388,21 @@ function loadBox($zfile,$authorID) {
  *     ]
  *   }
  */
-// to be supplied soon
+function nextBox($fileName,$filePath,$authorID,$webRoot,$link) {
+  $report = new Response();
+  $report->stat = "success";
+  $report->rpttext = [];
+  $report->rpttext[] = "Begin prossesing file " . $fileName;
+  $report->rpttext[] = "Path to this file is  " . $filePath;
+  $fullName = $filePath . '/' . $fileName;
+  $retrn = doLoad($fileName,$fullName,$authorID,$webRoot,$link,$report);
+  $return = json_decode($retrn);
+  if ($return->stat === "fail"){
+    $return->stat = "email";
+    $return->rpttext[] = "An error ocurred while processing " . $fileName;
+    $return->rpttext[] = "Game box not created.";
+    $retrn = json_encode($return);
+  }
+  return $retrn;
+}
+?>

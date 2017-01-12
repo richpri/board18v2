@@ -27,8 +27,12 @@ function hideShow(){
   }
 }
 
-/* The updateMenu function will update the menu 
- * move specific actions
+/* The updateMenu function will update the menu move specific actions.
+ * The input 'menuType' must be either 'active' or 'no'.
+ * If menuType is 'active' then the menu will contain as its first 
+ * two options 'Accept Move' and 'Cancel Move'
+ * If menuType is 'no' then the menu will contain as its first 
+ * two options 'Undo Move' and 'Redo Move'
  */
 function updateMenu(menuType){
   $('.move').hide();
@@ -211,7 +215,7 @@ function ContextMenu(event) {
                            doit(this.getAttribute("data-action"),e);
                           });
 // [BD18.xPx, BD18.yPx] = offsetIn(event, BD18.canvas1);
-  var tArray = docPos(event)
+  var tArray = docPos(event);
   BD18.xPx = tArray[0];
   BD18.yPx = tArray[1];
   BD18.xMax = $(document).width();

@@ -115,6 +115,7 @@ function repositionToken(xI, yI) {
   var messg = "Select 'Menu-Accept Move' or press Enter ";
   messg += "to make token placement permanent.";
   doLogNote(messg);
+  updateMenu('active');
 }
 
 /* The flipToken function flips the current token.
@@ -145,6 +146,7 @@ function flipToken() {
   var messg = "Select 'Menu-Accept Move' to make ";
   messg += "token placement permanent.";
   doLogNote(messg);
+  updateMenu('active');
 }
 
 /* 
@@ -223,6 +225,29 @@ function acceptMove() {
   }
 }
 
+/* This function calls the CanvasApp() functions
+ * to reset trays and market when canceling a move
+ */
+function cancelMove() {
+  if (BD18.deletedMarketToken) {
+    BD18.curTrayNumb = BD18.deletedMarketToken.snumb;
+    BD18.curIndex = BD18.deletedMarketToken.index;
+    BD18.curFlip = BD18.deletedMarketToken.flip;
+    BD18.curStack = BD18.deletedMarketToken.stack;
+    BD18.curMktX = BD18.deletedMarketToken.bx;
+    BD18.curMktY = BD18.deletedMarketToken.by;
+    BD18.curBoxX = BD18.deletedMarketToken.hx;
+    BD18.curBoxY = BD18.deletedMarketToken.hy;
+    addToken();
+      }
+  trayCanvasApp();
+  mainCanvasApp();
+  toknCanvasApp();
+  BD18.boxIsSelected = false;
+  BD18.tokenIsSelected = false;
+  updateMenu('no');
+}
+
 /* This function moves in the BD18.history to provide
  * undo/redo functionality
  */
@@ -280,6 +305,7 @@ function finishMove() {
   BD18.boxIsSelected = false;
   BD18.tokenIsSelected = false;
   BD18.curFlip = false;
+  updateMenu('no');
   updateDatabase();
 }
 
