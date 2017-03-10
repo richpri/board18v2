@@ -1,0 +1,16 @@
+#!/bin/bash 
+#
+# This script uses TRUNCATE TABLE to empty out all of the tables in the 
+# board18 database except for the players table.
+#
+echo "This script empties all tables [except players] in the board18 database."
+read -r -p "Do you really want to do this (y/n)? " answer
+if [[ ${answer:0:1} != "y" ]] && [[ ${answer:0:1} != "Y" ]]; then exit 1; fi
+mysql -v -u root -p <<QUERY_INPUT
+use board18
+TRUNCATE TABLE game_snap;
+TRUNCATE TABLE game_player;
+TRUNCATE TABLE game_link;
+TRUNCATE TABLE game;
+TRUNCATE TABLE box;
+QUERY_INPUT

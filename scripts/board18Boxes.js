@@ -141,6 +141,8 @@ function paintBox() {
   $("#getlist").remove();
   $('#boxinfo').append(getHTML);
   $('#bname').val(BD18.box.bname);
+  $('#version').val(BD18.box.version);
+    $('#author').val(BD18.box.author);
   var statusHTML = '<label for="status">Change Status: </label>';
   statusHTML += '<select name="status" id="status">';
   if (BD18.box.status === 'Active') {
@@ -238,24 +240,35 @@ function updateBox() {
   $('.error').hide();
   var bname = $("input#bname").val();
   var version = $("input#version").val();
+  var author = $("input#author").val();
   if (bname === "") {
-    if (version === "") {
-      $("#version_error").text('This field is required.').show();
-    }
     $("#bname_error").text('This field is required.').show();
+  }
+  if (version === "") {
+    $("#version_error").text('This field is required.').show();
+  }
+  if (author === "") {
+    $("#author_error").text('This field is required.').show();
+  }
+  if (bname === "") {
     $("#bname").focus();
     return false;
   } else if (version === "") {
-    $("#version_error").text('This field is required.').show();
     $("#version").focus();
     return false;
+  } else if (author === "") {
+    $("#author").focus();
+    return false; 
   } else {
     BD18.box.newBox = bname;
     BD18.box.newVersion = version;
+    BD18.box.newAuthor = author;
   }
-  var aString = $('.reg').serialize();
+  var aString = 'boxid=' + BD18.box.boxid;
+  aString += '&bname=' + BD18.box.newBox;
+  aString += '&version=' + BD18.box.newVersion;
+  aString += '&author=' + BD18.box.newAuthor;
   aString += '&status=' + $("#status option:selected").val();
-  aString += '&boxid=' + BD18.box.boxid;
   $.post("php/boxUpdate.php", aString, boxResult);
   return false;
 }
