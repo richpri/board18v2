@@ -57,7 +57,7 @@ if ($result1) {
   $status = 'fail';
   exit;
 }
-$pagesize = 8; 
+$pagesize = 12; 
 $pagecount = ceil((float)$totalcount/(float)$pagesize);
 ?>
 <!doctype html>

@@ -143,7 +143,7 @@ if ($result) {
         <p> <a href="board18BoxLoad.php">Load Game Box</a></p>
       </div>
       <div id="authorlevel">
-        <p> AUthor<br>Utilities</p>
+        <p> Author<br>Utilities</p>
         <p> <a href="board18BoxLoad.php">Load Game Box</a></p>
       </div>
     </div>
