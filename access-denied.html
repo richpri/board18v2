@@ -19,20 +19,30 @@ A copy of this license can be found in the LICENSE.text file.
     </script> 
     <script type="text/javascript" src="scripts/sha256-min.js">
     </script> 
-    <script type="text/javascript" src="scripts/js.cookie.js">
-    </script>
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <script type="text/javascript" src="scripts/board18index.js">
     </script>
     <script type="text/javascript" >
       $(function() {
-        BD18.redirectURL = "board18Main.php";
+        $('.error').hide(); 
+        $('#pointer').hide();      
+        BD18.redirectURL = "board18Main.php";  
         if (typeof Cookies.get('RedirectCookie') !== 'undefined') {
           BD18.redirectURL = Cookies.get('RedirectCookie');
         }
-        $('.error').hide(); 
-        $('#pointer').hide(); 
+        BD18.LTPAselector = null;
+        var LTPAlocal = BD18.docCookies.getItem('LTPAlocal');
+        if(LTPAlocal !== null){
+          var LTPAarray = LTPAlocal.split(":",2);
+          BD18.LTPAselector = LTPAarray[0];
+          var LTPAvalidator = LTPAarray[1];
+          // Look up selector in database and check validator using 
+          // tokenCheck.php. If validator matches then bypass signon.
+          var hash = hex_sha256(LTPAvalidator);
+          var dataString = 'selector=' + BD18.LTPAselector + '&validator=' + hash;
+          $.post("php/tokenCheck.php", dataString, tokenCheckReturn);
+        } // end Persistent check
         $("#login").submit(function() {  
           login();
           return false;
@@ -136,6 +146,9 @@ A copy of this license can be found in the LICENSE.text file.
                      id="button1" value="Login" >
               <label class="error" for="button1" id="signon_error">
                 Username or password is invalid.</label>
+              <input type="checkBox" name="rememberme"
+                id="rememberme" value="yes" >
+              <label for="rememberme">Remember me.</label>
             </p>
             <p>
               <input type="button" name="regbutton" class="pwbutton" 

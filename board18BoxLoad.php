@@ -1,6 +1,7 @@
 <?php
 /*
- * This page is a tool for loading a game box from a zip file. 
+ * The board18BoxLoad.php page displays the Load Game Box form. 
+ * This form can be used to upload a zipped game box to BOARD18. 
  * 
  * Copyright (c) 2016 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.

@@ -45,10 +45,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   echo 'bademail';
   exit;
 }
-// Generate a table of temporary passwords.
-$pw1 = array('HM1j*BrahI', 'wXz*yCtRnI', '!uhY8FnMMX', 
-       'HA*S7lEeG4', 'rWt8jUENfq', 'bxv*UzGUv2', 'EU4Y9u*FBB',
-       'z7WjRB2*TU', 'zuX9wU5YWR', 'q3nM6AjnAk');
+// Generate a ten char temporary password.
+$pw1 = bin2hex(random_bytes(5));
 
 // Look up player via login name and verify email address.
 // If email address is correct save temporary password
@@ -67,8 +65,7 @@ if ($result1) {
       echo 'noemail';
       exit;
     } else { // Everything is OK!
-      $rnd10 = rand(0, 9);
-      $hash = hash('sha256', $pw1[$rnd10]);
+      $hash = hash('sha256', $pw1);
       //Create UPDATE query
       $qry2 = "UPDATE players SET passwd='$hash', changeit=1
                WHERE login='$name'";
@@ -78,7 +75,7 @@ if ($result1) {
         $body = 'This is a message from the BOARD18 server at ';
         $body .= $_SERVER['SERVER_NAME'] . ".\n \n";
         $body .= 'The new temporary password for user ' . $name; 
-        $body .= ' at ' . $email . ' is  ' . $pw1[$rnd10]; 
+        $body .= ' at ' . $email . ' is  ' . $pw1; 
         $body .= ".\n \nYou must change this password when you next log in.";
         sendEmail($email, $subject, $body);
         exit; 

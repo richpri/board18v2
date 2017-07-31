@@ -4,7 +4,8 @@
  * AJAX validateUser call. 
  * 
  * It checks the current players login and password and, 
- * if they are valid, it logs the current player in to BOARD18.
+ * if they are valid, it logs the current player in to 
+ * BOARD18.
  * 
  * Input consists the following parameters:
  *   login
@@ -15,6 +16,7 @@
  * edit failure code. If "stat" = "success" then the array
  * will also contain values for the following key names:
  *   "id" 
+ *   "login" 
  *   "firstname" 
  *   "lastname" 
  *   "level" 
@@ -31,8 +33,8 @@ require_once('config.php');
 //Function to sanitize values received from the form. 
 //Prevents SQL injection.
 function clean($conn, $str) {
-  $str = @trim($str);
-  return mysqli_real_escape_string($conn, $str);
+  $str1 = trim($str);
+  return mysqli_real_escape_string($conn, $str1);
 }
 
 // setup JSON failure object.
@@ -76,6 +78,7 @@ if ($result) {
     $response = array(
         "stat" => "success",
         "id" => $playerrow['player_id'],
+        "login" => $login,
         "firstname" => $firstname,
         "lastname" => $playerrow['lastname'],
         "level" => $playerrow['level'],

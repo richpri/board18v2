@@ -10,6 +10,25 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `auth_tokens`
+--
+
+DROP TABLE IF EXISTS `auth_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_tokens` (
+  `token_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `selector` varchar(16) DEFAULT NULL,
+  `hashedValidator` char(64) DEFAULT NULL,
+  `player_id` int(11) unsigned NOT NULL,
+  `expires` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`token_id`),
+  UNIQUE KEY `playtok` (`player_id`,`token_id`),
+  UNIQUE KEY `seltok` (`selector`,`token_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `box`
 --
 
@@ -18,15 +37,15 @@ DROP TABLE IF EXISTS `box`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `box` (
   `box_id` int(11) NOT NULL AUTO_INCREMENT,
-  `bname` varchar(25) CHARACTER SET utf8 NOT NULL,
-  `version` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `bname` varchar(25) NOT NULL,
+  `version` varchar(25) DEFAULT NULL,
   `create_date` timestamp NULL DEFAULT NULL,
   `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `author` varchar(25) CHARACTER SET utf8 NOT NULL,
-  `status` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'Active',
-  `json_text` text CHARACTER SET utf8,
+  `author` varchar(25) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'Active',
+  `json_text` text,
   PRIMARY KEY (`box_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,37 +57,17 @@ DROP TABLE IF EXISTS `game`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `game` (
   `game_id` int(11) NOT NULL AUTO_INCREMENT,
-  `gname` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `gname` varchar(25) NOT NULL,
   `start_date` timestamp NULL DEFAULT NULL,
   `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `update_counter` int(11) NOT NULL DEFAULT '0',
-  `last_updater` varchar(45) CHARACTER SET utf8 NOT NULL DEFAULT '0',
+  `last_updater` varchar(45) NOT NULL DEFAULT '0',
   `box_id` int(11) NOT NULL,
   `cp_count` int(11) NOT NULL DEFAULT '0',
-  `status` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'Active',
-  `json_text` mediumtext CHARACTER SET utf8 NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'Active',
+  `json_text` mediumtext NOT NULL,
   PRIMARY KEY (`game_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `game_snap`
---
-
-DROP TABLE IF EXISTS `game_snap`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `game_snap` (
-  `cp_id` int(11) NOT NULL AUTO_INCREMENT,
-  `game_id` int(11) NOT NULL,
-  `cp_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `player` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `last_updater` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `game_round` varchar(32) CHARACTER SET utf8 NOT NULL,
-  `json_text` mediumtext CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`cp_id`),
-  INDEX (`game_id`, `cp_id` DESC)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,10 +79,10 @@ DROP TABLE IF EXISTS `game_link`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `game_link` (
   `game_id` int(11) NOT NULL,
-  `link_name` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `link_url` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `link_name` varchar(30) NOT NULL,
+  `link_url` varchar(100) NOT NULL,
   `activity_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`game_id`, `link_name`)
+  PRIMARY KEY (`game_id`,`link_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -103,6 +102,26 @@ CREATE TABLE `game_player` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `game_snap`
+--
+
+DROP TABLE IF EXISTS `game_snap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `game_snap` (
+  `cp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_id` int(11) NOT NULL,
+  `cp_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `player` varchar(45) NOT NULL,
+  `last_updater` varchar(45) NOT NULL,
+  `game_round` varchar(32) NOT NULL,
+  `json_text` mediumtext NOT NULL,
+  PRIMARY KEY (`cp_id`),
+  KEY `game_id` (`game_id`,`cp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `players`
 --
 
@@ -111,18 +130,18 @@ DROP TABLE IF EXISTS `players`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `players` (
   `player_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
-  `lastname` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
-  `email` varchar(25) CHARACTER SET utf8 NOT NULL,
-  `login` varchar(16) CHARACTER SET utf8 NOT NULL,
-  `passwd` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `firstname` varchar(25) DEFAULT NULL,
+  `lastname` varchar(25) DEFAULT NULL,
+  `email` varchar(254) NOT NULL,
+  `login` varchar(16) NOT NULL,
+  `passwd` varchar(64) NOT NULL,
   `create-date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `level` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'player',
-  `changeit` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `level` varchar(10) NOT NULL DEFAULT 'player',
+  `changeit` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`player_id`),
-  UNIQUE KEY (`login`),
-  UNIQUE KEY (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `login` (`login`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
