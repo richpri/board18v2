@@ -5,7 +5,8 @@ Implemented fix for Issue 76 - Expanded email column in the players table.
 Implemented Issue 86 - Implemented "Remember Me" logic in "Login" pages.
   Upgraders take note: The above changes required some database changes.
   See http://wiki.board18.org/w/Release_2.5.0_Upgrade_Note for more info.
-Also made some minor documentation changes.
+Removed some obsolete utilities and updated the README. txt file in the
+utility directory. Also made some minor documentation changes.
 
 BOARD18 2.4.7 Release Notes
 

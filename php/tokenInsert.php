@@ -9,9 +9,6 @@
  * Output is the echo return status: 
  *   "success" or "fail"
  *
- * Note that this script does not check for a signed on user.
- * This is because it is called before any signon has taken place.
- *
  * Copyright (c) 2017 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  * 

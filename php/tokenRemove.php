@@ -5,7 +5,7 @@
  * It deletes from the auth_tokens table any rows that exist 
  * for the logged in player. 
  * 
- * This function accepts no input parameters.
+ * This function requires no input parameters.
  * 
  * Output is the echo return status: 
  *   "success" or "fail"
