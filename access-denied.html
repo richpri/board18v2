@@ -26,10 +26,11 @@ A copy of this license can be found in the LICENSE.text file.
     <script type="text/javascript" >
       $(function() {
         $('.error').hide(); 
-        $('#pointer').hide();      
+        $('#pointer').hide(); 
         BD18.redirectURL = "board18Main.php";  
-        if (typeof Cookies.get('RedirectCookie') !== 'undefined') {
-          BD18.redirectURL = Cookies.get('RedirectCookie');
+        var RedirectCookie = BD18.docCookies.getItem('RedirectCookie');
+        if (RedirectCookie !== null) {
+          BD18.redirectURL = RedirectCookie;
         }
         BD18.LTPAselector = null;
         var LTPAlocal = BD18.docCookies.getItem('LTPAlocal');
