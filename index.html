@@ -41,6 +41,12 @@ A copy of this license can be found in the LICENSE.text file.
           var hash = hex_sha256(LTPAvalidator);
           var dataString = 'selector=' + BD18.LTPAselector + '&validator=' + hash;
           $.post("php/tokenCheck.php", dataString, tokenCheckReturn);
+        } // end remember me check
+        var RMpersist = BD18.docCookies.getItem('RMpersist');
+        if(RMpersist !== null){
+          $('#rememberme').prop('checked', true);
+        } else {
+          $('#rememberme').prop('checked', false);
         } // end Persistent check
         $("#login").submit(function() {  
           login();
@@ -279,13 +285,14 @@ A copy of this license can be found in the LICENSE.text file.
           to display the game board and the stock market for the game. 
           Any active player can update the game.
         </p>
-        <p>          
-          <span style="font-size: 130%">NOTE:</span> 
-          BOARD18 is designed to take advantage of the HTML5 standard.
+        <p><span style="font-size: 130%">NOTES:</span></p>
+        <ol> 
+          <li>BOARD18 is designed to take advantage of the HTML5 standard.
           Older releases of some browsers do not fully support this 
-          standard. For best results, please use a fairly up to date 
-          browser when accessing BOARD18.
-        </p>
+          standard.</li>
+          <li>Some features of BOARD18 require that cookies be enabled on 
+          the browser.</li>
+        </ol>
       </div>
     </div>  
 

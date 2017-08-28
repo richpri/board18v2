@@ -43,6 +43,12 @@ A copy of this license can be found in the LICENSE.text file.
           var hash = hex_sha256(LTPAvalidator);
           var dataString = 'selector=' + BD18.LTPAselector + '&validator=' + hash;
           $.post("php/tokenCheck.php", dataString, tokenCheckReturn);
+        } // end remember me check
+        var RMpersist = BD18.docCookies.getItem('RMpersist');
+        if(RMpersist !== null){
+          $('#rememberme').prop('checked', true);
+        } else {
+          $('#rememberme').prop('checked', false);
         } // end Persistent check
         $("#login").submit(function() {  
           login();

@@ -69,6 +69,7 @@ function loginOK(response) {
             BD18.LTPAselector = resp.login;
             var LTPAvalidator = byte2hex(randbyte);
             var LTPAvalue = BD18.LTPAselector + ":" + LTPAvalidator;
+            BD18.docCookies.setItem('RMpersist','Yes',expdt);
             BD18.docCookies.setItem('LTPAlocal',LTPAvalue,expdt);
             var hash = hex_sha256(LTPAvalidator);
             var dataString = 'selector=' + BD18.LTPAselector + '&validator=' + hash;
@@ -80,6 +81,7 @@ function loginOK(response) {
                 } 
             });
         } else {
+            BD18.docCookies.removeItem('RMpersist');
             BD18.docCookies.removeItem('LTPAlocal');
             $.post("php/tokenRemove.php", function(){
                 if (response === 'fail') {
