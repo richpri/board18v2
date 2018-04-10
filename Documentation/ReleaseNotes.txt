@@ -1,3 +1,11 @@
+BOARD18 2.5.2 Release Notes
+ 
+Changes from 2.5.1 Release:
+Implemented Issue 88 - Add delete function to player administration.
+Added privacy notice to website.
+Made minor edit to sendEmail.php.
+Made documentation changes to board18Map7.php and board18Market7.php.
+
 BOARD18 2.5.1 Release Notes
  
 Changes from 2.5.0 Release:

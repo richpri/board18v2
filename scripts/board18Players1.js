@@ -8,6 +8,7 @@
  * All BD18 global variables are contained in one 'master variable'
  * called BD18.  This isolates them from all other global variables. 
  */
+BD18.first = 0;
 
 /* Function listReturn is the success callback function for 
  * the ajax playerShow.php call. It appends a list if players
@@ -118,7 +119,7 @@ function paintPlayer() {
   $('#theplayer').slideUp(300);
   var getHTML = '<table id="getlist">';
   getHTML+= '<tr><td>Player ID: ' + BD18.player.login + '</td>';
-  getHTML+= '<td>Email ID ' + BD18.player.email + '</td></tr><tr>';
+  getHTML+= '<td>Email ID: ' + BD18.player.email + '</td></tr><tr>';
   getHTML+= '<tr><td>First Name: ' + BD18.player.firstname + '</td>';
   getHTML+= '<td>Player Level: ' + BD18.player.level + '</td></tr><tr>';
   getHTML+= '<tr><td>Last Name: ' + BD18.player.lastname + '</td>';
@@ -265,4 +266,60 @@ function updatePlayer() {
   aString += '&player=' + BD18.player.playerid;
   $.post("php/playerUpdate.php", aString, playerResult);
   return false;
+}
+
+/* Function playerResult2 is the success callback function for 
+ * the ajax playerDelete.php call. It processes the response 
+ * from playerUpdate.php. 
+ */
+function playerResult2(response) {
+  if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
+    window.location = "access-denied.html";
+  }
+  if (response === 'success') {
+    $("#deletenote").html("<strong>Delete successful.</strong>");
+    $("#deletenote").show();
+  } else if (response === 'admin') {
+    var adminNote = '<span class=error>';
+    adminNote += 'An admin level player cannot be deleted. ';
+    adminNote += '</span>';
+    paintPlayer();
+    $("#deletenote").html(adminNote);
+    $("#deletenote").show(); 
+    return false;
+  } else if (response === 'fail') {
+    var errmsg1 = 'Program error in playerDelete.php.\n';
+    errmsg1 += 'Please contact the BOARD18 webmaster.';
+    alert(errmsg1);
+  } else {  // Something is definitly wrong in the code.
+    var nerrmsg = 'Invalid return code from playerDelete.\n';
+    nerrmsg += response + '\nPlease contact the BOARD18 webmaster.';
+    alert(nerrmsg);
+  }
+  doPageList();
+  doPageLinks();
+} // end of playerResult2
+
+/* 
+ * Function deletePlayer is called by the on-click
+ * method of the delete button in the theplayer form. 
+ * It does an ajax call to playerDelete.php. 
+ */
+function deletePlayer() {
+  $('.error').hide();
+  if (BD18.first === 0) { // Is this the first try?
+    paintPlayer();
+    var cautionNote = '<span class=error>';
+    cautionNote += 'Press Delete Player again if you REALLY ';
+    cautionNote += 'want to delete this player.</span>';
+    $("#deletenote").html(cautionNote);
+    $("#deletenote").show(); 
+    BD18.first = 1;
+    return false;
+  } else {
+    var aString = 'player=' + BD18.player.playerid;
+    $.post("php/playerDelete.php", aString, playerResult2);
+    BD18.first = 0;
+    return false;
+  }
 }

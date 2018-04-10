@@ -1,7 +1,7 @@
 /* 
  * board18Market7.js contains the function that implements the
- * keyboard shortcut events and the functions that implement
- * the call to the checkForUpdate.php routine.
+ * keyboard shortcut events and the functions that implement the
+ * calls to the checkForUpdate.php and snapShot.php routines.
  * 
  * It now also contains the code for the new snapshot function.
  *

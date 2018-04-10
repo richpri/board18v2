@@ -112,11 +112,13 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
         }); // end players.click
         $('#button1').click(function() {
           BD18.player.update = 'no';
+          BD18.first = 0;
           updatePlayer();
           return false;
         }); // end button1 click
         $('#button2').click(function() {
           BD18.player.update = 'no';
+          BD18.first = 0;
           paintPlayer();
           return false;
         }); // end button2 click
@@ -125,6 +127,7 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           $('#theplayer').slideUp(300);
           doPageLinks();
           BD18.player.update = 'no';
+          BD18.first = 0;
           return false;
         }); // end button3 click
         $('#button4').click(function() {
@@ -134,8 +137,14 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           $('#oneto').html(BD18.player.login);
           $('#onemail').slideDown(300);
           BD18.player.update = 'no';
+          BD18.first = 0;
           return false;
         }); // end button4 click
+        $('#button5').click(function() {
+          BD18.player.update = 'no';
+          deletePlayer();
+          return false;
+        }); // end button5 click
         $('#button11').click(function() {
           doEmail();
           return false;
@@ -190,7 +199,7 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           <ul class="bigMenu">
             <li onclick="$('#theplayer').slideUp(300);$('#gamelist').remove();
                          $('.error').hide();$('#allmail').slideDown(300);
-			                   BD18.player.update = 'no';">Send Broadcast</li>
+			 BD18.player.update = 'no';">Send Broadcast</li>
             <li onclick="window.location = 'board18Admin.php';">Return to Admin</li>
             <li onclick="window.location = 'board18Main.php';">Main Page</li>
             <li onclick="$.post('php/logout.php', logoutOK);">Log Out</li>
@@ -246,15 +255,18 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
             <p>
               <input type="button" name="updatebutton" class="pwbutton"  
                      id="button1" value="Update Player" >
+              <input type="button" name="deletebutton" class="pwbutton"  
+                     id="button5" value="Delete Player" >
               <input type="button" name="resbutton" class="pwbutton"  
                      id="button2" value="Reset Form" >
-              <input type="button" name="canbutton" class="pwbutton"  
-                     id="button3" value="Exit" >
               <input type="button" name="mailbutton" class="pwbutton"  
                      id="button4" value="Send Email" >
+              <input type="button" name="canbutton" class="pwbutton"  
+                     id="button3" value="Exit" >
             </p>
           </fieldset>
         </form>
+        <div id="deletenote" style="margin-top: 5px;"></div>
       </div>
       <div id="onemail" class="hidediv">
         <form name="onemail" class="playerform" action="">

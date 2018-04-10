@@ -29,9 +29,10 @@ function sendEmail($email, $subject, $body) {
   $mailObj->SMTPAuth = true;      // Enable SMTP authentication
   $mailObj->Username = MAIL_USER; // SMTP username.
   $mailObj->Password = MAIL_PASS; // SMTP password.
-
-  $mailObj->From = MAIL_SENDER;   // All replys will be sent here. 
-  $mailObj->FromName = 'BOARD18';
+  $mailObj->setFrom(MAIL_SENDER,'BOARD18');
+  // $mailObj->From = MAIL_SENDER;   // All replys will be sent here. 
+  // $mailObj->FromName = 'BOARD18';
+  
   $mailObj->addAddress($email);   // Add a recipient
 
   $mailObj->WordWrap = 60;        // Set word wrap to 60 characters.

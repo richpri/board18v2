@@ -109,8 +109,11 @@ a.selected {
 .playerform input {
 	font-size: 14px;
 }
+#email {
+    width: 300px;
+}
 .pwbutton {
-	margin-left: 50px;	
+	margin-left: 40px;	
 }
 
 .error {
