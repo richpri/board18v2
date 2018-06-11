@@ -20,6 +20,7 @@
  */
 require_once('config.php');
 require_once('sendEmail.php');
+require_once('tempRandom.php');
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
