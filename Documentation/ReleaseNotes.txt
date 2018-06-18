@@ -1,3 +1,9 @@
+BOARD18 2.5.3 Release Notes
+ 
+Changes from 2.5.2 Release:
+Implemented fix for Issue 89 - Problem with function in new password code. 
+Implemented fix for Issue 90 - Mail sending to modern SMTP servers fail.
+
 BOARD18 2.5.2 Release Notes
  
 Changes from 2.5.1 Release:
