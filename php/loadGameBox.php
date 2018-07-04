@@ -167,7 +167,8 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
   $report->rpttext[] = "  box version = " . $ver;
   $report->rpttext[] = "  author = " . $auth;
   $report->rpttext[] = "  ";
-
+  $escaped = mysqli_real_escape_string ($link , $jsonstring);
+  
 // check for backup directory 
   $backtmp = $webRoot . '/backups/';
   $backdir = preg_replace('%//%', '/', $backtmp);
@@ -223,12 +224,14 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
   }
 
   // Look for box table in database.
+  $rmcommand = 'rm -rf ' . escapeshellarg($imagedest); // use in case of error.
   $qry1 = "SELECT box_id FROM box 
            WHERE bname = '$bname' AND version = '$ver';"; 
   $result1 = mysqli_query($link, $qry1);
   if (!$result1) {
     $logMessage = 'doLoad: MySQL Error 2: ' . mysqli_error($link);
     error_log($logMessage);
+    exec($rmcommand, $rmoutput, $exrtn);
     rename($imageback,$imagedest); // Backout image change.
     return $errResp;
   }
@@ -238,12 +241,13 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     $report->rpttext[] = "Game box exists - do update.";
     $report->rpttext[] = "  game box id = " . $boxid;
     $report->rpttext[] = "  ";
-    $qry2 = "UPDATE box SET json_text = '$jsonstring' 
+    $qry2 = "UPDATE box SET json_text = '$escaped' 
        WHERE box_id = '$boxid';";
     $result2 = mysqli_query($link, $qry2);
     if (!$result2) {   // If query failed
       $logMessage = 'doLoad: MySQL Error 3: ' . mysqli_error($link);
       error_log($logMessage);
+      exec($rmcommand, $rmoutput, $exrtn);
       rename($imageback,$imagedest); // Backout image directory change.
       return $errResp;
     }  
@@ -252,12 +256,12 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     $report->rpttext[] = "Game box does not exists - do insert.";
     $report->rpttext[] = "  ";
     $qry3 = "INSERT INTO box SET bname = '$bname',version = '$ver',
-             author = '$auth',json_text = '$jsonstring';";
+             author = '$auth',json_text = '$escaped';";
     $result3 = mysqli_query($link, $qry3);
     if (!$result3) {   // If query failed
       $logMessage = 'doLoad: MySQL Error 4: ' . mysqli_error($link);
       error_log($logMessage);
-      unlink ($imagedest); // Backout image directory change.
+      exec($rmcommand, $rmoutput, $exrtn); // Backout image directory change.
       return $errResp;
     }   
     $qry4 = "UPDATE box SET create_date = activity_date 
@@ -274,7 +278,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     if (!$result5 || (mysqli_num_rows($result5) !== 1)) {
       $logMessage = 'doLoad: MySQL Error 6: ' . mysqli_error($link);
       error_log($logMessage);
-      unlink ($imagedest); // Backout image directory change.
+      exec($rmcommand, $rmoutput, $exrtn); // Backout image directory change.
       return $errResp;
     }
     $arr5 = mysqli_fetch_array($result5);

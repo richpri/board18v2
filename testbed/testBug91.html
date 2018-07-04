@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for bug 91 development.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+      function testReturn(inData) {
+				$('#result').append(inData); 
+      };
+      var dataString = 'dummy';
+      $(document).ready(function() {
+        $.post("./testBug91.php", dataString, testReturn)
+          .error(function() { 
+          var msg = "Error accessing testBug91. \n";
+          msg += "See /var/log/apache2/error.log \nfor more information.";
+          alert(msg); 
+        });
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> status </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+  </body>
+</html>
