@@ -207,16 +207,13 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
   }
 
 // Move image directory.
-  $mvcommand = "mv ".escapeshellarg($images)." ".escapeshellarg($imagedest);
-  exec($mvcommand, $mvoutput, $exrtn);
-  if (!$exrtn) { 
+  if (rename($images,$imagedest)) { 
     $report->rpttext[] = "Image directory move succeeded.";  
     $report->rpttext[] = "  ";
   } else {
     $report->rpttext[] = "Image directory move failed.";  
     $report->rpttext[] = "  source name = " . $images;
     $report->rpttext[] = "  target name = " . $imagedest;
-    $report->rpttext[] = "  return code = " . $exrtn;
     $report->rpttext[] = "Game box not created.";
     $report->stat = "email";
     $fr = json_encode($report);
@@ -224,14 +221,13 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
   }
 
   // Look for box table in database.
-  $rmcommand = 'rm -rf ' . escapeshellarg($imagedest); // use in case of error.
   $qry1 = "SELECT box_id FROM box 
            WHERE bname = '$bname' AND version = '$ver';"; 
   $result1 = mysqli_query($link, $qry1);
   if (!$result1) {
     $logMessage = 'doLoad: MySQL Error 2: ' . mysqli_error($link);
     error_log($logMessage);
-    exec($rmcommand, $rmoutput, $exrtn);
+    rm_r($imagedest);
     rename($imageback,$imagedest); // Backout image change.
     return $errResp;
   }
@@ -247,7 +243,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     if (!$result2) {   // If query failed
       $logMessage = 'doLoad: MySQL Error 3: ' . mysqli_error($link);
       error_log($logMessage);
-      exec($rmcommand, $rmoutput, $exrtn);
+      rm_r($imagedest);
       rename($imageback,$imagedest); // Backout image directory change.
       return $errResp;
     }  
@@ -261,7 +257,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     if (!$result3) {   // If query failed
       $logMessage = 'doLoad: MySQL Error 4: ' . mysqli_error($link);
       error_log($logMessage);
-      exec($rmcommand, $rmoutput, $exrtn); // Backout image directory change.
+      rm_r($imagedest);
       return $errResp;
     }   
     $qry4 = "UPDATE box SET create_date = activity_date 
@@ -278,7 +274,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     if (!$result5 || (mysqli_num_rows($result5) !== 1)) {
       $logMessage = 'doLoad: MySQL Error 6: ' . mysqli_error($link);
       error_log($logMessage);
-      exec($rmcommand, $rmoutput, $exrtn); // Backout image directory change.
+      rm_r($imagedest);
       return $errResp;
     }
     $arr5 = mysqli_fetch_array($result5);
