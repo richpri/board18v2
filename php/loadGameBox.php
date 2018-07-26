@@ -49,6 +49,9 @@ class Response { // This class is used to format an output object.
  */
  
 function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
+  require_once('rm_r.php');
+  require_once('rcopy.php');
+    
   // set up fail return object.
   $errorResp = new Response();
   $errorResp->stat = "fail";
@@ -190,12 +193,16 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     $report->rpttext[] = "  ";
   }
   
+// The following code processes the image directory for this game box.
+// See the documentation at the URL below for a discussion of this code.
+// wiki.board18.org/w/Design_Document_PHP_Coding_Details#doLoad.28.29
+
 // Prepare to move image directory.
   $backdate = date("ymdhis");
   $imageback = $backdir . $dirBname . '-' . $backdate;
   $imagedest = $webRoot . '/images/' . $dirBname;
   if (file_exists ($imagedest)) { // Need to backup old images.
-    if (!rename($imagedest,$imageback)) { // Backup failed
+    if (!rcopy($imagedest,$imageback)) { // Backup failed
       $report->rpttext[] = "Existing image directory backup failed."; 
       $report->rpttext[] = "  directory name = " . $imagedest;
       $report->rpttext[] = "  backup name = " . $imageback;
@@ -205,12 +212,16 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
       return "$fr";
     }
   }
+  if (file_exists ($imagedest)) { // Delete any existing $imagedest
+    rm_r($imagedest);
+  }
 
 // Move image directory.
-  if (rename($images,$imagedest)) { 
+  if (rcopy($images,$imagedest)) { 
     $report->rpttext[] = "Image directory move succeeded.";  
     $report->rpttext[] = "  ";
   } else {
+    rcopy($imageback,$imagedest); // Restore old $imagedest.
     $report->rpttext[] = "Image directory move failed.";  
     $report->rpttext[] = "  source name = " . $images;
     $report->rpttext[] = "  target name = " . $imagedest;
@@ -228,7 +239,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
     $logMessage = 'doLoad: MySQL Error 2: ' . mysqli_error($link);
     error_log($logMessage);
     rm_r($imagedest);
-    rename($imageback,$imagedest); // Backout image change.
+    rcopy($imageback,$imagedest); // Backout image change.
     return $errResp;
   }
   if (mysqli_num_rows($result1) === 1) { // Game box exists - do update.
@@ -244,7 +255,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
       $logMessage = 'doLoad: MySQL Error 3: ' . mysqli_error($link);
       error_log($logMessage);
       rm_r($imagedest);
-      rename($imageback,$imagedest); // Backout image directory change.
+      rcopy($imageback,$imagedest); // Backout image directory change.
       return $errResp;
     }  
     $report->rpttext[] = "Game box successfully updated.";
@@ -314,7 +325,7 @@ function doLoad($zipFileName,$zipFileLoc,$authorID,$webRoot,$link,$report) {
  *   }
  */
 function loadBox($zfile,$authorID) {
-  
+
   $errorResp = new Response(); // set up fail return object.
   $errorResp->stat = "fail";
   $errResp = json_encode($errorResp);

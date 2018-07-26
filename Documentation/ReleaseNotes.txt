@@ -1,3 +1,9 @@
+BOARD18 2.5.5 Release Notes
+ 
+Release 2.5.4 had to be backed out because the PHP rename() function has a
+known bug that causes it to fail in certain circumstances. The rcopy()
+function has been added to BOARD18 to deal with this situation.
+
 BOARD18 2.5.4 Release Notes
  
 Changes from 2.5.3 Release:
