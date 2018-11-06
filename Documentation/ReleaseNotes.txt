@@ -1,3 +1,9 @@
+BOARD18 2.5.6 Release Notes
+ 
+Changes from 2.5.5 Release:
+Implemented fix for Issue 94 - Punctuation in game title. 
+Also fixed minor player name display issue on same page.
+
 BOARD18 2.5.5 Release Notes
  
 Release 2.5.4 had to be backed out because the PHP rename() function has a

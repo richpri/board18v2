@@ -67,6 +67,9 @@ function showPlayers($conn) {
     if (mysqli_num_rows($result) !== 0) {
       echo "<h3 style='text-indent: 15px'>Players<br></h3>";
       while ($row = mysqli_fetch_array($result)) {
+        if ($row[1] == "") {
+          $row[1] = $row[0];
+        }
         $pline  = "<p class=\"plid\" ";
         $pline .= "onmouseover=\"this.innerHTML='$row[1] $row[2]';\" ";
         $pline .= "onmouseout=\"this.innerHTML='$row[0]';\" ";

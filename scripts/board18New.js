@@ -156,9 +156,15 @@ function newgame() {
   $('.error').hide();  
   BD18.name = $("input#sessionname").val();  
   if (BD18.name === "") {  
-    $("#sn_error").show();  
+    $("#sn_error").text('This field is required.').show();  
     $("#sessionname").focus();  
     return;  
+  }
+  var format = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
+  if(format.test(BD18.name)){
+    $("#sn_error").text('Game Name cannot contain special characters.').show();  
+    $("#sessionname").focus();  
+    return; 
   }
   BD18.boxid = $("input#boxid").val();
   if (BD18.boxid === "") {  
