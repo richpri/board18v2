@@ -8,8 +8,8 @@
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
-  define('DB_HOST', 'localhost');
+  define('DB_HOST', 'b18-db');
   define('DB_DATABASE', 'board18');
-  define('DB_USER', 'board18');
-  define('DB_PASSWORD', 'board18');
+  define('DB_USER', 'root');
+  define('DB_PASSWORD', 'test');
 ?>

@@ -1,0 +1,61 @@
+# tell docker what version of the docker-compose.yml we're using
+version: '3'
+
+# define the network
+networks:
+  web-network:
+
+# start the services section
+services:
+  # define the name of our service
+  # corresponds to the "--name" parameter
+  # docker-php-cli:
+  #   # define the directory where the build should happened,
+  #   # i.e. where the Dockerfile of the service is located
+  #   # all paths are relative to the location of docker-compose.yml
+  #   build: 
+  #     context: ./php-cli
+  #   # reserve a tty - otherwise the container shuts down immediately
+  #   # corresponds to the "-i" flag
+  #   tty: true
+  #   # mount the app directory of the host to /var/www in the container
+  #   # corresponds to the "-v" option
+  #   volumes:
+  #     - ./app:/var/www
+  #   # connect to the network
+  #   # corresponds to the "--network" option
+  #   networks:
+  #     - web-network
+
+  b18-nginx:
+    build: 
+      context: ./nginx
+    # defines the port mapping
+    # corresponds to the "-p" flag
+    ports:
+      - "30080:80"
+    tty: true
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - web-network
+
+  b18-php-fpm:
+    build: 
+      context: ./php-fpm
+    tty: true
+    volumes:
+      - ./:/var/www
+      - ./php-fpm/gameboxes/:/var/gameboxes
+    networks:
+      - web-network
+
+  b18-db:
+    build:
+      context: ./mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: board18
+    networks:
+      - web-network

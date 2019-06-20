@@ -11,7 +11,7 @@
   //Start session
   session_start();
   if (isset($_SESSION['LAST_ACTIVITY']) && 
-          (time() - $_SESSION['LAST_ACTIVITY'] > 86400)) { // 1 day
+          (time() - $_SESSION['LAST_ACTIVITY'] > 86400 * 7)) { // 1 week
     // last request was more than one day ago
     session_unset();     // unset $_SESSION variable for the run-time 
     session_destroy();   // destroy session data in storage
