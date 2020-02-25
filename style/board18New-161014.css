@@ -6,19 +6,6 @@
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
-#sidebar {
-  width:120px;
-  position: absolute;
-  background-color:#ddffdd;
-  left:0px;
-  top:0px; 
-}
-
-.plid {
-  width: 150px;
-  margin-left: 5px;
-  text-indent: 10px;
-}
 
 #content {
   background-color:#ffeedd;
@@ -35,14 +22,14 @@
 }
 
 #newgame form {
-	padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   border-style: double;
-	background-color:#ddffdd;
+  background-color:#ddffdd;
 }
 #newgame form label {
-	display: inline-block;
-	margin: 0 15px 0 0;
-	color: rgb(58,80,123);
+  display: inline-block;
+  margin: 0 15px 0 0;
+  color: rgb(58,80,123);
 }
 #newgame .label1 {
   display: inline-block;
@@ -55,13 +42,13 @@
   width:80px;
 }
 #newgame form input {
-	font-size: 14px;
+  font-size: 14px;
 }
 #sessionname {
   width:300px;
 }
 .pwbutton {
-	margin-left: 50px;	
+  margin-left: 50px;	
 }
 .fn1 {
   width: 40px;

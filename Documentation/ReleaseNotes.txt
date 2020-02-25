@@ -1,3 +1,11 @@
+BOARD18 2.5.7 Release Notes
+ 
+Changes from 2.5.6 Release:
+Implemented fix for Issue 115 “Email address is not correct” error
+Added configMailTemplate.php for more secure implementation.
+Fixed BD18-token-adjust.py
+Made various documentation changes.
+
 BOARD18 2.5.6 Release Notes
  
 Changes from 2.5.5 Release:

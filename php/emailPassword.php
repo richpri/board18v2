@@ -62,7 +62,7 @@ if ($result1) {
   } else { // Found login name in database!
     $playerrow = mysqli_fetch_assoc($result1);
     $dbemail = $playerrow['email']; 
-    if ($email !== $dbemail) { // Email mismatch
+    if (strtolower($email) !== strtolower($dbemail)) { // Email mismatch
       echo 'noemail';
       exit;
     } else { // Everything is OK!
