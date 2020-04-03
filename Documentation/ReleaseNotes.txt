@@ -1,3 +1,11 @@
+BOARD18 2.5.8 Release Notes
+ 
+Changes from 2.5.7 Release:
+Implemented fix for Issue 132 “left margin in the player list is missing”.
+Corrected links in the README.txt file.
+Removed unneeded subscripts from the names of various CSS files.
+Removed some left over debug code from tokenCheck.php.
+
 BOARD18 2.5.7 Release Notes
  
 Changes from 2.5.6 Release:

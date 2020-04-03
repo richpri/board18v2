@@ -47,6 +47,12 @@
 #sessionname {
   width:300px;
 }
+
+.plid {
+        width: 150px;
+  margin-left: 5px;
+  text-indent: 10px;
+}
 .pwbutton {
   margin-left: 50px;	
 }

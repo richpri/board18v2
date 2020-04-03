@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) { // If reload via zform submit.
     <meta charset="utf-8" />
     <title>BOARD18 - Remote Play Tool For 18xx Style Games</title>
     <link rel="shortcut icon" href="images/favicon.ico" >
-    <link rel="stylesheet" href="style/board18com-160521.css" />
+    <link rel="stylesheet" href="style/board18com.css" />
     <link rel="stylesheet" href="style/board18BoxLoad.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script> 

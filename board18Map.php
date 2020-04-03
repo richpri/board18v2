@@ -85,8 +85,8 @@ if ($result1) {
     <title>BOARD18 - Remote Play Tool For 18xx Style Games
     </title>
     <link rel="shortcut icon" href="images/favicon.ico" >
-    <link rel="stylesheet" href="style/board18com-160521.css" />
-    <link rel="stylesheet" href="style/board18Map-160525.css" />
+    <link rel="stylesheet" href="style/board18com.css" />
+    <link rel="stylesheet" href="style/board18Map.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script>
     <script type="text/javascript" src="scripts/jqueryMigrate.js">

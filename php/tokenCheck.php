@@ -35,7 +35,7 @@ mysqli_set_charset($link, "utf-8");
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
 function clean($link, $str) {
-  $str = @trim($str);
+  $str = trim($str);
   return mysqli_real_escape_string($link, $str);
 }
 
@@ -61,7 +61,6 @@ if (!$result1) {
         continue;
       }
       if (hash_equals($tokenrow['hashedValidator'], $validator)) {
-        error_log("hash equals found."); //Debug
         deleteAuth($link, $tokenrow['token_id']);
         // Log player in. 
         // The selector-validator match obviates the need to check the password.
@@ -73,7 +72,6 @@ if (!$result1) {
         if ($result && mysqli_num_rows($result) == 1) {
           // Query Successful
           session_start();
-          error_log("Session started."); //Debug
           $playerrow = mysqli_fetch_assoc($result);
           $_SESSION['SESS_PLAYER_ID'] = $playerrow['player_id'];
           if ($playerrow['firstname'] == '') {
