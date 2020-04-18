@@ -12,4 +12,5 @@
   define('DB_DATABASE', 'board18');
   define('DB_USER', 'board18');
   define('DB_PASSWORD', 'board18');
+  define('ENABLE_REGISTRATION', true);
 ?>

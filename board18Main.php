@@ -44,7 +44,7 @@ A copy of this license can be found in the LICENSE.text file.
           event.stopPropagation();"> MENU </span>
         <p id="lognote"><?php echo "$welcomename: $headermessage"; ?>
           <span style="font-size: 70%">
-            Click <a href="index.html">here</a> 
+            Click <a href="index.php">here</a> 
             if you are not <?php echo "$welcomename"; ?>.
           </span>
         </p>

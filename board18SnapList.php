@@ -103,7 +103,7 @@ $pagecount = ceil((float)$snapcount/(float)$pagesize);
           event.stopPropagation();"> MENU </span>
         <p id="lognote"><?php echo "$welcomename: $headermessage"; ?>
           <span style="font-size: 70%">
-            Click <a href="index.html">here</a> 
+            Click <a href="index.php">here</a> 
             if you are not <?php echo "$welcomename"; ?>.
           </span>
         </p>
@@ -133,4 +133,3 @@ $pagecount = ceil((float)$snapcount/(float)$pagesize);
     </div>  
   </body>
 </html>
-

@@ -1,7 +1,11 @@
+<?php
+  require_once('php/config.php');
+?>
+
 <!doctype html>
 <html lang="en">
 <!--
-The index.html page is one of the two pages which is not password protected. 
+The index page is one of the two pages which is not password protected. 
 It is the introductory page to BOARD18 and contains a welcome message. 
 It is used for logging in to Board18 and for registering new players. 
 It also contains player ID and password recovery functions. 
@@ -156,8 +160,10 @@ A copy of this license can be found in the LICENSE.text file.
               <label for="rememberme">Remember me.</label>
             </p>
             <p>
-              <input type="button" name="regbutton" class="pwbutton" 
+              <?php if (ENABLE_REGISTRATION) { ?>
+                <input type="button" name="regbutton" class="pwbutton" 
                      id="regbutton" value="Register" >
+              <?php } ?>
               <input type="button" name="helpbutton" class="pwbutton" 
                      id="helpbutton" value="Help" >
             </p>

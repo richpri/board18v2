@@ -162,7 +162,7 @@ function doLogNote(note) {
 function logoutOK(resp) {
   if(resp === 'success') {
     BD18.docCookies.removeItem('LTPAlocal');
-    window.location = "index.html";
+    window.location = "index.php";
   }
   else {
     alert("Logout failed! This should never happen.");

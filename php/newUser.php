@@ -21,6 +21,17 @@
 	session_start();
 	require_once('config.php');
 
+	// if registration is disabled then only admins may create new users!
+	if (!ENABLE_REGISTRATION) {
+		$loggedInPlayerId = $_SESSION['SESS_PLAYER_ID'];
+		$loggedInPlayerlevel = $_SESSION['SESS_PLAYER_LEVEL'];
+		if ($loggedInPlayerlevel != 'admin') {
+			error_log("newUser: Registration is disabled!");
+			echo "fail";
+			exit;
+		}
+	}
+
 	//Function to sanitize values received from the form. 
   //Prevents SQL injection
 	function clean( $conn, $str ) {
