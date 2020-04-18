@@ -210,7 +210,10 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
       </div>
     </div>
     <div id="leftofpage">
-      <div id="pagelinks">
+      <div id="adminlevel">
+        <p> <a href="board18AdminNewPlayer.php">Add Player</a></p>
+      </div>
+    </div>
       </div>
     </div>
     <div id="rightofpage"> 
@@ -324,6 +327,10 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           </fieldset>
         </form>
       </div>
+      <?php 
+        include_once("./view-player-register.php");
+        viewPlayerRegister("hidediv", "Register a Player");
+      ?>
     </div>   
   </body>
 </html>
