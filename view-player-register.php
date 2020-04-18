@@ -4,7 +4,7 @@ function viewPlayerRegister($rootClass, $rootStyle = "", $title, $showCancelButt
   echo <<< EOT
         <form name="register" class="hideform" action="">
           <fieldset>
-  EOT;
+EOT;
   echo '<p style="font-size: 130%">'.$title.'</p>';
   echo <<< EOT
             <p>
@@ -45,7 +45,7 @@ function viewPlayerRegister($rootClass, $rootStyle = "", $title, $showCancelButt
             <p>
               <input type="submit" name="regbutton" class="pwbutton"  
                      id="button2" value="Register" >
-    EOT;
+EOT;
     if ($showCancelButton) {
       echo '<input type="button" name="canbutton" class="pwbutton" id="button3" value="Cancel" >';
     }
@@ -54,6 +54,6 @@ function viewPlayerRegister($rootClass, $rootStyle = "", $title, $showCancelButt
           </fieldset>
         </form>
       </div> 
-    EOT;
-}
+EOT;
+};
 ?>
