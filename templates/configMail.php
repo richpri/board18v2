@@ -11,3 +11,4 @@
   define('MAIL_USER', 'name@your.domain.com');
   define('MAIL_PASS', 'password');
   define('MAIL_SENDER', 'admin@your.domain.com');
+?>
