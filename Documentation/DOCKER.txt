@@ -1,0 +1,73 @@
+--------------------------------------------------------------------------------
+Introduction
+
+Docker (https://www.docker.com/) a platform-independent. It uses OS-level
+virtualization to run software in containers.  If run you run BOARD18 with
+Docker, you do not need to provide a LAMP stack.  Docker does that for you.
+You merely unzip the BOARD18 distribution zip file on the host system,
+set a few values in a configuration file, and then execute a single command to
+launch BOARD18.
+
+--------------------------------------------------------------------------------
+Installation
+
+  1. Install Docker (https://docs.docker.com/get-docker/) on the BOARD18 host
+     system if necessary.
+  2. Unzip the BOARD18 zip file in a convenient directory on the host system.
+  3. Switch to directory board-<version>/docker of the unzipped file. The
+     instructions below assume that directory is the current directory.
+
+--------------------------------------------------------------------------------
+Configuration
+
+  See the instructions in file .env
+  
+--------------------------------------------------------------------------------
+Running BOARD18
+
+  - To launch board18 run:
+ 
+      docker-compose up -d
+
+     BOARD18 will be at the port set by BOARD18_PORT in file .env.
+     
+     The first time this is run a BOARD18 MySQL database and its user are
+     automatically created.
+
+  - To stop BOARD18 run:
+
+      docker-compose down
+
+--------------------------------------------------------------------------------
+Mass loading Game Boxes
+
+  1.  Create directory gameboxes if necessary.
+  2.  Put the game box zip files in directory gameboxes.
+  3.  Run:
+  
+        docker-compose run --rm game-box-loader <player> <password> logs/gameboxes.log
+
+      where - <player> is the player ID of an admin level player.
+            - <password> is that player's password.
+
+  A log file is written to logs/gameboxes.log
+
+--------------------------------------------------------------------------------
+Troubleshooting
+
+- To open a shell in the BOARD18 host run:
+
+    docker-compose run board18-web bash
+
+
+- To access the BOARD18 MySQL database:
+  
+  1. Open a shell in the BOARD18 MySQL host:
+  
+      docker-compose run --rm board18-mysql bash
+      
+  2. Open the MySQL client program in the shell:
+  
+      mysql --host board18-mysql board18 --password
+
+--------------------------------------------------------------------------------

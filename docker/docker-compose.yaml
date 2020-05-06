@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  board18-web:
+    build:
+      dockerfile: board18-web.Dockerfile
+      context: .
+      args:
+        - mail_host=${MAIL_HOST}
+        - mail_tls=${MAIL_TLS}
+        - mail_port=${MAIL_PORT}
+        - mail_user=${MAIL_USER}
+        - mail_pass=${MAIL_PASS}
+        - mail_sender=${MAIL_SENDER}
+        - max_game_box_zip_file_size=${MAX_GAME_BOX_ZIP_FILE_SIZE}
+    depends_on:
+      - board18-mysql
+    ports:
+      - "${BOARD18_PORT}:80"
+    volumes: 
+      - board18-document-root:/var/www/html
+      
+  game-box-loader:
+    build:
+      dockerfile: board18-game-box-loader.Dockerfile
+      context: .
+      args:
+        - max_game_box_zip_file_size=${MAX_GAME_BOX_ZIP_FILE_SIZE}
+    depends_on:
+      - board18-mysql
+    entrypoint: ["php", "massLoadBoxes.php", "gameboxes", "/var/www/html"]
+    volumes: 
+      - board18-document-root:/var/www/html
+      - ./gameboxes:/gameboxes
+      - ./logs:/logs
+
+  board18-mysql:
+    build:
+      dockerfile: board18-mysql.Dockerfile
+      context: .
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - board18-mysql-data:/var/lib/mysql
+
+volumes:
+  board18-mysql-data:
+  board18-document-root:
