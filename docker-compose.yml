@@ -1,0 +1,36 @@
+version: '3.4'
+
+networks:
+  b18:
+
+volumes:
+  b18:
+    name: b18
+
+services:
+  b18:
+    container_name: b18
+    build: ./
+    networks:
+    - b18
+    ports:
+    - "8000:80"
+    volumes:
+    - "./:/var/www/html"
+    environment:
+      DB_HOST: db
+    depends_on:
+    - db
+  db:
+    container_name: db
+    image: mariadb:10.5.3
+    networks:
+    - b18
+    environment:
+      MYSQL_ROOT_PASSWORD: board18
+      MYSQL_DATABASE: board18
+      MYSQL_USER: board18
+      MYSQL_PASSWORD: board18
+    volumes:
+    - "./utility/board18db.txt:/docker-entrypoint-initdb.d/b18.sql"
+    - "b18:/var/lib/mysql"
