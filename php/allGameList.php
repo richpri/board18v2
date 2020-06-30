@@ -50,7 +50,8 @@ $errResp = json_encode($errorResp);
 $link = @mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'Failed to connect to server: ' . mysqli_connect_error();
+  $logMessage = 'allGameList: Failed to connect to server: ';
+  $logMessage .= mysqli_connect_error();
   error_log($logMessage);
   echo $errResp;
   exit;
@@ -62,7 +63,7 @@ $qry = "SELECT a.game_id, a.gname, b.bname,
           FROM game AS a JOIN box AS b
                ON a.box_id = b.box_id
           ORDER BY a.start_date DESC";
-  $result = mysqli_query($link,$qry);
+$result = mysqli_query($link,$qry);
 if ($result) {
   if (mysqli_num_rows($result) === 0) { // no games.
     $noneResp = new Response();
@@ -85,11 +86,11 @@ if ($result) {
     $succResp->stat = "success";
     $succResp->games = $gamelist;
     
-    echo json_encode($succResp);
+    echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
     exit;
   }
 } else {
-  $logMessage = 'Error on SELECT query: ' . mysqli_error($link);
+  $logMessage = 'allGameList: Error on SELECT query: ' . mysqli_error($link);
   error_log($logMessage);
   echo $errResp;
 }

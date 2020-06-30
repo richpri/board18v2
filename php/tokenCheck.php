@@ -102,7 +102,6 @@ if (!$result1) {
 // This function will delete a row from the auth_tokens table. 
 // The deleted row will have the `token_id` field equal to $id.
 function deleteAuth($link, $id) {
-  error_log("DELETE FROM auth_tokens - Query called"); //Debug
   $qry2 = "DELETE FROM auth_tokens WHERE token_id=$id";
   $result2 = mysqli_query($link, $qry2);
   if (!$result2) {

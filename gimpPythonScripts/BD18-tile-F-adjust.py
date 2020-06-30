@@ -7,7 +7,7 @@
 from gimpfu import *
 
 def tile_F_adjust(inImg, inLayer) :
-    ''' Adjust the scale of a tile image 
+    ''' Adjust the scale of a type F tile image 
         and make background transparent.
     
     Parameters:
@@ -28,12 +28,12 @@ def tile_F_adjust(inImg, inLayer) :
     
 register(
     "tile_F_adjust",
-    "Adjust the scale of a tile image and make background transparent",
-    "Adjust the scale of a tile image and make background transparent",
+    "Adjust the scale of a type F tile image and make background transparent",
+    "Adjust the scale of a type F tile image and make background transparent",
     "Rich Price",
     "Rich Price",
     "2014",
-    "<Image>/Filters/BD18/Tile-F-Adjust",
+    "<Image>/Filters/BD18/Tile-F-adjust",
     "*",
     [],
     [],

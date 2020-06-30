@@ -28,7 +28,7 @@ function sendEmail($email, $subject, $body) {
   $mailObj->Host = MAIL_HOST;     // Specify the SMTP server.
   $mailObj->Port = MAIL_PORT;     // Specify port. Use 587 for STARTTLS.
   $mailObj->SMTPAuth = true;      // Enable SMTP authentication
-  if (MAIL_TLS == 'Yes') {        // Is TLS required by the SMTP server?
+  if (MAIL_TLS == 'Yes') {  // Is TLS required by the SMTP server?
     $mailObj->SMTPSecure = 'tls';
   }
   $mailObj->Username = MAIL_USER; // SMTP username.

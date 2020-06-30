@@ -1,3 +1,11 @@
+BOARD18 2.5.9 Release Notes
+ 
+Changes from 2.5.8 Release:
+Implemented fix for Issue 153 "Can't view all games"
+Implemented change for Issue 96 "Request for 2 new scripts".
+Replaced cronCode with new aws-cli backups.
+Some minor fixes to error reports and documentation.
+
 BOARD18 2.5.8 Release Notes
  
 Changes from 2.5.7 Release:

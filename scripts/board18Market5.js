@@ -93,7 +93,7 @@ function makeMenuItems(e) {
       break;
     default:
       menuText = "0";
-      alert("Invalid Menu Type" + mm + ".");
+      alert("Invalid Menu Type" + menuType + ".");
     } 
   return menuText;
 }
