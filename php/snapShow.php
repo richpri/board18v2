@@ -102,6 +102,6 @@ if (mysqli_num_rows($result1) === 0) { // no games.
 $succResp = new Response();
 $succResp->stat = "success";
 $succResp->snaps = $snaplist;
-echo json_encode($succResp);
+echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
 ?>

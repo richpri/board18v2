@@ -90,7 +90,7 @@ if ($result) {
     $succResp->stat = "success";
     $succResp->games = $gamelist;
     
-    echo json_encode($succResp);
+    echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
     exit;
   }
 } else {

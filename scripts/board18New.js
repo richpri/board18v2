@@ -149,7 +149,8 @@ function newgameOK(response) {
 /* 
  * Function newgame is called by the on-click
  * method of the newgame submit button. It 
- * checks the input for missing fields and
+ * checks the input for missing fields 
+ * and invalid values. It then 
  * does an ajax call to createGame.php. 
  */
 function newgame() {
@@ -163,6 +164,17 @@ function newgame() {
   var format = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   if(format.test(BD18.name)){
     $("#sn_error").text('Game Name cannot contain special characters.').show();  
+    $("#sessionname").focus();  
+    return; 
+  }
+  var ascii = /^[\x00-\x7F]*$/;
+  if(!ascii.test(BD18.name)){
+    $("#sn_error").text('Game Name can only contain ascii characters.').show();  
+    $("#sessionname").focus();  
+    return; 
+  }
+  if(BD18.name.length > 25){
+    $("#sn_error").text('Game Name must be 25 characters or less.').show();  
     $("#sessionname").focus();  
     return; 
   }

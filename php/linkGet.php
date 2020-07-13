@@ -93,6 +93,6 @@ if (mysqli_num_rows($result1) === 0) { // no links.
 $succResp = new Response();
 $succResp->stat = "success";
 $succResp->links = $linklist;
-echo json_encode($succResp);
+echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
 ?>

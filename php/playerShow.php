@@ -138,6 +138,6 @@ while ($row1 = mysqli_fetch_array($result1)) {
 $succResp = new Response();
 $succResp->stat = "success";
 $succResp->players = $playerlist;
-echo json_encode($succResp);
+echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
 ?>

@@ -133,6 +133,6 @@ while ($row1 = mysqli_fetch_assoc($result1)) {
 $succResp = new Response();
 $succResp->stat = "success";
 $succResp->games = $gamelist;
-echo json_encode($succResp);
+echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
 ?>
