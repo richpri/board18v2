@@ -17,6 +17,7 @@ A copy of this license can be found in the LICENSE.text file.
     <link rel="shortcut icon" href="images/favicon.ico" >
     <link rel="stylesheet" href="style/jquery.contextMenu.css" />
     <link rel="stylesheet" href="style/board18com.css" />
+    <link rel="stylesheet" href="style/board18View.css" /> 
     <script type="text/javascript" src="scripts/jquery.js">
     </script> 
     <script type="text/javascript" src="scripts/board18com.js">
@@ -25,7 +26,13 @@ A copy of this license can be found in the LICENSE.text file.
     </script>
     <script type="text/javascript" >
       $(function() {
-        $.post('php/allGameList.php', listReturn);
+        $('.error').hide();
+        var dString = 'gstat=Active';
+        $.post('php/allGameList.php', dString, listReturn);
+        $("#filters").submit(function() {
+          filters();
+          return false;
+        }); // end filters
       }); // end ready
     </script>
   </head>
@@ -62,17 +69,38 @@ A copy of this license can be found in the LICENSE.text file.
       
     </div>
     <div id="rightofpage"> 
+      <div id="filters">
+        <form name="filters" action="">
+          <fieldset>
+            <p>
+              <label for="bname">Box Name:</label>
+              <input type="text" name="bname" id="bname" 
+                     value="">
+              <label class="error" for="bname" id="bname_error"></label>
+            </p>
+            <p> Status:
+              <input type="radio" id="active" name="status" 
+                     value="Active" checked>
+              <label for="active">Active</label>
+              <input type="radio" id="completed" name="status" 
+                     value="Completed">
+              <label for="completed">Completed</label>
+              <input type="radio" id="all" name="status" 
+                     value="All">
+              <label for="all">All</label>
+            </p>
+            <p> Select filters and press
+              <input type="submit" name="fbutton" 
+                     id="button1" value="Submit" >
+            </p>
+          </fieldset>
+        </form>
+      </div>
       <div id="content">  
         <div>
-        <p>Select the game that you wish to view.  </p> 
+        <p>Click on the game that you wish to view.  </p> 
         </div>      
         <div id="games">
-          <table id='gamelist'> 
-            <tr>
-              <th>Game Name</th> <th>Box Name</th> 
-              <th>Version</th> <th>Start Date</th> 
-            </tr>
-          </table>
         </div>
       </div> 
     </div>  

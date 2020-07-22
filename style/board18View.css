@@ -9,11 +9,20 @@
   top:0px; 
 }
 
-#content {
+#filters {
   background-color:#ffeedd;
   position: absolute;
   left:5px;
   top:0px; 
+  height:170px;
+  border: none;
+}
+
+#content {
+  background-color:#ffeedd;
+  position: absolute;
+  left:5px;
+  top:170px; 
   height:350px;
   border: none;
 }
@@ -40,4 +49,8 @@
 
 #gamelist th {
   border: 1px solid black;
+}
+
+.error {
+  color: red !important;
 }

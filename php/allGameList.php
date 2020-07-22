@@ -3,8 +3,10 @@
  * This is the server side code for the AJAX allGameList call.
  * 
  * It produces the data needed to create a list of all games.
+ * It can also select active or completed games based on gstat.
  * 
- * There are no input parameters.
+ * Input parameters:
+ *      gstat - can be Active, Completed or All
  *
  * Output is the following stringified JSON data structure. 
  *   {
@@ -16,12 +18,18 @@
  *         "gname":"gggg",
  *         "bname":"bbbb",
  *         "version":"vvvv",
- *         "start_date":"mm/dd/yyyy"
+ *         "start_date":"mm/dd/yyyy",
+ *         "status":"ssss"
  *       },
  *       . . . . more games . . . . . 
  *     ]
  *   }
  *
+ * "stat" can be "success", "fail" or "none".
+ * "games" will only be present if "stat" is "success".
+ *
+ * Revised by Rich Price in July of 2020.
+ * 
  * Copyright (c) 2014 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
@@ -35,6 +43,7 @@ class Gameline
   public $bname;
   public $version;
   public $start_date; 
+  public $status;
 }
 class Response
 {
@@ -57,12 +66,40 @@ if (mysqli_connect_error()) {
   exit;
 }
 
-$you = intval($_SESSION['SESS_PLAYER_ID']);
-$qry = "SELECT a.game_id, a.gname, b.bname, 
-               b.version, DATE(a.start_date) 
-          FROM game AS a JOIN box AS b
-               ON a.box_id = b.box_id
-          ORDER BY a.start_date DESC";
+mysqli_set_charset($link, "utf-8");
+
+//Function to sanitize values received from the form. 
+//Prevents SQL injection
+function clean($link, $str) {
+  $str = @trim($str);
+  return mysqli_real_escape_string($link, $str);
+}
+
+//Sanitize the POST values
+$gstat = clean($link, $_REQUEST['gstat']);
+if (empty($_REQUEST['bname'])) {
+  $bname = "";
+} else {
+  $bname = clean($link, $_REQUEST['bname']);
+}
+
+// Select correct query string.
+if ($gstat === "All") {
+  $qry = "SELECT a.game_id, a.gname, b.bname, 
+                 b.version, DATE(a.start_date),
+                 a.status
+            FROM game AS a JOIN box AS b
+                 ON a.box_id = b.box_id
+            ORDER BY a.start_date DESC";
+} else {
+  $qry = "SELECT a.game_id, a.gname, b.bname, 
+                 b.version, DATE(a.start_date),
+                 a.status
+            FROM game AS a JOIN box AS b
+                 ON a.box_id = b.box_id
+            WHERE a.status = '$gstat'
+            ORDER BY a.start_date DESC";
+}
 $result = mysqli_query($link,$qry);
 if ($result) {
   if (mysqli_num_rows($result) === 0) { // no games.
@@ -80,6 +117,7 @@ if ($result) {
       $gamelist[$ii]->bname = $row[2];
       $gamelist[$ii]->version = $row[3];
       $gamelist[$ii]->start_date = $row[4];
+      $gamelist[$ii]->status = $row[5];
       $ii += 1;
     }
     $succResp = new Response();
