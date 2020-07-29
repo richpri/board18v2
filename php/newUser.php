@@ -53,8 +53,8 @@
 	}
 	else {
 		error_log("Check duplicate name: Query failed");
-    echo 'fail';
-    exit;
+                echo 'fail';
+                exit;
 	}
   
   //Check for ill formed email address

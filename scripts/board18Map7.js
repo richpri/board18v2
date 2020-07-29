@@ -5,6 +5,10 @@
  * 
  * It now also contains the code for the new snapshot function.
  *
+ * All BD18 global variables are contained in one
+ * 'master variable' called BD18.  This isolates 
+ * them from global variables in other packages
+ * 
  * Copyright (c) 2015 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */

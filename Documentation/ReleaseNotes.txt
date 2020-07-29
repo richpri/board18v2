@@ -1,3 +1,12 @@
+BOARD18 2.6.0 Release Notes
+ 
+Changes from 2.5.11 Release:
+Implemented fix for Issue 163 - Make player name fields "required".
+Implemented fix for Issue 164 - Set page size of all BOARD18 admin lists to 20.
+Implemented fix for Issue 166 - Require lower case on all Email Addresses.
+Added more documentation to the headers of 12 JavaScript files.
+Updated players guide to version 2.6
+
 BOARD18 2.5.11 Release Notes
  
 Changes from 2.5.10 Release:

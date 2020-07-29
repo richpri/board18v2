@@ -2,6 +2,10 @@
  * The board18Market3 file contains token manipulation functions. 
  * These functions manipulate tokens on the stock market chart.
  *
+ * All BD18 global variables are contained in one
+ * 'master variable' called BD18.  This isolates 
+ * them from global variables in other packages 
+ * 
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */

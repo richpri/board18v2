@@ -140,12 +140,29 @@ function administrate(currpw) {
     $("#passwrd2").focus();
     return false;
   }
-  var email = $("input#email").val();
-  if (email === "") {
-    $("#email_error").show();
-    $("#email").focus();
-    return false;
-  }
+    var email = $("input#email").val();
+    if (email === "") {
+        $("#email_error").text('This field is required.').show();
+        $("#email").focus();
+        return false;
+    }
+    if (email !== email.toLowerCase()) {
+        $("#email_error").text('Email address must be lower case.').show();
+        $("#email").focus();
+        return false;
+    }
+    var fname = $("input#fname").val();
+    if (fname === "") {
+        $("#fname_error").show();
+        $("#fname").focus();
+        return false;
+    }  
+    var lname = $("input#lname").val();
+    if (lname === "") {
+        $("#lname_error").show();
+        $("#lname").focus();
+        return false;
+    } 
   var aString = $('.reg').serialize();
   if (passwrd1 !== "") {
     var hash = hex_sha256(passwrd1);

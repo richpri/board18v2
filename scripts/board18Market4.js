@@ -3,6 +3,10 @@
  * implement the multi token selection logic for cases
  * where more than one token is on the same price box.
  *
+ * All BD18 global variables are contained in one
+ * 'master variable' called BD18.  This isolates 
+ * them from global variables in other packages
+ * 
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */

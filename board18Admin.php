@@ -194,11 +194,15 @@ if ($result) {
                 <label for="fname">Change First Name: </label>
                 <input type="text" name="fname" id="fname" class="reg"
                        value="<?php echo $firstname; ?>">
+                <label class="error" for="fname" id="fname_error">
+                  This field is required.</label>
               </p>
               <p>
                 <label for="lname">Change Last Name: </label>
                 <input type="text" name="lname" id="lname" class="reg"
                        value="<?php echo $lastname; ?>">
+                <label class="error" for="lname" id="lname_error">
+                  This field is required.</label>
               </p>
               <p>
                 <input type="submit" name="adminbutton" class="pwbutton"  

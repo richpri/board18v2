@@ -3,8 +3,12 @@
  * A right click event on the game board in the Map page can 
  * cause a context menu to be displayed. Whether this menu is 
  * displayed at all and the selection of items in this menu 
- * are both dependant on the context of the event. 
- *
+ * are both dependent on the context of the event. 
+ * 
+ * All BD18 global variables are contained in one
+ * 'master variable' called BD18.  This isolates 
+ * them from global variables in other packages
+ * 
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */

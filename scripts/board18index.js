@@ -201,10 +201,27 @@ function register() {
     }
     var email = $("input#email").val();
     if (email === "") {
-        $("#email_error").show();
+        $("#email_error").text('This field is required.').show();
         $("#email").focus();
         return false;
     }
+    if (email !== email.toLowerCase()) {
+        $("#email_error").text('Email address must be lower case.').show();
+        $("#email").focus();
+        return false;
+    }
+    var fname = $("input#fname").val();
+    if (fname === "") {
+        $("#fname_error").show();
+        $("#fname").focus();
+        return false;
+    }  
+    var lname = $("input#lname").val();
+    if (lname === "") {
+        $("#lname_error").show();
+        $("#lname").focus();
+        return false;
+    }    
     var regString = $('.reg').serialize();
     var hash = hex_sha256(passwrd1);
     regString += '&passwrd=' + hash;
