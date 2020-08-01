@@ -91,8 +91,10 @@ if ($result1) {
     </script> 
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
+    <!--
     <script type="text/javascript" src="scripts/jqueryMigrate.js">
     </script> 
+    --> 
     <script type="text/javascript" src="scripts/jquery.ui.position.js">
     </script>
     <script type="text/javascript" src="scripts/board18Market1.js">
