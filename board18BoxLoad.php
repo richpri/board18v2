@@ -40,8 +40,10 @@ if(isset($_POST['submit'])) { // If reload via zform submit.
     <link rel="stylesheet" href="style/board18BoxLoad.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script> 
+    <!--    
     <script type="text/javascript" src="scripts/jquery.ui.position.js">
     </script>
+    --> 
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <script type="text/javascript" src="scripts/board18BoxLoad.js">

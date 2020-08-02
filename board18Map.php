@@ -90,13 +90,15 @@ if ($result1) {
     <script type="text/javascript" src="scripts/jquery.js">
     </script>
     <!--
-    <script type="text/javascript" src="scripts/jqueryMigrate.js">
+    <script type="text/javascript" src="scripts/jquery-migrate.js">
     </script> 
     --> 
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
+    <!--    
     <script type="text/javascript" src="scripts/jquery.ui.position.js">
     </script>
+    --> 
     <script type="text/javascript" src="scripts/board18Map1.js">
     </script> 
     <script type="text/javascript" src="scripts/board18Map2.js">

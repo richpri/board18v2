@@ -129,7 +129,12 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           var boxURL = "board18Boxes.php?boxid=" + BD18.game.boxid;
           window.location = boxURL;
           return false;
-        }); // end button3 click
+        }); // end button4 click
+        $('#button5').click(function() {
+          var viewURL = "board18Map.php?dogame=" + BD18.game.gameid;
+          window.location = viewURL;
+          return false;
+        }); // end button5 click
       }); // end ready
     </script>
   </head>
@@ -190,6 +195,8 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
             <p>
               <input type="button" name="updatebutton" class="pwbutton"  
                      id="button1" value="Update Game" >
+              <input type="button" name="showbutton" class="pwbutton"  
+                     id="button5" value="Show Game" >
               <input type="button" name="boxbutton" class="pwbutton"  
                      id="button4" value="Go To Box" >
               <input type="button" name="resbutton" class="pwbutton"  

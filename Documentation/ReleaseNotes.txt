@@ -1,3 +1,9 @@
+BOARD18 2.6.2 Release Notes
+ 
+Changes from 2.6.1 Release:
+Implemented fix for Issue 169 - Display game from board18Games.
+Implemented fix for Issue 171 - Remove jQuery UI Position
+
 BOARD18 2.6.1 Release Notes
  
 Changes from 2.6.0 Release:
