@@ -57,10 +57,8 @@ if ($result1 && (mysqli_num_rows($result1) == 1)) {
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <!--
-    <script type="text/javascript" src="scripts/jquery-migrate.js">
+    <script type="text/javascript" src="scripts/jquery-migrate-3.3.0.js">
     </script> 
-    <script type="text/javascript" src="scripts/jquery.ui.position.js">
-    </script>
     --> 
     <script type="text/javascript" src="scripts/board18Market1.js">
     </script> 

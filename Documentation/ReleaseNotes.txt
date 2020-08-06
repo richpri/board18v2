@@ -1,3 +1,9 @@
+BOARD18 2.6.3 Release Notes
+ 
+Changes from 2.6.2 Release:
+Implemented fix for Issue 172 - Invalid constant usage in sendEmail.php
+Implemented fix for Issue 173 - General code cleanup following Bugs 165 & 171.
+ 
 BOARD18 2.6.2 Release Notes
  
 Changes from 2.6.1 Release:
