@@ -1,3 +1,9 @@
+BOARD18 2.6.4 Release Notes
+ 
+Changes from 2.6.3 Release:
+Implemented fix for Issue 176 - Enhance error reporting in emailPlayerID.php
+Implemented fix for Issue 177 - Remediation of deprecated jQery Statements Pt. 1
+
 BOARD18 2.6.3 Release Notes
  
 Changes from 2.6.2 Release:

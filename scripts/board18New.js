@@ -115,15 +115,15 @@ function newgameOK(response) {
     window.location = "access-denied.html";
   } else if (response === "nobox") {
     $("#bi_error").text('Invalid Game Box ID.').show();  
-    $("#boxid").focus();
+    $("#boxid") .trigger('focus');
   } else if (response === "dupname") {
     $("#sn_error").text('Duplicate Game Name is not allowed.').show();  
-    $("#sessionname").focus();
+    $("#sessionname") .trigger('focus');
   } else if (response.indexOf("noplayer") !== -1) {  
     // Response contains "noplayer".
     var plerr = 'Player #' + response.substr(9) + ' does not exist';
     $("#pc_error").text(plerr).show();  
-    $("#player1").focus();
+    $("#player1") .trigger('focus');
   } else if (response === "success") {
     $('#newgame .error').hide();
     $('#newgame :text').val('');
@@ -158,47 +158,47 @@ function newgame() {
   BD18.name = $("input#sessionname").val();  
   if (BD18.name === "") {  
     $("#sn_error").text('This field is required.').show();  
-    $("#sessionname").focus();  
+    $("#sessionname") .trigger('focus');  
     return;  
   }
   var format = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   if(format.test(BD18.name)){
     $("#sn_error").text('Game Name cannot contain special characters.').show();  
-    $("#sessionname").focus();  
+    $("#sessionname") .trigger('focus');  
     return; 
   }
   var ascii = /^[\x00-\x7F]*$/;
   if(!ascii.test(BD18.name)){
     $("#sn_error").text('Game Name can only contain ascii characters.').show();  
-    $("#sessionname").focus();  
+    $("#sessionname") .trigger('focus');  
     return; 
   }
   if(BD18.name.length > 25){
     $("#sn_error").text('Game Name must be 25 characters or less.').show();  
-    $("#sessionname").focus();  
+    $("#sessionname") .trigger('focus');  
     return; 
   }
   BD18.boxid = $("input#boxid").val();
   if (BD18.boxid === "") {  
     $("#bi_error").text('This field is required.').show();  
-    $("#boxid").focus();
+    $("#boxid") .trigger('focus');
     return; 
   }
   if (!$.isNumeric(BD18.boxid) || (parseInt(BD18.boxid) <= 0)) {  
     $("#bi_error").text('Invalid box id.').show();  
-    $("#boxid").focus();  
+    $("#boxid") .trigger('focus');  
     return;  
   }
   BD18.playerCount = $("input#pcount").val();
   if (BD18.playerCount === "") {  
     $("#pc_error").text('# of Players is required.').show();  
-    $("#pcount").focus();  
+    $("#pcount") .trigger('focus');  
     return;  
   }
   if (!isNumber(BD18.playerCount) || (BD18.playerCount < 1) || 
     (BD18.playerCount > 6)) {  
     $("#pc_error").text('# of players must be between 1 and 6.').show();  
-    $("#pcount").focus();  
+    $("#pcount") .trigger('focus');  
     return;  
   }
   var pp = 0;
@@ -210,14 +210,14 @@ function newgame() {
       pp = i + 1;
       BD18.errtxt = 'Player' + pp + ' is missing.';
       $("#pc_error").text(BD18.errtxt).show();  
-      $(this).focus();  
+      $(this) .trigger('focus');  
       return false;  
     } 
     if (BD18.player[i] !== "" && i >= BD18.playerCount) {  
       BD18.errtxt = 'There are more than ' + BD18.playerCount 
         + ' players.';
       $("#pc_error").text(BD18.errtxt).show();  
-      $("#pcount").focus();  
+      $("#pcount") .trigger('focus');  
       return false;  
     }
   });
@@ -226,7 +226,7 @@ function newgame() {
     BD18.playerCount, BD18.player); 
     if (dataString === undefined) {
       $("#pc_error").text('Do not duplicate player names.').show();  
-      $("#pcount").focus();  
+      $("#pcount") .trigger('focus');  
       return; 
     }
     var postString = 'newgame=' + dataString;

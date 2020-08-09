@@ -107,17 +107,17 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           var playerURL = "board18Players.php?login=" + $(this).html();
           window.location = playerURL;
         }); // end playerlist.click
-        $('#button1').click(function() {
+        $('#button1').on("click",function() {
           BD18.game.update = 'no';
           updateGame();
           return false;
         }); // end button1 click
-        $('#button2').click(function() {
+        $('#button2').on("click",function() {
           BD18.game.update = 'no';
           paintGame();
           return false;
         }); // end button2 click
-        $('#button3').click(function() {
+        $('#button3').on("click",function() {
           $('#playerlist').remove();
           $('#thegame').slideUp(300);
           BD18.game.update = 'no';
@@ -125,12 +125,12 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           doPageLinks();
           return false;
         }); // end button3 click
-        $('#button4').click(function() {
+        $('#button4').on("click",function() {
           var boxURL = "board18Boxes.php?boxid=" + BD18.game.boxid;
           window.location = boxURL;
           return false;
         }); // end button4 click
-        $('#button5').click(function() {
+        $('#button5').on("click",function() {
           var viewURL = "board18Map.php?dogame=" + BD18.game.gameid;
           window.location = viewURL;
           return false;

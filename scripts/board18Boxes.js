@@ -209,7 +209,7 @@ function boxResult(response) {
   } else if (response === 'bname') {  
     var logmessage = 'This box name is already in use.';
     $("#bname_error").text(logmessage).show();
-    $("#bname").focus();  
+    $("#bname") .trigger('focus');  
   } else if (response === 'fail') {
     var errmsg = 'Program error in boxUpdate.php.\n';
     errmsg += 'Please contact the BOARD18 webmaster.';
@@ -251,13 +251,13 @@ function updateBox() {
     $("#author_error").text('This field is required.').show();
   }
   if (bname === "") {
-    $("#bname").focus();
+    $("#bname") .trigger('focus');
     return false;
   } else if (version === "") {
-    $("#version").focus();
+    $("#version") .trigger('focus');
     return false;
   } else if (author === "") {
-    $("#author").focus();
+    $("#author") .trigger('focus');
     return false; 
   } else {
     BD18.box.newBox = bname;

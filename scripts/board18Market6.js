@@ -184,7 +184,7 @@ function ContextMenu(event) {
     menuList +=  key + "'>" + items[key].name + "</li>";
   }
   $('#onMapMenu ul').html(menuList);
-  $('#onMapMenu li').click(function(e){
+  $('#onMapMenu li').on("click",function(e){
                            doit(this.getAttribute("data-action"),e);
                           });
 // [BD18.xPx, BD18.yPx] = offsetIn(event, BD18.canvas1);

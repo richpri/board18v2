@@ -14,7 +14,7 @@ var BD18 = {};
 BD18.noteTimeout = null; // Used by doLogNote().
 BD18.welcomename = null; // Used by doLogNote().
 BD18.help = "https://wiki.board18.org/w/Player%27s_Guide_V2.6";
-BD18.version = "2.6.3";
+BD18.version = "2.6.4";
 
 /* Function setPage() adjusts the height and width
  * of rightofpage and the height of lefttofpage.
@@ -36,12 +36,12 @@ function setPage()
   else $('#leftofpage').css('height', winH-90);
 }
 
-/* Function resize() waits for 200 ms before
+/* The on resize event waits for 200 ms before
  * executing setPage. Multiple window resize  
  * events that occur within this time peroid 
  * will only trigger the setPage function once.
  */  
-$(window).resize(function() 
+$(window).on("resize", function() 
 {
   if(this.resizeTO) clearTimeout(this.resizeTO);
   this.resizeTO = setTimeout(function() 
@@ -49,7 +49,7 @@ $(window).resize(function()
     $(this).trigger('resizeEnd');
   }, 200);
 });
-$(window).bind('resizeEnd', function() {
+$(window).on('resizeEnd', function() {
   setPage();
 });
 

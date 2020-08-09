@@ -97,7 +97,7 @@ if ($result) {
           administrate('<?php echo $passwd; ?>');
           return false;
         }); // end admin
-        $("#button2").click(function() {
+        $("#button2").on("click",function() {
           $('.error').hide();
           $('#admin form #pname').val('<?php echo $login; ?>');
           $('#admin form #email').val('<?php echo $email; ?>');
@@ -108,7 +108,7 @@ if ($result) {
           $('#admin form #passwrd2').val('');
           return false;
         }); // end button2 click
-        $("#button4").click(function() {
+        $("#button4").on("click",function() {
           window.location = "board18Main.php";
           return false;
         }); // end button4 click

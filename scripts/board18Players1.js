@@ -210,15 +210,15 @@ function playerResult(response) {
   } else if (response === 'login') {  
     var logmessage = 'This player ID is already in use.';
     $("#login_error").text(logmessage).show();
-    $("#login").focus();  
+    $("#login") .trigger('focus');  
   } else if (response === 'bademail') {
     $("#email_error").text('Invalid email format.').show();
-    $("#email").focus();
+    $("#email") .trigger('focus');
   } else if (response.substring(0, 5) === 'email') {
     var logmessage = 'Player ' + response.substring(5);
     logmessage += ' is already using this email address.';
     $("#email_error").text(logmessage).show();
-    $("#email").focus();
+    $("#email") .trigger('focus');
   } else if (response === 'fail') {
     var errmsg1 = 'Program error in playerUpdate.php.\n';
     errmsg1 += 'Please contact the BOARD18 webmaster.';
@@ -250,7 +250,7 @@ function updatePlayer() {
   var name = $("input#login").val();
   if (name === "") {
     $("#login_error").text('This field is required.').show();
-    $("#login").focus();
+    $("#login") .trigger('focus');
     return false;
   } else {
     BD18.player.newLogin = name;
@@ -258,24 +258,24 @@ function updatePlayer() {
   var email = $("input#email").val();
   if (email === "") {
       $("#email_error").text('This field is required.').show();
-      $("#email").focus();
+      $("#email") .trigger('focus');
       return false;
   }
   if (email !== email.toLowerCase()) {
       $("#email_error").text('Email address must be lower case.').show();
-      $("#email").focus();
+      $("#email") .trigger('focus');
       return false;
   }
   var fname = $("input#fname").val();
   if (fname === "") {
       $("#fname_error").show();
-      $("#fname").focus();
+      $("#fname") .trigger('focus');
       return false;
   }  
   var lname = $("input#lname").val();
   if (lname === "") {
       $("#lname_error").show();
-      $("#lname").focus();
+      $("#lname") .trigger('focus');
       return false;
   }
   var aString = $('.reg').serialize();

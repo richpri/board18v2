@@ -72,18 +72,18 @@ function filters() {
   var format = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   if(format.test(BD18.bname)){
     $("#bname_error").text('Box Name cannot contain special characters.').show();  
-    $("#bname").focus();  
+    $("#bname") .trigger('focus');  
     return; 
   }
   var ascii = /^[\x00-\x7F]*$/;
   if(!ascii.test(BD18.bname)){
     $("#bname_error").text('Box Name can only contain ascii characters.').show();  
-    $("#bname").focus();  
+    $("#bname") .trigger('focus');  
     return; 
   }
   if(BD18.bname.length > 25){
     $("#bname_error").text('Box Name must be 25 characters or less.').show();  
-    $("#bname").focus();  
+    $("#bname") .trigger('focus');  
     return; 
   }
   BD18.gstat = $("input[name='status']:checked").val();

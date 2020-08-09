@@ -89,10 +89,10 @@ if ($result1) {
     <link rel="stylesheet" href="style/board18Map.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script>
-    <!--
+<!--
     <script type="text/javascript" src="scripts/jquery-migrate-3.3.0.js">
     </script> 
-    --> 
+-->
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <script type="text/javascript" src="scripts/board18Map1.js">
@@ -127,18 +127,18 @@ if ($result1) {
         $('#lognote').text(startMessage);
         setUpKeys();
         $('#content').on({'click':mapMouseEvent});
-        $("#snapname").submit(function() {  
+        $("#snapname").on("submit",function() {  
           snapshot();
           return false;
         }); // end snapname submit
-        $("#button2").click(function(){  //cancel snapshot
+        $("#button2").on("click",function(){  //cancel snapshot
           $('#snapname form').slideUp(300);
           BD18.isSnap = false;
           return false;
         }); // end button2 click
         var gameToPlay = 'session='+BD18.gameID;
         $.getJSON("php/gameSession.php", gameToPlay, loadSession)
-                .error(function() {
+                .fail(function() {
           var msg = "Error loading game file. \n";
           alert(msg);
         });
@@ -183,7 +183,7 @@ if ($result1) {
               <ul>
                 <li onclick="$('#snapname .error').hide();$('#snapname :text').val('');
                   $('#snapname form').slideDown(300);
-					        BD18.isSnap = true;$('#rname').focus();">Take Snapshot(S)</li>
+		  BD18.isSnap = true;$('#rname').trigger('focus');">Take Snapshot(S)</li>
                 <li onclick="window.location = 'board18SnapList.php?gameid=' + BD18.gameID;">
                   Show Snap List</li>
               </ul>

@@ -89,39 +89,39 @@ if ($result2 && mysqli_num_rows($result2) == 1) {
           changePlayer(BD18.login, BD18.dogame);  
           event.preventDefault();
         }); // end playerform
-        $('#button1').click(function() {
+        $('#button1').on("click",function() {
           deleteLink(BD18.dogame, BD18.selectDelete);
           $('#delpop').slideUp(300);
           $('#delgrey').hide();
           return false;
         }); // end button1 click
-        $('#button2').click(function() {
+        $('#button2').on("click",function() {
           $('#delpop').slideUp(300);
           $('#delgrey').hide();
           return false;
         }); // end button2 click
-        $('#button4').click(function() {
+        $('#button4').on("click",function() {
           var swapstring = '&gameid=' + BD18.dogame;
           $.post('php/statSwap.php', swapstring,  statswapOK);
           return false;
         }); // end button4 click
-        $('#button5').click(function() {
+        $('#button5').on("click",function() {
           var linkstring = 'gameid=' + BD18.dogame;
           $.post('php/linkGet.php', linkstring,  linkReturn);
           return false;
         }); // end button5 click
-        $('#button6').click(function() {
+        $('#button6').on("click",function() {
           window.location = "board18Main.php";
           return false;
         }); // end button6 click
         $("#linklist").on("click", ".deleteflag", function() {
           deleteCheck($(this).html());
         }); // end linklist.click
-        $('#button11').click(function() {
+        $('#button11').on("click",function() {
           addLink();
           return false;
         }); // end button15 click
-        $('#button15').click(function() {
+        $('#button15').on("click",function() {
           $('#linkdiv').slideUp(300);
           $('#sidebar').show();
           return false;

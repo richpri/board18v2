@@ -110,19 +110,19 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
         $("#players").on("click", ".playerid", function() {
           doPlayer($(this).html());
         }); // end players.click
-        $('#button1').click(function() {
+        $('#button1').on("click",function() {
           BD18.player.update = 'no';
           BD18.first = 0;
           updatePlayer();
           return false;
         }); // end button1 click
-        $('#button2').click(function() {
+        $('#button2').on("click",function() {
           BD18.player.update = 'no';
           BD18.first = 0;
           paintPlayer();
           return false;
         }); // end button2 click
-        $('#button3').click(function() {
+        $('#button3').on("click",function() {
           $('#gamelist').remove();
           $('#theplayer').slideUp(300);
           doPageLinks();
@@ -130,7 +130,7 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           BD18.first = 0;
           return false;
         }); // end button3 click
-        $('#button4').click(function() {
+        $('#button4').on("click",function() {
           $('#theplayer').slideUp(300);
           $('#gamelist').remove();
           $('.error').hide();
@@ -140,38 +140,38 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           BD18.first = 0;
           return false;
         }); // end button4 click
-        $('#button5').click(function() {
+        $('#button5').on("click",function() {
           BD18.player.update = 'no';
           deletePlayer();
           return false;
         }); // end button5 click
-        $('#button11').click(function() {
+        $('#button11').on("click",function() {
           doEmail();
           return false;
         }); // end button11 click
-        $('#button12').click(function() {
+        $('#button12').on("click",function() {
           $('.error').hide();
           $("#subject1").val('');
           $("#body1").val('');
           return false;
         }); // end button12 click
-        $('#button13').click(function() {
+        $('#button13').on("click",function() {
           $('#onemail').slideUp(300);
           $('#theplayer').slideDown(300);
           playerGames();
           return false;
         }); // end button13 click
-        $('#button21').click(function() {
+        $('#button21').on("click",function() {
           sendBroadcast();  
           return false;
         }); // end button21 click
-        $('#button22').click(function() {
+        $('#button22').on("click",function() {
           $('.error').hide();
           $("#subject2").val('');
           $("#body2").val('');
           return false;
         }); // end button22 click
-        $('#button23').click(function() {
+        $('#button23').on("click",function() {
           $('#allmail').slideUp(300);
           return false;
         }); // end button23 click

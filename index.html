@@ -52,23 +52,23 @@ A copy of this license can be found in the LICENSE.text file.
           login();
           return false;
         }); // end login
-        $("#buttonx").click(function(){
+        $("#buttonx").on("click",function(){
           $('#lostid form').slideDown(300);
           return false;
         }); // end buttonx click
-        $("#regbutton").click(function(){
+        $("#regbutton").on("click",function(){
           $('#register .error').hide();
           $('#register :password').val('');
           $('#register :text').val('');
           $('#register form').slideDown(300);
-          $("#newuser").focus();
+          $("#newuser") .trigger('focus');
           return false;
         }); // end regbutton click
-        $("#helpbutton").click(function(){
+        $("#helpbutton").on("click",function(){
           window.open(BD18.help, "HelpGuide");
           return false;
         }); // end helpbutton click
-        $("#buttony").click(function(){
+        $("#buttony").on("click",function(){
           $('#lostpw form').slideDown(300);
           return false;
         }); // end buttony click
@@ -76,7 +76,7 @@ A copy of this license can be found in the LICENSE.text file.
           register();
           return false;
         }); // end register submit
-        $("#button3").click(function(){  //cancel register
+        $("#button3").on("click",function(){  //cancel register
           $('#register form').slideUp(300);
           return false;
         }); // end button3 click
@@ -84,7 +84,7 @@ A copy of this license can be found in the LICENSE.text file.
           lostid();
           return false;
         }); // end lostid submit
-        $("#button5").click(function(){
+        $("#button5").on("click",function(){
           $('#lostid form').slideUp(300);
           $('#login form').slideDown(300);
           return false;
@@ -93,17 +93,17 @@ A copy of this license can be found in the LICENSE.text file.
           lostpw();
           return false;
         }); // end lostpw submit
-        $("#button7").click(function(){
+        $("#button7").on("click",function(){
           $('#lostpw form').slideUp(300);
           $('#login form').slideDown(300);
           return false;
         }); // end button5 click      
-        $("#content").click(function(){
+        $("#content").on("click",function(){
           $('#lostpw form').hide();
           $('#lostid form').hide();
           $('#register form').hide();
         }); // end content click
-        $("#leftofpage").click(function(){
+        $("#leftofpage").on("click",function(){
           $('#lostpw form').hide();
           $('#lostid form').hide();
           $('#register form').hide();

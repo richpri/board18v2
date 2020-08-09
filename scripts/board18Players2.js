@@ -50,7 +50,7 @@ function doEmail() {
   var body = $("#body1").val();
   if (subject === "") {
     $("#subject1_error").text('This field is required.').show();
-    $("#subject1").focus();
+    $("#subject1") .trigger('focus');
     return false;
   }
   BD18.mailError = false;
@@ -73,7 +73,7 @@ function sendBroadcast() {
   var body = $("#body2").val();
   if (subject === "") {
     $("#subject2_error").text('This field is required.').show();
-    $("#subject2").focus();
+    $("#subject2") .trigger('focus');
     return false;
   }
   BD18.mailError = false;

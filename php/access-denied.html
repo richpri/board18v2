@@ -40,7 +40,7 @@ A copy of this license can be found in the LICENSE.text file.
           $('#register :password').val('');
           $('#register :text').val('');
           $('#register form').slideDown(300);
-          $("#newuser").focus();
+          $("#newuser") .trigger('focus');
           return false;
         }); // end regbutton click
         $("#helpbutton").click(function(){

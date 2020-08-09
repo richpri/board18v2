@@ -227,7 +227,7 @@ function loadSession(session) {
 	var boxstring = 'box=';
 	boxstring = boxstring + BD18.gm.boxID;
 	$.getJSON("php/gameBox.php", boxstring, loadBox)
-	    .error(function() { 
+	    .fail(function() { 
 		    var msg = "Error loading game box file. \n";
 		    msg = msg + "This is probably due to a game box format error.";
 		    alert(msg); 

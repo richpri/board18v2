@@ -57,20 +57,20 @@ if(isset($_POST['submit'])) { // If reload via zform submit.
           echo "zipBoxOk($reportout);";
         }
         ?>
-        $('#buttonz2').click(function() {
+        $('#buttonz2').on("click",function() {
           $('#content .error').hide();
           $('#zfile').val('');
           return false;
         }); // end buttonz2 click
-        $('#buttonz3').click(function() {
+        $('#buttonz3').on("click",function() {
           window.location = 'board18Main.php';
           return false;
         }); // end buttonz3 click
-        $('#buttonf').click(function() {
+        $('#buttonf').on("click",function() {
           $('#failmsg').hide();
           return false;
         }); // end buttonf click
-        $('#buttons').click(function() {
+        $('#buttons').on("click",function() {
           $('#successmsg').hide();
           return false;
         }); // end buttons click

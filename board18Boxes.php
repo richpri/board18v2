@@ -105,17 +105,17 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           var gameURL = "board18Games.php?gameid=" + $(this).html();
           window.location = gameURL;
         }); // end gameid.click
-        $('#button1').click(function() {
+        $('#button1').on("click",function() {
           BD18.box.update = 'no';
           updateBox();
           return false;
         }); // end button1 click
-        $('#button2').click(function() {
+        $('#button2').on("click",function() {
           BD18.box.update = 'no';
           paintBox();
           return false;
         }); // end button2 click
-        $('#button3').click(function() {
+        $('#button3').on("click",function() {
           $('#playerlist').remove();
           $('#thebox').slideUp(300);
           BD18.box.update = 'no';

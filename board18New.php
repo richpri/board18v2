@@ -60,7 +60,7 @@ if ($result) {
           newgame();
           return false;
         }); // end newgame
-        $('#button2').click(function() {
+        $('#button2').on("click",function() {
           window.location = "board18Main.php";
           return false;
         }); // end button2 click

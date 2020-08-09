@@ -210,7 +210,7 @@ function gameResult(response) {
   } else if (response === 'gname') {  
     var logmessage = 'This game name is already in use.';
     $("#gname_error").text(logmessage).show();
-    $("#gname").focus();  
+    $("#gname") .trigger('focus');  
   } else if (response === 'fail') {
     var errmsg = 'Program error in gameUpdate.php.\n';
     errmsg += 'Please contact the BOARD18 webmaster.';
@@ -242,7 +242,7 @@ function updateGame() {
   var gname = $("input#gname").val();
   if (gname === "") {
     $("#gname_error").text('This field is required.').show();
-    $("#gname").focus();
+    $("#gname") .trigger('focus');
     return false;
   } else {
     BD18.game.newGname = gname;

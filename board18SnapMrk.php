@@ -54,12 +54,12 @@ if ($result1 && (mysqli_num_rows($result1) == 1)) {
     <link rel="stylesheet" href="style/board18Market.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script> 
-    <script type="text/javascript" src="scripts/board18com.js">
-    </script>
-    <!--
+<!--
     <script type="text/javascript" src="scripts/jquery-migrate-3.3.0.js">
     </script> 
-    --> 
+-->
+    <script type="text/javascript" src="scripts/board18com.js">
+    </script>
     <script type="text/javascript" src="scripts/board18Market1.js">
     </script> 
     <script type="text/javascript" src="scripts/board18Market2.js">
@@ -83,7 +83,7 @@ if ($result1 && (mysqli_num_rows($result1) == 1)) {
         setUpKeys();
         var snapToShow = 'snapshot='+BD18.snapID;
         $.getJSON("php/gameSnap.php", snapToShow, loadSession)
-                .error(function() {
+                .fail(function() {
           var msg = "Error loading game file. \n";
           alert(msg);
         });

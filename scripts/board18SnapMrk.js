@@ -19,7 +19,7 @@
  *    X   Logout
  */
 function setUpKeys() {
-  $(document).keydown(function(e){
+  $(document).on("keydown",function(e){
     if (BD18.isSnap === false) {
       var keycode = (e.keyCode ? e.keyCode : e.which);
       switch(keycode) {

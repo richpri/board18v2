@@ -73,7 +73,7 @@ function changePlayerResult(response) {
   }
   else if (response === 'dupadd') {
     $("#pname4_error").text('Player is already in game.').show();
-    $("#pname4").focus();
+    $("#pname4") .trigger('focus');
   }
   else if (response === 'fail') {
     var errmsg = 'Data Base update failed.\n';
@@ -101,7 +101,7 @@ function changePlayer(login, game) {
     if (prem === login) { // Is player trying to remove himself??
       if (BD18.self === 0) { // Is this the first try?
         $("#pname3_error").show(); // Ask if he is sure.
-        $("#pname3").focus();
+        $("#pname3") .trigger('focus');
         BD18.self = 1;
         return false;
       }
@@ -115,7 +115,7 @@ function changePlayer(login, game) {
     BD18.padd = padd;
   } else if (BD18.mode === 0) { // If nothing to do.
     $("#pname4_error").show();
-    $("#pname4").focus();
+    $("#pname4") .trigger('focus');
     return false;
   }
   var cString = 'mode=' + BD18.mode.toString();
@@ -253,7 +253,7 @@ function addReturn(response) {
     var dupNote = 'A link named ' + BD18.newlink + ' already exists.';
     doLogNote(dupNote);
     $("#lname1_error").show();
-    $("#lname1").focus();
+    $("#lname1") .trigger('focus');
   } else if (response === 'fail') {
     var errmsg1 = 'Program error in linkDel.php.\n';
     errmsg1 += 'Please contact the BOARD18 webmaster.';
@@ -275,14 +275,14 @@ function addLink() {
   var lname1 = $("input#lname1").val();
   if (lname1 === "") {
     $("#lname1_error").show();
-    $("#lname1").focus();
+    $("#lname1") .trigger('focus');
     return false;
   }
   BD18.newlink = lname1;
   var lnkurl1 = $("input#lnkurl1").val();
   if (lnkurl1 === "") {
     $("#lnkurl1_error").show();
-    $("#lnkurl1").focus();
+    $("#lnkurl1") .trigger('focus');
     return false;
   }
   var outstring = "gameid=" + BD18.dogame + "&linkname=";
