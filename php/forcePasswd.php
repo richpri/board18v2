@@ -21,15 +21,15 @@ require_once('config.php');
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
 function clean($conn, $str) {
-  $str = @trim($str);
+  $str = trim($str);
   return mysqli_real_escape_string($conn, $str);
 }
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-		error_log('Failed to connect to server: ' . mysqli_connect_error());
-    echo 'fail';
-		exit; 
+  error_log('forcePasswd.php: Failed to connect to server: ' . mysqli_connect_error());
+  echo 'fail';
+  exit; 
 }
 
 //Sanitize the POST values
@@ -53,7 +53,7 @@ if ($result1) {
     }
   }
 } else {
-  error_log("Check for existing user: Query failed");
+  error_log("forcePasswd.php: Check for existing user: Query failed");
   echo 'fail';
 	exit; 
 }
@@ -65,7 +65,7 @@ $result = mysqli_query($link, $qry);
 if ($result) {   // Was the query successful
   echo 'success';
 } else {
-  error_log("Update player: Query failed");
+  error_log("forcePasswd.php: Update player: Query failed");
   echo 'fail';
 	exit; 
 }

@@ -21,7 +21,7 @@ require_once('sendEmail.php');
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('emailPlayerID.php: C onnect Failed: ' . mysqli_connect_error());
+  error_log('emailPlayerID.php: Connect Failed: ' . mysqli_connect_error());
   echo 'fail';
   exit; 
 }
@@ -49,10 +49,7 @@ $qry1 = "SELECT * FROM players WHERE email='$email'";
 $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) === 0) { // No email!
-    echo 'fail';
-    $eerror = "emailPlayerID.php: Input address: " . $email;
-    error_log("emailPlayerID.php: No Email address found!");
-    error_log($eerror);
+    echo 'noemail';
     exit;
   } else { // Found email address in database!
     $playerrow = mysqli_fetch_assoc($result1);

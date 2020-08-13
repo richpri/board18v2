@@ -23,7 +23,7 @@ require_once('sendEmail.php');
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  error_log('emailPlayer.php: Failed to connect to server: ' . mysqli_connect_error());
   echo 'fail';
   exit; 
 }
@@ -47,7 +47,7 @@ $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) === 0) { // No player!
     echo 'fail';
-    error_log("Look up player: Player $login not found!");
+    error_log("emailPlayer.php: Look up player: Player $login not found!");
     exit;
   } else { // Found login in database!
     $playerrow = mysqli_fetch_assoc($result1);
@@ -60,7 +60,7 @@ if ($result1) {
   }
 } else {
   echo 'fail';
-  error_log("Look up player: Query failed");
+  error_log("emailPlayer.php: Look up player: Query failed");
   exit;
 }
 ?>

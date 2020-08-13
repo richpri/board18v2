@@ -1,3 +1,9 @@
+BOARD18 2.6.5 Release Notes
+ 
+Changes from 2.6.4 Release:
+Implemented fix for Issue 181 - Enhance PHP error logging part 2
+Implemented fix for Issue 182 - Email address mismatch
+
 BOARD18 2.6.4 Release Notes
  
 Changes from 2.6.3 Release:

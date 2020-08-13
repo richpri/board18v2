@@ -81,7 +81,7 @@ if ($result1) {
         sendEmail($email, $subject, $body);
         exit; 
       } else { 
-        error_log("Update password: Query failed");
+        error_log("emailPassword.php: Update password: Query failed");
         echo 'fail';
 	      exit; 
       }
@@ -89,7 +89,7 @@ if ($result1) {
   }
 } else {
   echo 'fail';
-  error_log("Look up login name: Query failed");
+  error_log("emailPassword.php: Look up login name: Query failed");
   exit;
 }
 ?>

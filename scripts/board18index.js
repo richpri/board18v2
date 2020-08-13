@@ -244,6 +244,10 @@ function emailPlayerResult(response) {
         $("#email1_error").text('Format of email address is invalid.')
                 .show();
         $("#email1") .trigger('focus');
+    } else if (response === 'noemail') {
+        $("#email1_error").text('No player record for entered email address.')
+                .show();
+        $("#email1") .trigger('focus');
     } else if (response === 'fail') {
         var errmsg1 = 'Program error in emailPlayerID.php.\n';
         errmsg1 += 'Please contact the BOARD18 webmaster.';
