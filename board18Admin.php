@@ -89,11 +89,11 @@ if ($result) {
         if ("<?php echo "$level"; ?>" === "author") {
           $('#authorlevel').show();
         } // end authorlevel
-        $("#passwd").submit(function() {
+        $("#passwd").on( "submit",function() {
           forceChange('<?php echo $passwd; ?>');
           return false;
         }); // end passwd
-        $("#admin").submit(function() {
+        $("#admin").on( "submit",function() {
           administrate('<?php echo $passwd; ?>');
           return false;
         }); // end admin

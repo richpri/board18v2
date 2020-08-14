@@ -50,13 +50,13 @@ if ($result) {
           errmsg += 'Please contact the BOARD18 webmaster.';
           alert(errmsg);
         }
-        $('.plid').mousedown(function() {
+        $('.plid').on( "mousedown",function() {
           addPlayer($(this).attr('id'));
         });
-        $('.gbrow').mousedown(function() {
+        $('.gbrow').on( "mousedown",function() {
           $('#boxid').val($(this).children('.gbid').text());
         });
-        $("#newgame").submit(function() {
+        $("#newgame").on( "submit",function() {
           newgame();
           return false;
         }); // end newgame

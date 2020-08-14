@@ -29,7 +29,7 @@ A copy of this license can be found in the LICENSE.text file.
         $('.error').hide();
         var dString = 'gstat=Active';
         $.post('php/allGameList.php', dString, listReturn);
-        $("#filters").submit(function() {
+        $("#filters").on( "submit",function() {
           filters();
           return false;
         }); // end filters

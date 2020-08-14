@@ -48,7 +48,7 @@ A copy of this license can be found in the LICENSE.text file.
         } else {
           $('#rememberme').prop('checked', false);
         } // end Persistent check
-        $("#login").submit(function() {  
+        $("#login").on("submit",function() {  
           login();
           return false;
         }); // end login
@@ -72,7 +72,7 @@ A copy of this license can be found in the LICENSE.text file.
           $('#lostpw form').slideDown(300);
           return false;
         }); // end buttony click
-        $("#register").submit(function() {  
+        $("#register").on("submit",function() {  
           register();
           return false;
         }); // end register submit
@@ -80,7 +80,7 @@ A copy of this license can be found in the LICENSE.text file.
           $('#register form').slideUp(300);
           return false;
         }); // end button3 click
-        $("#lostid").submit(function() {  
+        $("#lostid").on("submit",function() {  
           lostid();
           return false;
         }); // end lostid submit
@@ -89,7 +89,7 @@ A copy of this license can be found in the LICENSE.text file.
           $('#login form').slideDown(300);
           return false;
         }); // end button5 click
-        $("#lostpw").submit(function() {  
+        $("#lostpw").on("submit",function() {  
           lostpw();
           return false;
         }); // end lostpw submit

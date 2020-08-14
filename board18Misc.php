@@ -79,13 +79,13 @@ if ($result2 && mysqli_num_rows($result2) == 1) {
         BD18.login = '<?php echo $login; ?>';
         BD18.gname = '<?php echo $gname; ?>'; 
         BD18.dogame = '<?php echo $dogame; ?>'; 
-        $('.plid').mousedown(function() {
+        $('.plid').on( "mousedown",function() {
           $('#pname4').val($(this).attr('id'));
         });
-        $('.playerrow').mousedown(function() {
+        $('.playerrow').on( "mousedown",function() {
           $('#pname3').val($(this).children('.login').text());
         });
-        $('#playerform').submit(function(event) {
+        $('#playerform').on( "submit",function(event) {
           changePlayer(BD18.login, BD18.dogame);  
           event.preventDefault();
         }); // end playerform

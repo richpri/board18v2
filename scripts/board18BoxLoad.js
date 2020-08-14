@@ -54,7 +54,7 @@ function doMail(report,login) {
  * On a status of success or email it will send an email to the author.
  */
 function zipBoxOk(resp) {
- // var resp = jQuery.parseJSON(status); 
+ // var resp = JSON.parse(status); 
   if (resp.stat === 'nofile') {
     $("#zfile_error").text('The input zip file is missing.').show();
     $("#zfile") .trigger('focus');

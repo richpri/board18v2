@@ -17,7 +17,7 @@ function listReturn(response) {
   if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
     window.location = "access-denied.html";
   }
-  var resp = jQuery.parseJSON(response);
+  var resp = JSON.parse(response);
   if (resp.stat === 'success') {
     var boxHTML= '<table id="boxlist"> <tr><th>Box ID</th>';
     boxHTML+= '<th>Box Name</th><th>Creation Date</th><th>Status</th></tr>';
@@ -169,7 +169,7 @@ function getReturn(response) {
   if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
     window.location = "access-denied.html";
   }
-  var resp = jQuery.parseJSON(response);
+  var resp = JSON.parse(response);
   if (resp.stat === 'success' || resp.stat === 'nogames') {
     BD18.box.stat = resp.stat;
     BD18.box.boxid = resp.boxid;

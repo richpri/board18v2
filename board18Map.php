@@ -89,10 +89,8 @@ if ($result1) {
     <link rel="stylesheet" href="style/board18Map.css" />
     <script type="text/javascript" src="scripts/jquery.js">
     </script>
-<!--
     <script type="text/javascript" src="scripts/jquery-migrate-3.3.0.js">
     </script> 
--->
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
     <script type="text/javascript" src="scripts/board18Map1.js">

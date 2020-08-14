@@ -18,7 +18,7 @@ function listReturn(response) {
   if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
     window.location = "access-denied.html";
   }
-  var resp = jQuery.parseJSON(response);
+  var resp = JSON.parse(response);
   if (resp.stat === 'success') {
     var playerHTML= '<table id="playerlist"> <tr>';
     playerHTML+= '<th>Player ID</th> <th>First Name</th>';
@@ -171,7 +171,7 @@ function getReturn(response) {
   if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
     window.location = "access-denied.html";
   }
-  var resp = jQuery.parseJSON(response);
+  var resp = JSON.parse(response);
   if (resp.stat === 'success' || resp.stat === 'nogames') {
     BD18.player.stat = resp.stat;
     BD18.player.playerid = resp.playerid;

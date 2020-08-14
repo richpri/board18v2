@@ -51,7 +51,7 @@ function loginOK(response) {
     if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
         window.location = "access-denied.html";
     }
-    var resp = jQuery.parseJSON(response);
+    var resp = JSON.parse(response);
     if (resp.stat === 'success') {
         $('#login #password').val('');
         $('#login :text').val('');

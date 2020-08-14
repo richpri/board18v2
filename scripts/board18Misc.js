@@ -148,7 +148,7 @@ function changePlayer(login, game) {
   if (response.indexOf("<!doctype html>") !== -1) { // User has timed out.
     window.location = "access-denied.html";
   }
-  var resp = jQuery.parseJSON(response);
+  var resp = JSON.parse(response);
   var linkHTML;
   if (resp.stat === 'success') {
     linkHTML= '<table id="links"> <tr><th>Name</th>';
