@@ -1,15 +1,22 @@
 <?php
 /*
- * The board18New.php page contains a form that can be used to create 
- * a new BOARD18 game session. It displays a list of the available game
- * boxes and a list of the available players as aids to filling out the form. 
+ * The board18New.php page contains a set of forms that can be  
+ * used to create a new BOARD18 game session.  
  * 
- * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * Copyright (c) 2020 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
 
 require_once('php/auth.php');
-require_once('php/makeTables.php');
+require_once('php/config.php');
+
+$theLink = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+$open = '';
+if (!$theLink) {
+  error_log('board18New.php: mysqli_connect failed: ' . mysqli_connect_error());
+  $open = 'fail';
+  exit;
+}
 
 $qry = "SELECT login FROM players WHERE player_id = $loggedinplayer";
 $result = mysqli_query($theLink, $qry);
@@ -18,11 +25,11 @@ if ($result) {
     $row = mysqli_fetch_array($result);
     $login = $row[0];
   } else {
-    error_log('SELECT login: no player found.');
+    error_log('board18New.php: SELECT login: no player found.');
     $open = 'fail';
   }
 } else {
-  error_log('SELECT login: select call failed.');
+  error_log('board18New.php: SELECT login: select call failed.');
   $open = 'fail';
   exit;
 }
@@ -40,7 +47,9 @@ if ($result) {
     </script>
     <script type="text/javascript" src="scripts/board18com.js">
     </script>
-    <script type="text/javascript" src="scripts/board18New.js">
+    <script type="text/javascript" src="scripts/board18New1.js">
+    </script>
+    <script type="text/javascript" src="scripts/board18New2.js">
     </script>
     <script type="text/javascript" >
       $(function() {
@@ -50,22 +59,97 @@ if ($result) {
           errmsg += 'Please contact the BOARD18 webmaster.';
           alert(errmsg);
         }
-        $('.plid').on( "mousedown",function() {
-          addPlayer($(this).attr('id'));
-        });
-        $('.gbrow').on( "mousedown",function() {
-          $('#boxid').val($(this).children('.gbid').text());
-        });
-        $("#newgame").on( "submit",function() {
-          newgame();
+//      buttons on list1 form
+        $('#byid01').on("click",function() {
+          switchtoid();
           return false;
-        }); // end newgame
+        }); // end byid01 click
+        $('#byfn01').on("click",function() {
+          switchtofn();
+          return false;
+        }); // end byfn01 click
+        $('#byln01').on("click",function() {
+          switchtoln();
+          return false;
+        }); // end byln01 click
+        $('#flt01').on("click",function() {
+          dofilter();
+          return false;
+        }); // end flt01 click
+//      buttons on list2 form
+        $('#box02').on("click",function() {
+          $('.outbox').hide(); // hide previous list
+          fillBoxList();
+          return false;
+        }); // end byid02 click
+        $('#byfn02').on("click",function() {
+          switchtofn();
+          return false;
+        }); // end byfn02 click
+        $('#byln02').on("click",function() {
+          switchtoln();
+          return false;
+        }); // end byln02 click
+//      buttons on list3 form
+        $('#box03').on("click",function() {
+          $('.outbox').hide(); // hide previous list
+          fillBoxList();
+          return false;
+        }); // end byid03 click
+        $('#byid03').on("click",function() {
+          switchtoid();
+          return false;
+        }); // end byfn03 click
+        $('#byln03').on("click",function() {
+          switchtoln();
+          return false;
+        }); // end byln03 click
+//      buttons on list4 form
+        $('#box04').on("click",function() {
+          $('.outbox').hide(); // hide previous list
+          fillBoxList();
+          return false;
+        }); // end byid03 click
+        $('#byfn04').on("click",function() {
+          switchtofn();
+          return false;
+        }); // end byfn03 click
+        $('#byln04').on("click",function() {
+          switchtoln();
+          return false;
+        }); // end byln04 click
+//      Select box ID into form
+        $('#content').on( 'click', '.boxrow', function(e) {
+          $('#boxid').val($(this).attr('id'));
+          FillInfoBox($(this).attr('id'));
+        }); // end boxrow
+        $('#boxid').on( "mouseenter",function() {
+          $('#infobox').show();
+        }).on( "mouseleave",function() {
+          $('#infobox').hide();
+        }); // end infobox
+//      Select players into form
+        $('#content').on( 'click', '.playerrow', function(e) {
+          addPlayer($(this).attr('id'));
+        }); // end playerrow
+//      Submit or exit
+        $("#newgame").on( "submit",function() {
+          doNewGame();
+          return false;
+        }); // end newgame submit
         $('#button2').on("click",function() {
           window.location = "board18Main.php";
           return false;
         }); // end button2 click
 //      Make this player be player 1 in the new game.
         addPlayer('<?php echo "$login"; ?>'); 
+//      Make initial [fake?] playerList
+        BD18.playerList = [{
+          "login":"<?php echo '$login'; ?>",
+          "firstname":"unknown",
+          "lastname":"unknown"
+        }]
+        $.post("php/boxGetAll.php", BoxListResult);
       }); // end ready
     </script>
   </head>
@@ -99,19 +183,21 @@ if ($result) {
 
     <div id="leftofpage">
       <div id='sidebar'>
-        <?php showPlayers($theLink); ?>
+        <h3>Start a New Game Session</h3>
+        <p>Please use this form to start a new game session. 
+          <br><br>For your convenience, a table of available
+          game boxes appears to the right. <br><br>And use the<br>
+          <span style="font-weight: bold; color: Fuchsia">
+          List Display Selection Controls</span> <br>
+          to Filter this list or to select a sorted list of registered 
+          players to appear here instead. <br><br>
+          <span style="color: Fuchsia">Clicking on the  
+          row of a box or player will enter it in the form.</span>
+        </p>
       </div>
     </div>
     <div id="rightofpage"> 
-      <div id="content">   
-        <div>
-          <h3>Start a New Game Session</h3>
-          <p>Please use this form to start a new game session. 
-            <br>For your convenience, a list of registered players 
-            appears to the left<br>and a table of available game 
-            boxes appears below.
-          </p>
-        </div>
+      <div id="content"> 
         <div id="newgame">
           <form name="newgame" action="">
             <fieldset>
@@ -123,7 +209,7 @@ if ($result) {
               </p>
               <p>
                 <label for="boxid" class="label1">Game Box ID:</label>
-                <input type="text" name="boxid" 
+                <input type="text" name="boxid" readonly
                        id="boxid" class="fn1">
                 <label class="error" for="boxid" id="bi_error">
                   This field is required.</label>
@@ -179,12 +265,89 @@ if ($result) {
               </p>
             </fieldset>
           </form>
-        </div>        
-        <div id="boxes">
-          <h3>Available Game Boxes</h3>
-<?php showBoxes($theLink); ?>
+          <div id="infobox"> 
+            <p> 
+              Box Name<br>
+              <span id="infoname">  </span><br><br>
+              Version<br>
+              <span id="infoversion">  </span>
+            </p>
+          </div>
+        </div>
+        <div id="list1" class="outbox">
+          <form name="gamebox" action="">
+            <p>
+              <span class="ctlhead">List Display Selection Controls</span>
+              <br><span class="ctllabel">Game Box List</span>
+            </p>
+            <p>
+              <input type="button" name="byid01" class="pwbutton"  
+                     id="byid01" value="Player List By ID" > 
+              <input type="button" name="byfn01" class="pwbutton"  
+                     id="byfn01" value="Player List By First Name" > <br>
+              <input type="button" name="byln01" class="pwbutton"  
+                     id="byln01" value="Player List By Last Name" > 
+              <input type="button" name="flt01" class="pwbutton"  
+                     id="flt01" value="Do Game Box Filter" >  <br>
+              <label id="fgpl" for="filter1">Filter Game Box Name By</label> 
+              <input type="text" name="filter1" id="filter1">
+            </p>
+          </form>
+          <div id="boxes"></div>
+        </div>  
+        <div id="list2" class="outbox">
+          <form name="plidbox" action="">
+            <p>
+              <span class="ctlhead">List Display Selection Controls</span>
+              <br><span class="ctllabel">Player List by ID</span>
+            </p>
+            <p>
+              <input type="button" name="box02" class="pwbutton"  
+                     id="box02" value="Game Box List" > 
+              <input type="button" name="byfn02" class="pwbutton"  
+                     id="byfn02" value="Player List By First Name" > <br>
+              <input type="button" name="byln02" class="pwbutton"  
+                     id="byln02" value="Player List By Last Name" > 
+            </p>
+          </form>
+          <div id="outplayer2"></div>
+        </div>  
+        <div id="list3" class="outbox">
+          <form name="plfnbox" action="">
+            <p>
+              <span class="ctlhead">List Display Selection Controls</span>
+              <br><span class="ctllabel">Player List by First Name</span>
+            </p>
+            <p>
+              <input type="button" name="box03" class="pwbutton"  
+                     id="box03" value="Game Box List" > 
+              <input type="button" name="byid03" class="pwbutton"  
+                     id="byid03" value="Player List By ID" > <br>
+              <input type="button" name="byln03" class="pwbutton"  
+                     id="byln03" value="Player List By Last Name" > 
+            </p>
+          </form>
+          <div id="outplayer3"></div>
+        </div>  
+        <div id="list4" class="outbox">
+          <form name="pllnbox" action="">
+            <p>
+              <span class="ctlhead">List Display Selection Controls</span>
+              <br><span class="ctllabel">Player List by Last Name</span>
+            </p>
+            <p>
+              <input type="button" name="box04" class="pwbutton"  
+                     id="box04" value="Game Box List" > 
+              <input type="button" name="byid04" class="pwbutton"  
+                     id="byid04" value="Player List By ID" > <br>
+              <input type="button" name="byfn04" class="pwbutton"  
+                     id="byfn04" value="Player List By First Name" > 
+            </p>
+          </form>
+          <div id="outplayer4"></div>
         </div>
       </div>    
     </div>  
   </body>
 </html>
+

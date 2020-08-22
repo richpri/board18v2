@@ -1,11 +1,16 @@
 /* 
- *  Document   : board18New
+ *  Document   : board18New2
  *  Author     : rich
  *  Description: CSS Document for board18New page.
  *
- * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * Copyright (c) 2020 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
+
+#sidebar {
+  margin-left: 5px;
+  margin-right: 3px;
+}
 
 #content {
   background-color:#ffeedd;
@@ -17,7 +22,7 @@
 }
 
 #newgame {
-	width: 500px;
+  width: 500px;
   margin-top: 10px;
 }
 
@@ -47,14 +52,21 @@
 #sessionname {
   width:300px;
 }
-
-.plid {
-        width: 150px;
-  margin-left: 5px;
-  text-indent: 10px;
+#infobox {
+  position: fixed;
+  width: 200px;
+  top: 205px;
+  left: 380px;
+  border-style: double;
+  background-color:#ffeedd;
+  padding-left: 10px;
+  z-index: 5;
+  display: none;
 }
+
 .pwbutton {
-  margin-left: 50px;	
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 .fn1 {
   width: 40px;
@@ -75,3 +87,29 @@ footer {
   text-align:center;
 }
 
+.outbox {
+  border: black double; 
+  padding:5px;
+  display: none;
+}
+
+.ctlhead {
+  font-size: 140%;
+  font-weight: bold;
+  color: Fuchsia;
+  margin-left: 20px;
+}
+
+.ctllabel {
+  font-weight: bold;
+  color: Fuchsia;
+  margin-left: 100px;
+}
+
+#boxes {
+  margin-left: 10px;
+}
+
+#fgpl {
+  margin-left: 10px;
+}

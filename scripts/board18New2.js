@@ -1,5 +1,8 @@
 /*
- * Copyright (c) 2013 Richard E. Price under the The MIT License.
+ * board18New2.js contains all of the code to actually create a
+ * new game and inform the players of this fact.
+ * 
+ * Copyright (c) 2020 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  *
  * All BD18 global variables are contained in one
@@ -45,18 +48,6 @@ function killGoToMain() {
 }
 
 /* 
- * Function addPlayer adds a player to the newgame form. 
- */
-function addPlayer(player) {
-  $('.fn2').each(function(i) {
-    if ($(this).val() === "") { 
-      $(this).val(player); 
-      return false; 
-    } 
-  });
-}
-
-/* 
  * Function makeNewGame creates a JSON object for the ajax
  * newgame call. 
  */
@@ -86,7 +77,7 @@ function makeNewGame(name, boxid, players, player) {
  *   "success" - Email sent.
  *   "fail"    - Uexpected error - No email sent.
  */
-function emailPlayerResult(result) {
+function emailPlayerResult(response) {
   if (response === 'fail') {
     if (BD18.mailError === false) {
       var errmsg = 'Send email to player failed.\n';
@@ -147,13 +138,13 @@ function newgameOK(response) {
 }
 
 /* 
- * Function newgame is called by the on-click
+ * Function donewgame is called by the on-click
  * method of the newgame submit button. It 
  * checks the input for missing fields 
  * and invalid values. It then 
  * does an ajax call to createGame.php. 
  */
-function newgame() {
+function doNewGame() {
   $('.error').hide();  
   BD18.name = $("input#sessionname").val();  
   if (BD18.name === "") {  
@@ -184,31 +175,32 @@ function newgame() {
     $("#boxid") .trigger('focus');
     return; 
   }
-  if (!$.isNumeric(BD18.boxid) || (parseInt(BD18.boxid) <= 0)) {  
-    $("#bi_error").text('Invalid box id.').show();  
-    $("#boxid") .trigger('focus');  
-    return;  
-  }
+
   BD18.playerCount = $("input#pcount").val();
   if (BD18.playerCount === "") {  
-    $("#pc_error").text('# of Players is required.').show();  
+    $("#pc_error").text('Number of Players is required.').show();  
     $("#pcount") .trigger('focus');  
     return;  
   }
   if (!isNumber(BD18.playerCount) || (BD18.playerCount < 1) || 
     (BD18.playerCount > 6)) {  
-    $("#pc_error").text('# of players must be between 1 and 6.').show();  
+    $("#pc_error").text('Number of players must be between 1 and 6.').show();  
     $("#pcount") .trigger('focus');  
     return;  
   }
   var pp = 0;
+  var playerlogin = [];
   BD18.player = [];
   BD18.errtxt = "";
+  BD18.playerList.forEach(makePlayerArray);
+  function makePlayerArray(item, index) {
+     playerlogin[index] = item["login"];
+  }
   $('.fn2').each(function(i) {
     BD18.player[i] = $(this).val();
     if (BD18.player[i] === "" && i < BD18.playerCount) { 
       pp = i + 1;
-      BD18.errtxt = 'Player' + pp + ' is missing.';
+      BD18.errtxt = 'Player ' + pp + ' is missing.';
       $("#pc_error").text(BD18.errtxt).show();  
       $(this) .trigger('focus');  
       return false;  
@@ -220,7 +212,17 @@ function newgame() {
       $("#pcount") .trigger('focus');  
       return false;  
     }
-  });
+    if (!(BD18.player[i] === "")) {
+      if (!playerlogin.includes(BD18.player[i])) {
+        BD18.errtxt = 'Player ' + BD18.player[i];
+        BD18.errtxt += ' does not exist in the database.';
+        $("#pc_error").text(BD18.errtxt).show();  
+        $(this) .trigger('focus');
+        return;
+      }
+    }
+  }); 
+  
   if (BD18.errtxt === "") {
     var dataString = makeNewGame(BD18.name, BD18.boxid, 
     BD18.playerCount, BD18.player); 
@@ -235,3 +237,5 @@ function newgame() {
     });
   }
 }
+
+
