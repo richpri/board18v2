@@ -20,10 +20,9 @@
  */
 require_once('auth.php');
 require_once('config.php');
-$link = @mysqli_connect(DB_HOST, DB_USER, 
-        DB_PASSWORD, DB_DATABASE);
+$link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'checkForUpdate: Failed to connect to server';
   error_log($logMessage);
   echo "failure";
   exit;
@@ -46,7 +45,7 @@ $qry2 = "SELECT update_counter, last_updater
   FROM game WHERE game_id='$gameid'";
 $result2 = mysqli_query($link, $qry2);
 if (!$result2 || (mysqli_num_rows($result2) !== 1)) { 
-  $logMessage = 'MySQL Error 3: ' . mysqli_error($link);
+  $logMessage = 'checkForUpdate: SELECT failed ';
   error_log($logMessage);
   echo "failure";
   exit;

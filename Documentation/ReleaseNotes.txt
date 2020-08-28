@@ -1,3 +1,10 @@
+BOARD18 2.6.8 Release Notes
+ 
+Changes from 2.6.7 Release:
+Implemented fix for Issue 185 - Enhance PHP error logging part 3
+Implemented fix for Issue 183 - Redesign layout of board18Misc page
+Delete some unused jQuery Migration files
+
 BOARD18 2.6.7 Release Notes
  
 Changes from 2.6.6 Release:

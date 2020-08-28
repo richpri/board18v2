@@ -20,7 +20,7 @@ require_once('config.php');
 $conn = @mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'linkDel: MYSQL connect error: ' . mysqli_connect_error();
   error_log($logMessage);
   echo "fail";
   exit;
@@ -43,7 +43,7 @@ $linkname = clean($conn, $_REQUEST['linkname']);
 $qry1 = "START TRANSACTION";
 $result1 = mysqli_query($conn, $qry1);
 if (!$result1) {
-  $logMessage = 'MySQL Error 2: ' . mysqli_error($conn);
+  $logMessage = 'linkDel: START TRANSACTION error.';
   error_log($logMessage);
   echo "fail";
   exit;
@@ -54,7 +54,7 @@ $qry2 = "SELECT * FROM game_link
                   WHERE game_id='$gameid' AND link_name='$linkname'";
 $result2 = mysqli_query($conn, $qry2);
 if (!$result2) {
-  error_log("SELECT FROM game_link - Query failed");
+  error_log("linkDel: SELECT FROM game_link - Query failed");
   echo "fail";
   exit;
 }
@@ -66,11 +66,13 @@ if (mysqli_num_rows($result2) === 0) { // missing.
 //Create DELETE query 
 $qry3 = "DELETE FROM game_link 
          WHERE game_id='$gameid' AND link_name='$linkname'";
-$result3 = @mysqli_query( $conn, $qry3);
+$result3 = mysqli_query( $conn, $qry3);
 if(!$result3) {   // Was the query successful
-  error_log("Delete link: Query failed");
+  error_log("linkDel: Delete link: Query failed. ");
+  error_log("linkDel: $qry3");
   mysqli_query($conn, $qry0); // ROLLBACK
   echo 'fail';
+  exit;
 }
 
 $qry4 = "COMMIT";

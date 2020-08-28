@@ -25,7 +25,7 @@ require_once('config.php');
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  error_log('changePlayers: Failed to connect to server');
   echo 'fail';
   exit;
 }
@@ -34,8 +34,8 @@ $qry0 = "ROLLBACK";
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $stri) {
+  $str = trim($stri);
   return mysqli_real_escape_string($conn, $str);
 }
 
@@ -50,13 +50,13 @@ if ($mode === '2' || $mode === '3') {
   $qry1 = "SELECT player_id FROM players WHERE login = '$padd'";
   $result1 = mysqli_query($link, $qry1);
   if (!$result1) { 
-    $logMessage = 'Error on SELECT player query: ' . mysqli_error($link);
+    $logMessage = 'changePlayers: Error on SELECT player query. ';
     error_log($logMessage);
     echo 'fail';
     exit;
   }
   if (mysqli_num_rows($result1) !== 1) { 
-    $logMessage = 'Add player not in players!: ' . mysqli_error($link);
+    $logMessage = 'changePlayers: Add player not in players! ';
     error_log($logMessage);
     echo 'fail';
     exit;
@@ -68,7 +68,7 @@ if ($mode === '2' || $mode === '3') {
            WHERE player_id = $paddid AND game_id = $game";
   $result2 = mysqli_query($link, $qry2);
   if (!$result2) {
-    $logMessage = 'Error on SELECT game_player query: ' . 
+    $logMessage = 'changePlayers: Error on SELECT game_player query: ' . 
             mysqli_error($link);
     error_log($logMessage);
     echo 'fail';
@@ -82,7 +82,7 @@ if ($mode === '2' || $mode === '3') {
   $qry3 = "START TRANSACTION";
   $result3 = mysqli_query($link, $qry3);
   if (!$result3) {
-    $logMessage = 'START TRANSACTION Error: ' . mysqli_error($link);
+    $logMessage = 'changePlayers: START TRANSACTION Error. ';
     error_log($logMessage);
     echo "fail";
     exit;
@@ -91,7 +91,7 @@ if ($mode === '2' || $mode === '3') {
   $qry4 = "INSERT INTO game_player
            SET game_id = '$game', player_id =  $paddid";
   if (!mysqli_query($link, $qry4)) {
-    $logMessage = 'Error on INSERT query: ' . mysqli_error($link);
+    $logMessage = 'changePlayers: Error on INSERT query.';
     error_log($logMessage);
     mysqli_query($link, $qry0); // ROLLBACK
     echo 'fail';
@@ -109,7 +109,7 @@ if ($mode === '1' || $mode === '3') {
                 AND a.player_id = b.player_id)";
   $result5 = mysqli_query($link, $qry5);
   if (!$result5 || mysqli_num_rows($result5) !== 1) {
-    $logMessage = 'Error on SELECT JOIN query: ' . mysqli_error($link);
+    $logMessage = 'changePlayers: Error on SELECT JOIN query.' ;
     error_log($logMessage);
     mysqli_query($link, $qry0); // ROLLBACK
     echo 'fail';
@@ -120,10 +120,12 @@ if ($mode === '1' || $mode === '3') {
   }
   
   $qry6 = "DELETE FROM game_player
-           WHERE player_id =  $playerid
+           WHERE player_id = $playerid
              AND game_id = $game";
   if (!mysqli_query($link, $qry6)) {
-    $logMessage = 'Error on DELETE query: ' . mysqli_error($link);
+    $logMessage = "changePlayers: Error on DELETE query: "
+            . "player_id = $playerid and game_id = $game";
+  
     error_log($logMessage);
     mysqli_query($link, $qry0); // ROLLBACK
     echo 'fail';

@@ -93,7 +93,7 @@ $result = @mysqli_query($link, $qry);
 if ($result) {   // Was the query successful
   echo 'success';
 } else {
-  error_log("Update box: Query failed");
+  error_log("boxUpdate: Update box: Query failed");
   echo 'fail';
 }
 ?>
