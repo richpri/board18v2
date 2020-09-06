@@ -16,10 +16,10 @@
 
 require_once('auth.php');
 require_once('config.php');
-$link = @mysqli_connect(DB_HOST, DB_USER, 
+$link = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error: ' . mysqli_connect_error();
+  $logMessage = 'gameSession: MySQL Connect Error: ' . mysqli_connect_error();
   error_log($logMessage);
   exit;
 }
@@ -27,8 +27,8 @@ mysqli_set_charset($link, "utf-8");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link, $str) {
-  $str = @trim($str);
+function clean($link, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link, $str);
 }
 
@@ -41,17 +41,16 @@ $qry1 = "SELECT json_text, update_counter
 $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) == 0) { // Invalid Game ID!
-  error_log("Check for valid game: Invalid Game ID: " . $gameid);
+  error_log("gameSession: Check for valid game: Invalid Game ID: " . $gameid);
   $_SESSION['SESS_HEADER_MESSAGE'] = 
     'The selected game is not in the data base!';
   header("location: board18Main.php");
   }
 } else {
-  error_log("Check for valid game: Query failed");
+  error_log("gameSession: Check for valid game: Query failed");
   exit;
 }
 
 $ad = mysqli_fetch_array($result1); 
 $_SESSION['SESS_UPDATE_COUNTER'] = $ad[1]; // update_counter
 echo $ad[0]; // $ad[0] is json_data
-?>

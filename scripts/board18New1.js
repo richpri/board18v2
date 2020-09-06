@@ -106,8 +106,8 @@ function dofilter() {
 }
 
 /* 
- * Function playerSortReturn() is the callback function for
- * the playerSort.php AJAX call. It creates a list of plaers
+ * Function playerSortReturn() is a callback function for
+ * the playerSort.php AJAX call. It creates a list of players
  * sorted in the specified order and displays it 1n one of
  * three hidden divisions. It then shows that division.
  */
@@ -144,6 +144,37 @@ function playerSortReturn(result) {
         $('#list4').show();
         break
     }
+  } else if (resp.stat === 'empty') {
+    var errmsg1 = 'There are no player records in the database.\n';
+    errmsg1 += 'Please contact the BOARD18 webmaster.';
+    alert(errmsg1);
+  } else if (resp.stat === 'fail') {
+    var errmsg2 = 'Program error in playerSort.php.\n';
+    errmsg2 += 'Please contact the BOARD18 webmaster.';
+    alert(errmsg2);
+  } else {  // Something is definitly wrong in the code.
+    var nerrmsg = 'Invalid return code from playerSort.php: ';
+    nerrmsg += resp.stat + '\nPlease contact the BOARD18 webmaster.';
+    alert(nerrmsg);
+  }
+}
+
+/* 
+ * Function playerSortDiscard() is a callback function for
+ * the playerSort.php AJAX call. It is used only once during
+ * the initial setup of board18New. It creates a list of 
+ * players in BD18.playerList but then does nothing with it.
+ * It then does an ajax call to boxGetAll.php to load and 
+ * display the BD18.BoxList.
+ */
+function playerSortDiscard(result) {
+  if (result.indexOf("<!doctype html>") !== -1) { // User has timed out.
+    window.location = "access-denied.html";
+  }
+  var resp = JSON.parse(result);
+  if (resp.stat === 'success') {
+    BD18.playerList = resp.players;
+    $.post("php/boxGetAll.php", BoxListResult);
   } else if (resp.stat === 'empty') {
     var errmsg1 = 'There are no player records in the database.\n';
     errmsg1 += 'Please contact the BOARD18 webmaster.';

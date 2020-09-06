@@ -143,13 +143,11 @@ if ($result) {
         }); // end button2 click
 //      Make this player be player 1 in the new game.
         addPlayer('<?php echo "$login"; ?>'); 
-//      Make initial [fake?] playerList
-        BD18.playerList = [{
-          "login":"<?php echo '$login'; ?>",
-          "firstname":"unknown",
-          "lastname":"unknown"
-        }]
-        $.post("php/boxGetAll.php", BoxListResult);
+//      Make initial BD18.playerList
+        var outstring = "sortkey=login";
+        $.post("php/playerSort.php", outstring, playerSortDiscard);
+
+        
       }); // end ready
     </script>
   </head>

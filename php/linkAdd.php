@@ -17,10 +17,10 @@
 require_once('auth.php');
 require_once('config.php');
 
-$conn = @mysqli_connect(DB_HOST, DB_USER, 
+$conn = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'linkAdd: MySQL Connect Error: ' . mysqli_connect_error();
   error_log($logMessage);
   echo "fail";
   exit;
@@ -30,8 +30,8 @@ $qry0 = "ROLLBACK";
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($conn, $str);
 }
 
@@ -44,7 +44,7 @@ $linkurl = clean($conn, $_REQUEST['linkurl']);
 $qry1 = "START TRANSACTION";
 $result1 = mysqli_query($conn, $qry1);
 if (!$result1) {
-  $logMessage = 'MySQL Error 2: ' . mysqli_error($conn);
+  $logMessage = 'linkAdd: START TRANSACTIONL Error: ' . mysqli_error($conn);
   error_log($logMessage);
   echo "fail";
   exit;
@@ -55,7 +55,7 @@ $qry2 = "SELECT * FROM game_link
                   WHERE game_id='$gameid' AND link_name='$linkname'";
 $result2 = mysqli_query($conn, $qry2);
 if (!$result2) {
-  error_log("SELECT FROM game_link - Query failed");
+  error_log("linkAdd: SELECT FROM game_link - Query failed");
   echo "fail";
   exit;
 }
@@ -67,9 +67,9 @@ if (mysqli_num_rows($result2) !== 0) { // duplicate.
 //Create INSERT query
 $qry3 = "INSERT INTO game_link SET game_id='$gameid', 
          link_name='$linkname', link_url='$linkurl'";
-$result3 = @mysqli_query( $conn, $qry3);
+$result3 = mysqli_query( $conn, $qry3);
 if(!$result3) {   // Was the query successful
-  error_log("Insert new link: Query failed");
+  error_log("linkAdd: Insert new link: Query failed");
   mysqli_query($conn, $qry0); // ROLLBACK
   echo 'fail';
   exit;
@@ -79,4 +79,3 @@ $qry4 = "COMMIT";
 echo "success";
 mysqli_query($conn, $qry4); // COMMIT
 exit;
-?>

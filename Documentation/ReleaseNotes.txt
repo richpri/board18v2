@@ -1,3 +1,9 @@
+BOARD18 2.6.9 Release Notes
+ 
+Changes from 2.6.8 Release:
+Implemented fix for Issue 190 - Enhance PHP error logging - part 4
+Implemented fix for Issue 191 - Last player error when making new game
+
 BOARD18 2.6.8 Release Notes
  
 Changes from 2.6.7 Release:
