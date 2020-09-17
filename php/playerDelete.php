@@ -19,7 +19,7 @@
 
 require_once('auth.php');
 if ($playerlevel != 'admin') {
-  error_log("playerUpdate: Not an admin level player");
+  error_log("playerDelete: Not an admin level player");
   echo "fail";
   exit;
 }
@@ -27,14 +27,14 @@ require_once('config.php');
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($conn, $str);
 }
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  error_log('playerDelete: MYSQL connect error : ' . mysqli_connect_error());
   echo 'fail';
 	exit; 
 }
@@ -47,7 +47,7 @@ $qry1 = "SELECT * FROM players WHERE player_id ='$player'";
 $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) === 0) { // no such player!
-    error_log("Check for existing player: No player found!");
+    error_log("playerDelete: Check for existing player: No player found!");
     echo 'fail';
     exit;
   }
@@ -58,7 +58,7 @@ if ($result1) {
     exit;
   }
 } else {
-  error_log("Check for existing player: Query failed");
+  error_log("playerDelete: Check for existing player: Query failed");
   echo 'fail';
   exit;
 }
@@ -73,9 +73,9 @@ if ($result2) {   // Was query 2 successful
   if ($result3) {   // Was query 3 successful
     echo 'success';
   } else {
-    error_log("Delete players: Query failed");
+    error_log("playerDelete: Delete players: Query failed");
   }
 } else {
-  error_log("Delete game_player: Query failed");
+  error_log("playerDelete: Delete game_player: Query failed");
   echo 'fail';
 }

@@ -58,10 +58,10 @@ if ($playerlevel != 'admin') {
 }
 require_once('config.php');
 
-$link = @mysqli_connect(DB_HOST, DB_USER, 
+$link = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'playerShow: MySQL connect error: ' . mysqli_connect_error();
   error_log($logMessage);
   echo $errResp;
   exit;
@@ -70,8 +70,8 @@ mysqli_set_charset($link, "utf-8");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link, $str) {
-  $str = @trim($str);
+function clean($link, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link, $str);
 }
 
@@ -85,7 +85,7 @@ $qry1 = "SELECT player_id, login, firstname, lastname,
          LIMIT $startrow,$blocksize";
 $result1 = mysqli_query($link, $qry1);
 if (!$result1 || mysqli_num_rows($result1) === 0) {
-  error_log("SELECT FROM players - Query failed");
+  error_log("playerShow: SELECT FROM players - Query failed");
   echo $errResp;
   exit;
 }
@@ -105,7 +105,7 @@ while ($row1 = mysqli_fetch_array($result1)) {
     $countrow = mysqli_fetch_row($result2);
     $playerlist[$ii]->gcount = $countrow[0];
   } else {
-    error_log("SELECT COUNT(*) FROM game_player - Query failed");
+    error_log("playerShow: SELECT COUNT(*) FROM game_player - Query failed");
     echo $errResp;
     exit;
   }
@@ -127,7 +127,7 @@ while ($row1 = mysqli_fetch_array($result1)) {
         }
       }
     } else {
-      error_log("SELECT RIGHT JOIN - Query failed");
+      error_log("playerShow: SELECT RIGHT JOIN - Query failed");
       echo $errResp;
       exit;
     } 
@@ -140,4 +140,3 @@ $succResp->stat = "success";
 $succResp->players = $playerlist;
 echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
-?>

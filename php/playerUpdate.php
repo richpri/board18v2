@@ -32,14 +32,14 @@ require_once('config.php');
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($conn, $str);
 }
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  error_log('playerUpdate: mysql connect error: ' . mysqli_connect_error());
   echo 'fail';
 	exit; 
 }
@@ -57,14 +57,14 @@ $qry1 = "SELECT * FROM players WHERE player_id ='$player'";
 $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) === 0) { // no such player!
-    error_log("Check for existing player: No player found!");
+    error_log("playerUpdate: Check for existing player: No player found!");
     echo 'fail';
     exit;
   } else {
     $playerrow = mysqli_fetch_assoc($result1);
   }
 } else {
-  error_log("Check for existing player: Query failed");
+  error_log("playerUpdate: Check for existing player: Query failed");
   echo 'fail';
   exit;
 }
@@ -87,10 +87,10 @@ if ($playerrow['email'] !== $email) { // If email changed
           echo $duperr;
           exit;
         }
-      };
+      }
     }
   } else {
-    error_log("Check duplicate email: Query failed");
+    error_log("playerUpdate: Check duplicate email: Query failed");
     echo 'fail';
     exit;
   }
@@ -107,7 +107,7 @@ if ($playerrow['login'] !== $login) { // If login changed
       exit;
     }
   } else {
-    error_log("Check duplicate login: Query failed");
+    error_log("playerUpdate: Check duplicate login: Query failed");
     echo 'fail';
     exit;
   }
@@ -117,11 +117,10 @@ if ($playerrow['login'] !== $login) { // If login changed
 $qry = "UPDATE players SET firstname='$fname', lastname='$lname',
           email='$email', login='$login', level='$level'
           WHERE player_id=$player";
-$result = @mysqli_query($link, $qry);
+$result = mysqli_query($link, $qry);
 if ($result) {   // Was the query successful
   echo 'success';
 } else {
-  error_log("Update player: Query failed");
+  error_log("playerUpdate: Update player: Query failed");
   echo 'fail';
 }
-?>

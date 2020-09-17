@@ -244,9 +244,25 @@ function updateGame() {
     $("#gname_error").text('This field is required.').show();
     $("#gname") .trigger('focus');
     return false;
-  } else {
-    BD18.game.newGname = gname;
+  } 
+  var format = /[!@#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
+  if(format.test(gname)){
+    $("#gname_error").text('Game Name cannot contain special characters.').show();  
+    $("#gname") .trigger('focus');  
+    return false; 
   }
+  var ascii = /^[\x00-\x7F]*$/;
+  if(!ascii.test(gname)){
+    $("#gname_error").text('Game Name can only contain ascii characters.').show();  
+    $("#gname") .trigger('focus');  
+    return false; 
+  }
+  if(gname.length > 25){
+    $("#gname_error").text('Game Name must be 25 characters or less.').show();  
+    $("#gname") .trigger('focus');  
+    return false; 
+  }
+  BD18.game.newGname = gname;
   var aString = $('.reg').serialize();
   aString += '&status=' + $("#status option:selected").val();
   aString += '&gameid=' + BD18.game.gameid;

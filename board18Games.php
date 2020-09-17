@@ -186,7 +186,7 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
             <p>
               <label for="gname">Change Game Name:</label>
               <input type="text" name="gname" id="gname" class="reg"
-                     value="">
+                     size="30" value="">
               <label class="error" for="gname" id="gname_error">
                 This field is required.</label>
             </p>

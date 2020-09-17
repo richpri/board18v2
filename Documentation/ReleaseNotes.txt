@@ -1,3 +1,11 @@
+BOARD18 2.7.0 Release Notes
+ 
+Changes from 2.6.9 Release:
+Implemented fix for Issue 192 - Enhance PHP error logging - part 5
+Implemented fix for Issue 193 - Field size discrepancy in board18Games.php
+Implemented fix for Issue 196 - Actions fail (404) in long-running tab 
+Remove unused <script> link from board18Map.php
+
 BOARD18 2.6.9 Release Notes
  
 Changes from 2.6.8 Release:

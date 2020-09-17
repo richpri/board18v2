@@ -49,10 +49,10 @@ $errorResp = new Response();
 $errorResp->stat = "fail";
 $errResp = json_encode($errorResp);
 
-$link = @mysqli_connect(DB_HOST, DB_USER, 
+$link = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'snapShow.php: MySQL connect Error : ' . mysqli_connect_error();
   error_log($logMessage);
   echo $errResp;
   exit;
@@ -61,8 +61,8 @@ mysqli_set_charset($link, "utf-8");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link, $str) {
-  $str = @trim($str);
+function clean($link, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link, $str);
 }
 
@@ -77,7 +77,7 @@ $qry1 = "SELECT cp_id, game_round, player, last_updater, cp_date
          ORDER BY cp_id DESC LIMIT $startrow,$blocksize";
 $result1 = mysqli_query($link, $qry1);
 if (!$result1) {
-  error_log("SELECT FROM game_snap - Query failed");
+  error_log("snapShow.php: SELECT FROM game_snap - Query failed");
   echo $errResp;
   exit;
 }
@@ -104,4 +104,3 @@ $succResp->stat = "success";
 $succResp->snaps = $snaplist;
 echo json_encode($succResp, JSON_PARTIAL_OUTPUT_ON_ERROR);
 exit;
-?>

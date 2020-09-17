@@ -48,10 +48,10 @@ $errorResp = new Response();
 $errorResp->stat = "fail";
 $errResp = json_encode($errorResp);
 
-$link = @mysqli_connect(DB_HOST, DB_USER, 
+$link = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'Failed to connect to server: ' . mysqli_connect_error();
+  $logMessage = 'myGameList.php: MySQL connect error: ' . mysqli_connect_error();
   error_log($logMessage);
   echo $errResp;
   exit;
@@ -94,7 +94,7 @@ if ($result) {
     exit;
   }
 } else {
-  $logMessage = 'Error on SELECT query: ' . mysqli_error($link);
+  $logMessage = 'myGameList.php: Error on SELECT query.';
   error_log($logMessage);
   echo $errResp;
 }
