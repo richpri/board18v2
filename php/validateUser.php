@@ -43,7 +43,8 @@ $fail = rtrim(ltrim(json_encode($farray), "["), "]");
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  $errmsg1 = 'validateUser.php: failed to connect to server: ';
+  error_log($errmsg1 . mysqli_connect_error());
   echo $fail;
   exit;
 }
@@ -93,7 +94,6 @@ if ($result) {
   $res = rtrim(ltrim(json_encode($response), "["), "]");
   echo $res;
 } else {
-  error_log("Log In query failed");
+  error_log("validateUser.php: Log In query failed");
   echo $fail;
 }
-?>

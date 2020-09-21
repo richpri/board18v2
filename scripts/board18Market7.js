@@ -155,8 +155,8 @@ function checkForUpdateCallback(resp) {
     document.location.reload(true);
   }
   else {
-    msg = "Invalid return code from checkForUpdateCallback(resp). ";
-    msg += "Contact the site administrator about this error.";
+    msg = "Invalid return code from checkForUpdate.php.\n";
+    msg += resp + "\nContact the site administrator about this error.";
     alert(msg);
   }
 }

@@ -25,14 +25,15 @@ require_once('config.php');
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($conn, $str);
 }
 
 $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if (!$link) {
-  error_log('Failed to connect to server: ' . mysqli_connect_error());
+  $errmsg1 = 'updateUser.php: failed to connect to server: ';
+  error_log($errmsg1 . mysqli_connect_error());
   echo 'fail';
 	exit; 
 }
@@ -45,24 +46,24 @@ $passwd = "";
 $email = clean($link, $_REQUEST['email']);
 if (array_key_exists('passwrd',$_REQUEST)) {
   $passwd = clean($link, $_REQUEST['passwrd']);
-};
+}
 
 //Check for existing login ID
 $qry1 = "SELECT * FROM players WHERE login='$login'";
 $result1 = mysqli_query($link, $qry1);
 if ($result1) {
   if (mysqli_num_rows($result1) === 0) { // no such user!
-    error_log("Check for existing user: No user found!");
+    error_log("updateUser.php: Check for existing user: No user found!");
     echo 'fail';
     exit;
   } else {
     $playerrow = mysqli_fetch_assoc($result1);
     $playerid = $playerrow['player_id'];
     // allow for unchanged password
-    if ($passwd === "") $passwd = $playerrow['passwd']; 
+    if ($passwd === "") { $passwd = $playerrow['passwd']; }
   }
 } else {
-  error_log("Check for existing user: Query failed");
+  error_log("updateUser.php: Check for existing user: Query failed");
   echo 'fail';
   exit;
 }
@@ -85,10 +86,10 @@ if ($result2) {
         echo $duperr;
         exit;
       }
-    };
+    }
   }
 } else {
-  error_log("Check duplicate email: Query failed");
+  error_log("updateUser.php: Check duplicate email: Query failed");
   echo 'fail';
   exit;
 }
@@ -101,7 +102,6 @@ $result = @mysqli_query($link, $qry);
 if ($result) {   // Was the query successful
   echo 'success';
 } else {
-  error_log("Update player: Query failed");
+  error_log("updateUser.php: Update player: Query failed");
   echo 'fail';
 }
-?>

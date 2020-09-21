@@ -25,7 +25,7 @@ require_once('config.php');
 $link = mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
+  $logMessage = 'tokenCheck.php: failed to connect to server.';
   error_log($logMessage);
   echo "fail";
   exit;
@@ -34,8 +34,8 @@ mysqli_set_charset($link, "utf-8");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link, $str) {
-  $str = trim($str);
+function clean($link, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link, $str);
 }
 
@@ -47,7 +47,7 @@ $validator = $_REQUEST['validator']; // don't need to sanitize this.
 $qry1 = "SELECT * FROM auth_tokens WHERE selector='$selector'";
 $result1 = mysqli_query($link, $qry1);
 if (!$result1) {
-  error_log("SELECT FROM auth_tokens - Query failed");
+  error_log("tokenCheck.php: SELECT FROM auth_tokens - Query failed");
   echo "fail";
   exit;
 } else {
@@ -89,7 +89,7 @@ if (!$result1) {
           echo "tokenfound";
           exit; 
         } else {
-          error_log("players query failed");
+          error_log("tokenCheck.php: players query failed");
           echo "fail";
           exit;
         }
@@ -105,7 +105,7 @@ function deleteAuth($link, $id) {
   $qry2 = "DELETE FROM auth_tokens WHERE token_id=$id";
   $result2 = mysqli_query($link, $qry2);
   if (!$result2) {
-    error_log("DELETE FROM auth_tokens - Query failed");
+    error_log("tokenCheck.php: DELETE FROM auth_tokens - Query failed");
     echo "fail";
     exit;
   }

@@ -24,8 +24,8 @@ require_once('config.php');
 $link = @mysqli_connect(DB_HOST, DB_USER, 
         DB_PASSWORD, DB_DATABASE);
 if (mysqli_connect_error()) {
-  $logMessage = 'MySQL Error 1: ' . mysqli_connect_error();
-  error_log($logMessage);
+  $errmsg1 = 'statSwap.php failed to connect to server: ';
+  error_log($errmsg1 . mysqli_connect_error());
   echo "failure";
   exit;
 }
@@ -35,8 +35,8 @@ $qry0 = "ROLLBACK";
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link,$str) {
-  $str = @trim($str);
+function clean($link,$str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link,$str);
 }
 
@@ -47,7 +47,7 @@ $gameid = clean($link,$_REQUEST['gameid']);
 $qry1 = "START TRANSACTION";
 $result1 = mysqli_query($link, $qry1);
 if (!$result1) {
-  $logMessage = 'MySQL Error 2: ' . mysqli_error($link);
+  $logMessage = 'statSwap.php: START TRANSACTION Error';
   error_log($logMessage);
   echo "failure";
   exit;
@@ -58,7 +58,7 @@ $qry2 = "SELECT update_counter, last_updater, status
   FROM game WHERE game_id='$gameid' FOR UPDATE";
 $result2 = mysqli_query($link, $qry2);
 if (!$result2 || (mysqli_num_rows($result2) !== 1)) { 
-  $logMessage = 'MySQL Error 3: ' . mysqli_error($link);
+  $logMessage = 'statSwap.php: SELECT FROM game Error.';
   error_log($logMessage);
   echo "failure";
   mysqli_query($link, $qry0); // ROLLBACK
@@ -75,7 +75,7 @@ $qry8 = "SELECT * FROM game_player
          AND game_id = '$gameid'";
 $result8 = mysqli_query($link, $qry8);
 if (!$result8) {   // If query failed
-  $logMessage = 'MySQL Error 8: ' . mysqli_error($link);
+  $logMessage = 'statSwap.php: SELECT FROM game_player Error.';
   error_log($logMessage);
   echo "failure";
   mysqli_query($link, $qry0); // ROLLBACK
@@ -100,7 +100,7 @@ $qry3 = "SELECT firstname, login FROM players
          WHERE player_id = '$loggedinplayer'";
 $result3 = mysqli_query($link, $qry3);
 if (!$result3) {   // If query failed
-  $logMessage = 'MySQL Error 4: ' . mysqli_error($link);
+  $logMessage = 'statSwap.php: SELECT FROM players Error.';
   error_log($logMessage);
   echo "failure";
   mysqli_query($link, $qry0); // ROLLBACK
@@ -122,7 +122,7 @@ $qry4 = "UPDATE game SET update_counter='$counter',
          WHERE game_id = '$gameid'";
 $result4 = mysqli_query($link, $qry4);
 if (!$result4) {   // If query failed
-  $logMessage = 'MySQL Error 5: ' . mysqli_error($link);
+  $logMessage = 'statSwap.php: UPDATE game Error.';
   error_log($logMessage);
   echo "failure";
   mysqli_query($link, $qry0); // ROLLBACK
@@ -133,4 +133,3 @@ $_SESSION['SESS_UPDATE_COUNTER'] = $counter;
 $qry5 = "COMMIT";
 echo "success";
 mysqli_query($link, $qry5); // COMMIT
-?>
