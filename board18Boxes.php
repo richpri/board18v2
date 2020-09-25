@@ -174,21 +174,21 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
             <p>
               <label for="bname">Change Box Name:</label>
               <input type="text" name="bname" id="bname"
-                     value="">
+                     size="30" value="">
               <label class="error" for="bname" id="bname_error">
                 This field is required.</label>
             </p>
            <p>
               <label for="version">Change Version:</label>
               <input type="text" name="version" id="version"
-                     value="">
+                     size="30" value="">
               <label class="error" for="version" id="version_error">
                 This field is required.</label>
             </p>
            <p>
               <label for="author">Change Author:</label>
               <input type="text" name="author" id="author"
-                     value="">
+                     size="30" value="">
               <label class="error" for="author" id="author_error">
                 This field is required.</label>
             </p>

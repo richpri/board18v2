@@ -241,29 +241,57 @@ function updateBox() {
   var bname = $("input#bname").val();
   var version = $("input#version").val();
   var author = $("input#author").val();
+  var ascii = /^[\x00-\x7F]*$/;
   if (bname === "") {
     $("#bname_error").text('This field is required.').show();
+    $("#bname") .trigger('focus');
+    return false;
+  } 
+  if(!ascii.test(bname)){
+    $("#bname_error").text('Box Name can only contain ascii characters.').show();  
+    $("#bname") .trigger('focus');  
+    return false; 
+  }
+  if(bname.length > 25){
+    $("#bname_error").text('Box Name must be 25 characters or less.').show();  
+    $("#bname") .trigger('focus');  
+    return false; 
   }
   if (version === "") {
     $("#version_error").text('This field is required.').show();
+    $("#version") .trigger('focus');
+    return false;
+  } 
+  if(!ascii.test(version)){
+    $("#version_error").text('Version can only contain ascii characters.').show();  
+    $("#version") .trigger('focus');  
+    return false; 
+  }
+  if(version.length > 25){
+    $("#version_error").text('Version must be 25 characters or less.').show();  
+    $("#version") .trigger('focus');  
+    return false; 
   }
   if (author === "") {
     $("#author_error").text('This field is required.').show();
-  }
-  if (bname === "") {
-    $("#bname") .trigger('focus');
-    return false;
-  } else if (version === "") {
-    $("#version") .trigger('focus');
-    return false;
-  } else if (author === "") {
     $("#author") .trigger('focus');
+    return false;
+  } 
+  if(!ascii.test(author)){
+    $("#author_error").text('Author can only contain ascii characters.').show();  
+    $("#author") .trigger('focus');  
     return false; 
-  } else {
-    BD18.box.newBox = bname;
-    BD18.box.newVersion = version;
-    BD18.box.newAuthor = author;
   }
+  if(author.length > 25){
+    $("#author_error").text('Author must be 25 characters or less.').show();  
+    $("#author") .trigger('focus');  
+    return false; 
+  }
+
+  BD18.box.newBox = bname;
+  BD18.box.newVersion = version;
+  BD18.box.newAuthor = author;
+
   var aString = 'boxid=' + BD18.box.boxid;
   aString += '&bname=' + BD18.box.newBox;
   aString += '&version=' + BD18.box.newVersion;

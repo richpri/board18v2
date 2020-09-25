@@ -31,8 +31,8 @@ require_once('config.php');
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($conn, $str) {
-  $str = @trim($str);
+function clean($conn, $str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($conn, $str);
 }
 
@@ -89,11 +89,10 @@ if ($boxrow['bname'] !== $bname || $boxrow['version'] !== $version) {
 $qry = "UPDATE box SET bname='$bname', version='$version',
           status='$status', author='$author'
           WHERE box_id=$boxid";
-$result = @mysqli_query($link, $qry);
+$result = mysqli_query($link, $qry);
 if ($result) {   // Was the query successful
   echo 'success';
 } else {
   error_log("boxUpdate: Update box: Query failed");
   echo 'fail';
 }
-?>
