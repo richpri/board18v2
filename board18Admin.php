@@ -156,27 +156,29 @@ if ($result) {
               <p>
                 <label for="pname">Player ID:</label>
                 <input type="text" name="pname" id="pname" class="reg"
-                       value="<?php echo $login; ?>">
+                       size="20" value="<?php echo $login; ?>">
                 <label class="error" for="pname" id="pname_error">
                   This field is required.</label>
               </p>
               <p>
                 <label for="oldpw1">Enter Current Password:</label>
                 <input type="password" name="oldpw1" id="oldpw1" 
-                       value="" autocomplete="off">
+                       size="30" value="" autocomplete="off">
                 <label class="error" for="oldpw1" id="oldpw1_error">
                   This field is required.</label><br>
                 The current Password is required to change any field.
               </p>
               <p>
                 <label for="passwrd1">Enter New Password: </label>
-                <input type="password" name="passwrd1" id="passwrd1">
+                <input type="password" name="passwrd1" 
+                       size="30" id="passwrd1">
                 <label class="error" for="passwrd1" id="passwrd1_error">
                   This field is required.</label>
               </p>
               <p>
                 <label for="passwrd2">Reenter New Password: </label>
-                <input type="password" name="passwrd2" id="passwrd2">
+                <input type="password" name="passwrd2" 
+                       size="30" id="passwrd2">
                 <label class="error" for="passwrd2" id="passwrd2_error">
                   Password field mismatch.</label> <br>
                 The <span style="font-weight:bold">same</span> 
@@ -185,7 +187,7 @@ if ($result) {
               <p>
                 <label for="email">Change Email Address: </label>
                 <input type="text" name="email" id="email" class="reg"
-                       value="<?php echo $email; ?>">
+                       size="30" value="<?php echo $email; ?>">
                 <label class="error" for="email" id="email_error">
                   This field is required.</label>
               </p>
@@ -193,14 +195,14 @@ if ($result) {
               <p>
                 <label for="fname">Change First Name: </label>
                 <input type="text" name="fname" id="fname" class="reg"
-                       value="<?php echo $firstname; ?>">
+                       size="30" value="<?php echo $firstname; ?>">
                 <label class="error" for="fname" id="fname_error">
                   This field is required.</label>
               </p>
               <p>
                 <label for="lname">Change Last Name: </label>
                 <input type="text" name="lname" id="lname" class="reg"
-                       value="<?php echo $lastname; ?>">
+                       size="30" value="<?php echo $lastname; ?>">
                 <label class="error" for="lname" id="lname_error">
                   This field is required.</label>
               </p>

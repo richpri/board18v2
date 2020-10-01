@@ -1,7 +1,10 @@
-BOARD18 2.7.2 Release Notes
+BOARD18 2.7.3 Release Notes
  
-Changes from 2.7.1 Release:
-Implemented fix for Issue 194 - Field size discrepancy in board18Boxes.php 
+Changes from 2.7.2 Release:
+Implemented fix for Issue 195 - Field size discrepancy in board18Players.php.
+Implemented fix for Issue 197 - Invalid return code from checkForUpdate.
+Make some minor corrections to code in board18Map7.js and board18Market7.js.
+Make some minor corrections to code in checkForUpdate.php.
 
 BOARD18 2.7.1 Release Notes
  

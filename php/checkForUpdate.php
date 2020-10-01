@@ -32,8 +32,8 @@ $update_counter = $_SESSION['SESS_UPDATE_COUNTER'];
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
-function clean($link,$str) {
-  $str = @trim($str);
+function clean($link,$str1) {
+  $str = trim($str1);
   return mysqli_real_escape_string($link,$str);
 }
 
@@ -54,10 +54,17 @@ $arr2 = mysqli_fetch_array($result2);
 $counter = $arr2[0]; // update_counter
 $updater = $arr2[1]; // last_updater
 
-//Check for update made by another player.
+// Check for update made by another player.
 if ($counter != $update_counter && $updater != $loggedinplayer) { 
   echo "updatefound";
   exit;
+}
+
+// Check for update counter mismatch. This should not happen.
+if ($counter != $update_counter) { 
+  $logMessage = 'checkForUpdate: Update counter mismatch.';
+  error_log($logMessage);
+  $_SESSION['SESS_UPDATE_COUNTER'] = $counter;
 }
 
 echo "noupdate";

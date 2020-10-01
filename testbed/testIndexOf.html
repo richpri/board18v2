@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test page for checkForUpdateCallback debugging.</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../scripts/jquery.js">
+    </script>
+    <script type="text/javascript">
+function checkForUpdateCallback(resp) {
+  if (resp.indexOf("<!doctype html>") !== -1) { // User has timed out.
+    window.location = "dummyTest.html";
+  } 
+  var msg;
+  if(resp === 'failure') {
+    msg = "The page refresh function failed. This should not happen.";
+    msg += "Contact the site administrator about this error.";
+    alert(msg);
+  }
+  else if(resp === 'noupdate') {
+//    resetCheckForUpdate();
+    alert('noupdate');
+  }
+  else if(resp === 'updatefound') {
+//    document.location.reload(true);
+    alert('updatefound');
+  }
+  else {
+    msg = "Invalid return code from checkForUpdate.php.\n";
+    msg += resp + "\nContact the site administrator about this error.";
+    alert(msg);
+  }
+}
+      $(document).ready(function() {
+        checkForUpdateCallback("<!doctype html> and other stuff")
+      });
+      
+    </script>
+  </head>
+  <body>
+    <div id="call">
+      <p> status </p>
+    </div>
+    <div id="result">
+      <p> data </p>
+    </div>
+  </body>
+</html>

@@ -181,16 +181,36 @@ function regResult(response) {
  */
 function register() {
     $('.error').hide();
+    var ascii = /^[\x00-\x7F]*$/;
+    var format = /[#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
     var name = $("input#newuser").val();
     if (name === "") {
         $("#newuser_error").show();
-        $("#newuser") .trigger('focus');
+        $("#newuser").trigger('focus');
         return false;
+    }
+    if(!ascii.test(name)){
+      $("#newuser_error").text('Player ID can only contain ascii characters.');
+      $("#newuser_error").show();
+      $("#newuser").trigger('focus');  
+      return false; 
+    }
+    if(format.test(name)){
+      $("#newuser_error").text('Player ID cannot contain special characters.');
+      $("#newuser_error").show();  
+      $("#newuser").trigger('focus');  
+      return false; 
+    }
+    if(name.length > 16){
+      $("#newuser_error").text('Player ID must be 16 characters or less.');
+      $("#newuser_error").show();  
+      $("#newuser").trigger('focus');  
+      return false; 
     }
     var passwrd1 = $("input#passwrd1").val();
     if (passwrd1 === "") {
         $("#passwrd1_error").show();
-        $("#passwrd1") .trigger('focus');
+        $("#passwrd1").trigger('focus');
         return false;
     }
     var passwrd2 = $("input#passwrd2").val();
@@ -202,26 +222,36 @@ function register() {
     var email = $("input#email").val();
     if (email === "") {
         $("#email_error").text('This field is required.').show();
-        $("#email") .trigger('focus');
+        $("#email").trigger('focus');
         return false;
     }
     if (email !== email.toLowerCase()) {
         $("#email_error").text('Email address must be lower case.').show();
-        $("#email") .trigger('focus');
+        $("#email").trigger('focus');
         return false;
     }
     var fname = $("input#fname").val();
     if (fname === "") {
         $("#fname_error").show();
-        $("#fname") .trigger('focus');
+        $("#fname").trigger('focus');
         return false;
     }  
+    if(fname.length > 25){
+      $("#fname_error").text('First name must be 25 characters or less.').show();  
+      $("#fname").trigger('focus');  
+      return false; 
+    } 
     var lname = $("input#lname").val();
     if (lname === "") {
         $("#lname_error").show();
-        $("#lname") .trigger('focus');
+        $("#lname").trigger('focus');
         return false;
-    }    
+    } 
+    if(lname.length > 25){
+      $("#lname_error").text('Last name must be 25 characters or less.').show();  
+      $("#lname").trigger('focus');  
+      return false; 
+    }
     var regString = $('.reg').serialize();
     var hash = hex_sha256(passwrd1);
     regString += '&passwrd=' + hash;
@@ -321,7 +351,7 @@ function emailPasswdResult(response) {
 function lostpw() {
     $('.error').hide();
     var name = $("input#username1").val();
-    if (email === "") {
+    if (name === "") {
         $("#name1_error").show();
         $("#username1") .trigger('focus');
         return false;

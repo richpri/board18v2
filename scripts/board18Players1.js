@@ -210,15 +210,15 @@ function playerResult(response) {
   } else if (response === 'login') {  
     var logmessage = 'This player ID is already in use.';
     $("#login_error").text(logmessage).show();
-    $("#login") .trigger('focus');  
+    $("#login").trigger('focus');  
   } else if (response === 'bademail') {
     $("#email_error").text('Invalid email format.').show();
-    $("#email") .trigger('focus');
+    $("#email").trigger('focus');
   } else if (response.substring(0, 5) === 'email') {
     var logmessage = 'Player ' + response.substring(5);
     logmessage += ' is already using this email address.';
     $("#email_error").text(logmessage).show();
-    $("#email") .trigger('focus');
+    $("#email").trigger('focus');
   } else if (response === 'fail') {
     var errmsg1 = 'Program error in playerUpdate.php.\n';
     errmsg1 += 'Please contact the BOARD18 webmaster.';
@@ -247,40 +247,73 @@ function doPlayer(login) {
  */
 function updatePlayer() {
   $('.error').hide();
+  var ascii = /^[\x00-\x7F]*$/;
+  var format = /[#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   var name = $("input#login").val();
   if (name === "") {
     $("#login_error").text('This field is required.').show();
-    $("#login") .trigger('focus');
+    $("#login").trigger('focus');
     return false;
-  } else {
-    BD18.player.newLogin = name;
+  } 
+    if(!ascii.test(name)){
+    $("#name_error").text('Player ID can only contain ascii characters.').show();  
+    $("#name").trigger('focus');  
+    return false; 
   }
+  if(format.test(name)){
+    $("#login_error").text('Player ID cannot contain special characters.').show();  
+    $("#login").trigger('focus');  
+    return false; 
+  }
+  if(name.length > 16){
+    $("#login_error").text('Player ID must be 16 characters or less.').show();  
+    $("#login").trigger('focus');  
+    return false; 
+  }
+  BD18.player.newLogin = name;
   var email = $("input#email").val();
   if (email === "") {
       $("#email_error").text('This field is required.').show();
-      $("#email") .trigger('focus');
+      $("#email").trigger('focus');
       return false;
+  }
+  if(email.length > 254){
+    $("#email_error").text('Email address must be 254 characters or less.').show();  
+    $("#email").trigger('focus');  
+    return false; 
   }
   if (email !== email.toLowerCase()) {
       $("#email_error").text('Email address must be lower case.').show();
-      $("#email") .trigger('focus');
+      $("#email").trigger('focus');
       return false;
   }
   var fname = $("input#fname").val();
   if (fname === "") {
-      $("#fname_error").show();
-      $("#fname") .trigger('focus');
+      $("#fname_error").text('This field is required.').show();
+      $("#fname").trigger('focus');
       return false;
-  }  
+  } 
+  if(fname.length > 25){
+    $("#fname_error").text('First name must be 25 characters or less.').show();  
+    $("#fname").trigger('focus');  
+    return false; 
+  } 
   var lname = $("input#lname").val();
   if (lname === "") {
-      $("#lname_error").show();
-      $("#lname") .trigger('focus');
+      $("#lname_error").text('This field is required.').show();
+      $("#lname").trigger('focus');
       return false;
+  } 
+  if(lname.length > 25){
+    $("#lname_error").text('Last name must be 25 characters or less.').show();  
+    $("#lname").trigger('focus');  
+    return false; 
   }
+  
   var aString = $('.reg').serialize();
+  var playerfix = BD18.player.playerid.replace(" ", "+");
   aString += '&level=' + $("#level option:selected").val();
-  aString += '&player=' + BD18.player.playerid;
+  aString += '&player=' + playerfix;
   $.post("php/playerUpdate.php", aString, playerResult);
   return false;
 }

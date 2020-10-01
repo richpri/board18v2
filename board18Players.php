@@ -229,28 +229,28 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
             <p>
               <label for="login">Change Player ID:</label>
               <input type="text" name="login" id="login" class="reg"
-                     value="">
+                     size="20" value="">
               <label class="error" for="login" id="login_error">
                 This field is required.</label>
             </p>
             <p>
               <label for="email">Change Email Address: </label>
               <input type="text" name="email" id="email" class="reg"
-                     value="">
+                     size="30" value="">
               <label class="error" for="email" id="email_error">
                 This field is required.</label>
             </p>
             <p>
               <label for="fname">Change First Name: </label>
               <input type="text" name="fname" id="fname" class="reg"
-                     value="">
+                     size="30" value="">
               <label class="error" for="fname" id="fname_error">
                 This field is required.</label>
             </p>
             <p>
               <label for="lname">Change Last Name: </label>
               <input type="text" name="lname" id="lname" class="reg"
-                     value="">
+                     size="30" value="">
               <label class="error" for="lname" id="lname_error">
                 This field is required.</label>
             </p>

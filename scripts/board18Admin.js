@@ -41,6 +41,8 @@ function forceResult(response) {
  */
 function forceChange(currpw) {
   $('.error').hide();  
+  var ascii = /^[\x00-\x7F]*$/;
+  var format = /[#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   var pname2 = $("input#pname2").val();
   if (pname2 === "") {
     $("#pname2_error").show();
@@ -114,6 +116,8 @@ function adminResult(response) {
  */
 function administrate(currpw) {
   $('.error').hide();
+  var ascii = /^[\x00-\x7F]*$/;
+  var format = /[#$%^&*()+\=\[\]{};':"\\|,<>\/?]+/;
   var oldpw1 = $("input#oldpw1").val();
   if (oldpw1 === "") {
     $("#oldpw1_error").show();
@@ -129,9 +133,24 @@ function administrate(currpw) {
   }
   var name = $("input#pname").val();
   if (name === "") {
-    $("#pname_error").show();
+    $("#pname_error").text('This field is required.').show();
     $("#pname") .trigger('focus');
     return false;
+  }
+  if(!ascii.test(name)){
+    $("#pname_error").text('Player ID can only contain ascii characters.').show();  
+    $("#pname").trigger('focus');  
+    return false; 
+  }
+  if(format.test(name)){
+    $("#pname_error").text('Player ID cannot contain special characters.').show();  
+    $("#pname").trigger('focus');  
+    return false; 
+  }
+  if(name.length > 16){
+    $("#pname_error").text('Player ID must be 16 characters or less.').show();  
+    $("#pname").trigger('focus');  
+    return false; 
   }
   var passwrd1 = $("input#passwrd1").val();
   var passwrd2 = $("input#passwrd2").val();
@@ -140,29 +159,44 @@ function administrate(currpw) {
     $("#passwrd2") .trigger('focus');
     return false;
   }
-    var email = $("input#email").val();
-    if (email === "") {
-        $("#email_error").text('This field is required.').show();
-        $("#email") .trigger('focus');
-        return false;
-    }
-    if (email !== email.toLowerCase()) {
-        $("#email_error").text('Email address must be lower case.').show();
-        $("#email") .trigger('focus');
-        return false;
-    }
-    var fname = $("input#fname").val();
-    if (fname === "") {
-        $("#fname_error").show();
-        $("#fname") .trigger('focus');
-        return false;
-    }  
-    var lname = $("input#lname").val();
-    if (lname === "") {
-        $("#lname_error").show();
-        $("#lname") .trigger('focus');
-        return false;
-    } 
+  var email = $("input#email").val();
+  if (email === "") {
+    $("#email_error").text('This field is required.').show();
+    $("#email") .trigger('focus');
+    return false;
+  }
+  if(email.length > 254){
+    $("#email_error").text('Email address must be 254 characters or less.').show();  
+    $("#email").trigger('focus');  
+    return false; 
+  }
+  if (email !== email.toLowerCase()) {
+    $("#email_error").text('Email address must be lower case.').show();
+    $("#email") .trigger('focus');
+    return false;
+  }
+  var fname = $("input#fname").val();
+  if (fname === "") {
+    $("#fname_error").text('This field is required.').show();
+    $("#fname").trigger('focus');
+    return false;
+  } 
+  if(fname.length > 25){
+    $("#fname_error").text('First name must be 25 characters or less.').show();  
+    $("#fname").trigger('focus');  
+    return false; 
+  } 
+  var lname = $("input#lname").val();
+  if (lname === "") {
+    $("#lname_error").text('This field is required.').show();
+    $("#lname").trigger('focus');
+    return false;
+  } 
+  if(lname.length > 25){
+    $("#lname_error").text('Last name must be 25 characters or less.').show();  
+    $("#lname").trigger('focus');  
+    return false; 
+  } 
   var aString = $('.reg').serialize();
   if (passwrd1 !== "") {
     var hash = hex_sha256(passwrd1);

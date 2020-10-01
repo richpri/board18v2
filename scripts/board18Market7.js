@@ -2,8 +2,7 @@
  * board18Market7.js contains the function that implements the
  * keyboard shortcut events and the functions that implement the
  * calls to the checkForUpdate.php and snapShot.php routines.
- * 
- * It now also contains the code for the new snapshot function.
+ * It also contains the code for the snapshot function.
  *
  * All BD18 global variables are contained in one
  * 'master variable' called BD18.  This isolates 
@@ -156,7 +155,8 @@ function checkForUpdateCallback(resp) {
   }
   else {
     msg = "Invalid return code from checkForUpdate.php.\n";
-    msg += resp + "\nContact the site administrator about this error.";
+    msg += resp.substring(0, 20);
+    msg += "\nContact the site administrator about this error.";
     alert(msg);
   }
 }

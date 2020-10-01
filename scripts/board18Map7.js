@@ -115,7 +115,8 @@ function checkForUpdateCallback(resp) {
   }
   else {
     msg = "Invalid return code from checkForUpdate.php.\n";
-    msg += resp + "\nContact the site administrator about this error.";
+    msg += resp.substring(0, 20);
+    msg += "\nContact the site administrator about this error.";
     alert(msg);
   }
 }
