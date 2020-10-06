@@ -6,22 +6,31 @@ password protected. It is the page that handles unauthorized access
 to password protected pages. It has an access denied message but 
 is otherwise identical to the index.html page. 
 
+This is a second copy of access-denied.html. It resides in the PHP 
+sub-directory of BOARD18. Its purpose is to handle invalid executions
+of files in the PHP subdirectory. The relative file directory addresses 
+in lines 15 thru 25 and line 127 of this second copy have been modified
+to be correct for the PHP sub-directory.
+
 Copyright (c) 2014 Richard E. Price under the The MIT License.
 A copy of this license can be found in the LICENSE.text file.
+
+Revised to execute properly in the PHP sub-directory by Richard 
+Price in 2020. See Bug 200 in bugs.board18.org.
 -->
   <head>
     <meta charset="utf-8" />
     <title>BOARD18 - Remote Play Tool For 18xx Style Games</title>
-    <link rel="shortcut icon" href="images/favicon.ico" >
-    <link rel="stylesheet" href="style/board18com.css" />
-    <link rel="stylesheet" href="style/board18Index.css" />
-    <script type="text/javascript" src="scripts/jquery.js">
+    <link rel="shortcut icon" href="../images/favicon.ico" >
+    <link rel="stylesheet" href="../style/board18com.css" />
+    <link rel="stylesheet" href="../style/board18Index.css" />
+    <script type="text/javascript" src="../scripts/jquery.js">
     </script> 
-    <script type="text/javascript" src="scripts/sha256-min.js">
+    <script type="text/javascript" src="../scripts/sha256-min.js">
     </script> 
-    <script type="text/javascript" src="scripts/board18com.js">
+    <script type="text/javascript" src="../scripts/board18com.js">
     </script>
-    <script type="text/javascript" src="scripts/board18index.js">
+    <script type="text/javascript" src="../scripts/board18index.js">
     </script>
     <script type="text/javascript" >
       $(function() {
@@ -117,7 +126,7 @@ A copy of this license can be found in the LICENSE.text file.
     
     <div id="topofpage">
       <div id="logo">
-        <img src="images/logo.png" alt="Logo"/> 
+        <img src="../images/logo.png" alt="Logo"/> 
       </div>
       <div id="heading">
         <h1>BOARD18 - Remote Play Tool For 18xx Style Games</h1>

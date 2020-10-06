@@ -1,3 +1,9 @@
+BOARD18 2.7.4 Release Notes
+ 
+Changes from 2.7.3 Release:
+Implemented fix for Issue 200 - Fix the second copy of access-denied.html.
+Removed the "require_once('tempRandom.php')" line from emailPassword.php.
+
 BOARD18 2.7.3 Release Notes
  
 Changes from 2.7.2 Release:
