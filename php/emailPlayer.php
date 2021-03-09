@@ -31,8 +31,8 @@ if (!$link) {
 //Function to sanitize values received from the form. 
 //Prevents SQL injection
 function clean($conn, $str) {
-  $str = @trim($str);
-  return mysqli_real_escape_string($conn, $str);
+  $str2 = trim($str);
+  return mysqli_real_escape_string($conn, $str2);
 }
 
 //Sanitize the POST value

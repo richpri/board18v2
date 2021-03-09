@@ -1,3 +1,10 @@
+BOARD18 2.7.5 Release Notes
+ 
+Changes from 2.7.4 Release:
+Implemented fix for Issue 229 - Add key to the game_player table.
+Fixed clean function in emailPlayer.php.
+Fixed comment in sendEmail.php
+
 BOARD18 2.7.4 Release Notes
  
 Changes from 2.7.3 Release:

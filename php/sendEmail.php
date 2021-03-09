@@ -7,7 +7,7 @@
  * ISP or your hosting service for these Emails. 
  * 
  * Input consists the following parameters:
- *   login
+ *   email
  *   subject
  *   body
  * 
