@@ -26,8 +26,13 @@ $link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 if ( !$link ) {
 	error_log('Failed to connect to server: ' . mysqli_connect_error());
 	$status = 'fail';
-}  
-  
+} 
+
+//Set the max execution value.
+$setmet = SET_MET;
+$set1 = "SET SESSION MAX_EXECUTION_TIME=$setmet;";
+$doset1 = mysqli_query($link, $set1);
+
 //Sanitize the dogame value
 $dogame = clean( $link, $_REQUEST['dogame']);
 

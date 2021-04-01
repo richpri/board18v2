@@ -27,6 +27,11 @@ function clean($conn, $str) {
   return mysqli_real_escape_string($conn, $strt);
 }
 
+//Set the max execution value.
+$setmet = SET_MET;
+$set1 = "SET SESSION MAX_EXECUTION_TIME=$setmet;";
+$doset1 = mysqli_query($theLink, $set1);
+
 //Sanitize the dogame value
 $dogame = clean($theLink, $_REQUEST['dogame']);
 

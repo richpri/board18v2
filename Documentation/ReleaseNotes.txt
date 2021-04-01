@@ -1,3 +1,10 @@
+BOARD18 2.7.6 Release Notes
+ 
+Changes from 2.7.5 Release:
+Implemented fix for Issue 238 Part1
+NOTE: Before upgrading to this list please read the note at
+https://wiki.board18.org/w/Note_for_upgrade_to_Release_2.7.6
+
 BOARD18 2.7.5 Release Notes
  
 Changes from 2.7.4 Release:

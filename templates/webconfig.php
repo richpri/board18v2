@@ -9,8 +9,12 @@
  * Copyright (c) 2013 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
  */
-	define('DB_HOST', 'localhost');
+  define('DB_HOST', 'localhost');
   define('DB_DATABASE', 'board18');
   define('DB_USER', 'board18');
   define('DB_PASSWORD', 'board18');
+  // The SET_MET value is used to set the session wide
+  // MAX_EXECUTION_TIME value. Default is 0.
+  // A value of 0 indicates no timeouts will occur. 
+  define('SET_MET', 0);
 ?>
