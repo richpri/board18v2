@@ -1,9 +1,16 @@
+BOARD18 2.7.7 Release Notes
+ 
+Changes from 2.7.6 Release:
+Backed out changes for fix for Issue 238 Part1
+Removed some obsolete material from Documentation directory.
+
 BOARD18 2.7.6 Release Notes
  
 Changes from 2.7.5 Release:
 Implemented fix for Issue 238 Part1
 NOTE: Before upgrading to this list please read the note at
 https://wiki.board18.org/w/Note_for_upgrade_to_Release_2.7.6
+NOTE: This Release is backed out by release 2.7.7. Do not use.
 
 BOARD18 2.7.5 Release Notes
  

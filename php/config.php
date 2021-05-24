@@ -12,8 +12,4 @@
   define('DB_DATABASE', 'board18');
   define('DB_USER', 'board18');
   define('DB_PASSWORD', 'board18');
-  // The SET_MET value is used to set the session wide
-  // MAX_EXECUTION_TIME value. Default is 0.
-  // A value of 0 indicates no timeouts will occur. 
-  define('SET_MET', 0);
 ?>

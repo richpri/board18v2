@@ -28,11 +28,6 @@ if ( !$link ) {
 	$status = 'fail';
 } 
 
-//Set the max execution value.
-$setmet = SET_MET;
-$set1 = "SET SESSION MAX_EXECUTION_TIME=$setmet;";
-$doset1 = mysqli_query($link, $set1);
-
 //Sanitize the dogame value
 $dogame = clean( $link, $_REQUEST['dogame']);
 
