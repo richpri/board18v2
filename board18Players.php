@@ -161,20 +161,6 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
           playerGames();
           return false;
         }); // end button13 click
-        $('#button21').on("click",function() {
-          sendBroadcast();  
-          return false;
-        }); // end button21 click
-        $('#button22').on("click",function() {
-          $('.error').hide();
-          $("#subject2").val('');
-          $("#body2").val('');
-          return false;
-        }); // end button22 click
-        $('#button23').on("click",function() {
-          $('#allmail').slideUp(300);
-          return false;
-        }); // end button23 click
       }); // end ready
     </script>
   </head>
@@ -197,9 +183,6 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
         </p>
 	<div id="mainmenu" class="menu">
           <ul class="bigMenu">
-            <li onclick="$('#theplayer').slideUp(300);$('#gamelist').remove();
-                         $('.error').hide();$('#allmail').slideDown(300);
-			 BD18.player.update = 'no';">Send Broadcast</li>
             <li onclick="window.location = 'board18Admin.php';">Return to Admin</li>
             <li onclick="window.location = 'board18Main.php';">Main Page</li>
             <li onclick="$.post('php/logout.php', logoutOK);">Log Out</li>
@@ -296,34 +279,6 @@ $pagecount = ceil((float)$totalcount/(float)$pagesize);
                      id="button12" value="Reset Form" >
               <input type="button" name="canbutton" class="pwbutton"  
                      id="button13" value="Exit" >
-            </p>
-          </fieldset>
-        </form>
-      </div>
-      <div id="allmail" class="hidediv">
-        <form name="allmail" class="playerform" action="">
-          <fieldset>
-            <p>
-              Send an administrative Email to all players.   
-            </p>
-            <p>
-              <label for="subject" style="width: 80px;">Subject:</label>
-              <input type="text" name="subject" id="subject2" value="">
-              <label class="error" for="subject" id="subject2_error">
-                This field is required.</label>
-            </p>
-            <p>
-              <label for="body" style="width: 80px; vertical-align:top;">
-                Body: </label>
-              <textarea name="body" id="body2" cols=60 rows=10></textarea>
-            </p>
-            <p>
-              <input type="button" name="emailonebutton" class="pwbutton"  
-                     id="button21" value="Send Email" >
-              <input type="button" name="resbutton" class="pwbutton"  
-                     id="button22" value="Reset Form" >
-              <input type="button" name="canbutton" class="pwbutton"  
-                     id="button23" value="Exit" >
             </p>
           </fieldset>
         </form>

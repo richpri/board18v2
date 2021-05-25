@@ -62,29 +62,3 @@ function doEmail() {
   $("#body1").val('');
 }
 
-/* 
- * Function sendBroadcast checks the input for missing fields and then
- * and then does an ajax call to emailPlayer.php for every player in 
- * the players table. 
- */
-function sendBroadcast() {
-  $('.error').hide();
-  var subject = $("#subject2").val();     
-  var body = $("#body2").val();
-  if (subject === "") {
-    $("#subject2_error").text('This field is required.').show();
-    $("#subject2") .trigger('focus');
-    return false;
-  }
-  BD18.mailError = false;
-  var dString = '&subject=' + subject + '&body=' + body;
-  var eString = '';
-  $.each(BD18.players,function(index,listInfo) {
-    eString = 'login=' + listInfo.login + dString;
-    $.post("php/emailPlayer.php", eString, emailPlayerResult);
-  });
-  doLogNote('Broadcast Emails are being sent.');
-  $("#subject2").val('');
-  $("#body2").val('');
-};
-
