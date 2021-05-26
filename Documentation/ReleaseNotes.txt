@@ -3,6 +3,8 @@ BOARD18 2.7.7 Release Notes
 Changes from 2.7.6 Release:
 Backed out changes for fix for Issue 238 Part1
 Removed some obsolete material from Documentation directory.
+Implemented fix for Issue 199 - Remove tempRandom.php module.
+Implemented fix for Issue 228 - Remove "Send Broadcast" function
 
 BOARD18 2.7.6 Release Notes
  
@@ -16,6 +18,7 @@ BOARD18 2.7.5 Release Notes
  
 Changes from 2.7.4 Release:
 Implemented fix for Issue 229 - Add key to the game_player table.
+Implemented fix for Issue 241 - Add missing code to access-denied.html page.
 Fixed clean function in emailPlayer.php.
 Fixed comment in sendEmail.php
 
