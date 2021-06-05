@@ -88,6 +88,36 @@
   overflow:auto;
 }
 
+#mmbutton {
+  display: inline-block;
+  position: absolute;
+  left:210px;
+  top:50px;
+  width: 60px;
+  text-align: center;
+  margin:0px 5px 0px 5px;
+  padding:5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background-color: #ddffdd;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+        
+#ambutton {
+  display: inline-block;
+  position: absolute;
+  left:280px;
+  top:50px;
+  width: 30px;
+  text-align: center;
+  margin:0px 0px 0px 5px;
+  padding:5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background-color: #ddffdd;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
 #content {
   background-color:#ffeedd;
   position: absolute;
