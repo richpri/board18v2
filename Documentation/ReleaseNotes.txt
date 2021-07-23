@@ -1,3 +1,9 @@
+BOARD18 2.7.9 Release Notes
+ 
+Changes from 2.7.8 Release:
+Implemented fix for Issue 230 - MySQL statement optimization
+Remove unused file "makeTables.php" from php folder
+
 BOARD18 2.7.8 Release Notes
  
 Changes from 2.7.7 Release:

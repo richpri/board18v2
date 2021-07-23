@@ -73,8 +73,8 @@ $gameid = intval(clean($link, $_REQUEST['gameid']));
 $qry1 = "SELECT a.player_id, b.login, b.firstname, b.lastname
           FROM game_player AS a 
             JOIN (players AS b)
-              ON (a.game_id = $gameid
-                  AND a.player_id = b.player_id)
+              ON (a.player_id = b.player_id)
+            WHERE a.game_id = $gameid
           ORDER BY a.player_id";
 $result1 = mysqli_query($link,$qry1);
 

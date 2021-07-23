@@ -104,9 +104,9 @@ if ($mode === '1' || $mode === '3') {
   $qry5 = "SELECT b.player_id
           FROM players AS a 
             JOIN (game_player AS b)
-              ON (a.login = '$prem'
-                AND b.game_id = $game
-                AND a.player_id = b.player_id)";
+              ON (a.player_id = b.player_id)
+            WHERE a.login = '$prem' 
+              AND b.game_id = $game";
   $result5 = mysqli_query($link, $qry5);
   if (!$result5 || mysqli_num_rows($result5) !== 1) {
     $logMessage = 'changePlayers: Error on SELECT JOIN query.' ;
