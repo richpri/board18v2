@@ -15,9 +15,14 @@
  *
  * Copyright (c) 2015 Richard E. Price under the The MIT License.
  * A copy of this license can be found in the LICENSE.text file.
+ * On Jan 17 2023 modified to work with PHPMailer version 6.7.1.
  */
 
-require_once( 'class.phpmailer.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
 require_once('configMail.php');
 
 

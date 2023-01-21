@@ -1,3 +1,8 @@
+BOARD18 2.8.0 Release Notes
+ 
+Changes from 2.7.9 Release:
+Implemented fix for issue 302 - sendmail problem with PHP 8
+
 BOARD18 2.7.9 Release Notes
  
 Changes from 2.7.8 Release:

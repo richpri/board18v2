@@ -8,6 +8,8 @@ mkdir ~/board18-$versionNo
 mkdir ~/board18-$versionNo/webroot
 mkdir ~/board18-$versionNo/webroot/images
 mkdir ~/board18-$versionNo/webroot/php 
+mkdir ~/board18-$versionNo/webroot/php/PHPMailer
+mkdir ~/board18-$versionNo/webroot/php/PHPMailer/src
 mkdir ~/board18-$versionNo/webroot/scripts 
 mkdir ~/board18-$versionNo/webroot/style
 mkdir ~/board18-$versionNo/utility
@@ -19,6 +21,8 @@ install -p -t ~/board18-$versionNo Documentation/ReleaseNotes.txt
 install -p -t ~/board18-$versionNo/webroot *.html *.php favicon.ico
 rm ~/board18-$versionNo/webroot/phpinfo.php
 install -p -t ~/board18-$versionNo/webroot/php php/*.*
+install -p -t ~/board18-$versionNo/webroot/php/PHPMailer php/PHPMailer/*.*
+install -p -t ~/board18-$versionNo/webroot/php/PHPMailer/src php/PHPMailer/src/*.*
 install -p -t ~/board18-$versionNo/webroot/scripts scripts/*.*
 install -p -t ~/board18-$versionNo/webroot/style style/*.*
 install -p -t ~/board18-$versionNo/webroot/images images/*.*
