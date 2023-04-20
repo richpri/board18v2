@@ -29,7 +29,7 @@ if (!$link) {
   echo 'fail';
   exit;
 }
-mysqli_set_charset($link, "utf-8");
+mysqli_set_charset($link, "utf8mb4");
 $qry0 = "ROLLBACK";
 
 //Function to sanitize values received from the form. 

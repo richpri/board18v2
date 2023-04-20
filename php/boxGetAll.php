@@ -63,7 +63,7 @@ if (mysqli_connect_error()) {
   echo $errResp;
   exit;
 }
-mysqli_set_charset($link, "utf-8");
+mysqli_set_charset($link, "utf8mb4");
 
 //Get records from the box table.
 $qry1 = "SELECT box_id, bname, version, create_date,

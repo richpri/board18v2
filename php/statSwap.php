@@ -29,7 +29,7 @@ if (mysqli_connect_error()) {
   echo "failure";
   exit;
 }
-mysqli_set_charset($link, "utf-8");
+mysqli_set_charset($link, "utf8mb4");
 $update_counter = $_SESSION['SESS_UPDATE_COUNTER'];
 $qry0 = "ROLLBACK";
 

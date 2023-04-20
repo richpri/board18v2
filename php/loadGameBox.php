@@ -363,7 +363,7 @@ function loadBox($zfile,$authorID) {
     error_log($logMessage);
     return $errResp;
   }
-  mysqli_set_charset($link, "utf-8");
+  mysqli_set_charset($link, "utf8mb4");
 
   $webRoot = $_SERVER['DOCUMENT_ROOT'];
   $retrn = doLoad($zfileName,$zfileTmpLoc,$authorID,$webRoot,$link,$report);

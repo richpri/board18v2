@@ -26,7 +26,7 @@ if (mysqli_connect_error()) {
   echo "fail";
   exit;
 }
-mysqli_set_charset($link, "utf-8");
+mysqli_set_charset($link, "utf8mb4");
 
 $id = $_SESSION['SESS_PLAYER_ID'];
 $qry1 = "DELETE FROM auth_tokens WHERE player_id=$id";

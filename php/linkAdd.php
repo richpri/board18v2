@@ -25,7 +25,7 @@ if (mysqli_connect_error()) {
   echo "fail";
   exit;
 }
-mysqli_set_charset($conn, "utf-8");
+mysqli_set_charset($conn, "utf8mb4");
 $qry0 = "ROLLBACK";
 
 //Function to sanitize values received from the form. 

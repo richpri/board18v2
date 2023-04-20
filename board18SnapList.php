@@ -18,7 +18,7 @@ if (mysqli_connect_error()) {
   $status = 'fail';
   exit;
 }
-mysqli_set_charset($link, "utf-8");
+mysqli_set_charset($link, "utf8mb4");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection

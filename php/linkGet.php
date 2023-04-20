@@ -53,7 +53,7 @@ if (mysqli_connect_error()) {
   echo $errResp;
   exit;
 }
-mysqli_set_charset($conn, "utf-8");
+mysqli_set_charset($conn, "utf8mb4");
 
 //Function to sanitize values received from the form. 
 //Prevents SQL injection

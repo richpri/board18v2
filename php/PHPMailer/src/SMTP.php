@@ -280,7 +280,7 @@ class SMTP
                 echo gmdate('Y-m-d H:i:s'), ' ', htmlentities(
                     preg_replace('/[\r\n]+/', '', $str),
                     ENT_QUOTES,
-                    'UTF-8'
+                    'utf8mb4'
                 ), "<br>\n";
                 break;
             case 'echo':

@@ -13,8 +13,8 @@
 var BD18 = {};
 BD18.noteTimeout = null; // Used by doLogNote().
 BD18.welcomename = null; // Used by doLogNote().
-BD18.help = "https://wiki.board18.org/w/Player%27s_Guide_V2.7";
-BD18.version = "2.8.0";
+BD18.help = "https://wiki.board18.org/w/Player%27s_Guide_V2.8";
+BD18.version = "2.8.1";
 
 /* Function setPage() adjusts the height and width
  * of rightofpage and the height of lefttofpage.
